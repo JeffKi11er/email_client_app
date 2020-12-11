@@ -16,4 +16,8 @@
     <string name="setting">Cài đặt</string>
     <string name="help">Trợ giúp phản hồi</string>
     <string name="others">Khác</string>
+    <string name="text">Soạn thư</string>
+    <string name="search">Tìm kiếm trong thư</string>
+    <string name="message">Thư</string>
+    <string name="meeting">Họp mặt</string>
 </resources>
