@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">email_client_app</string>
+    <string name="inbox">Hộp thư đến</string>
+    <string name="branches">Tất cả nhãn dán</string>
+    <string name="star">Có gắn dấu sao</string>
+    <string name="hiden">Đã tạm ẩn</string>
+    <string name="important">Quan trọng</string>
+    <string name="sent">Đã gửi</string>
+    <string name="plan">Đã lên lịch</string>
+    <string name="all">Tất cả các thư</string>
+    <string name="spams">Thư rác</string>
+    <string name="bin">Thùng rác</string>
+    <string name="gg_tools">Các ứng dụng GOOGLE</string>
+    <string name="calendar">Lịch</string>
+    <string name="contact">Danh bạ</string>
+    <string name="setting">Cài đặt</string>
+    <string name="help">Trợ giúp phản hồi</string>
+    <string name="others">Khác</string>
 </resources>
