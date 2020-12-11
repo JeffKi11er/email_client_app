@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+>
+    <item
+        android:id="@+id/menu_all"
+        android:icon="@drawable/ic_all_inb"
+        android:title="Tất cả hộp thư đến"
+        ></item>
+    <item
+        android:id="@+id/menu_inb"
+        android:icon="@drawable/ic_inb"
+        android:title="Hộp thư đến"></item>
+    <item
+        android:id="@+id/menu_branch"
+        android:title="Tất cả nhãn dán"></item>
+    <item
+        android:id="@+id/menu_star"
+        android:title="Có gắn dấu sao"
+        android:icon="@drawable/ic_star"></item>
+    <item
+        android:id="@+id/menu_hiden"
+        android:icon="@drawable/ic_hiden"
+        android:title="Đã tạm ẩn"></item>
+    <item
+        android:id="@+id/menu_important"
+        android:icon="@drawable/ic_important"
+        android:title="Quan trọng"></item>
+    <item
+        android:id="@+id/menu_sent"
+        android:icon="@drawable/ic_send"
+        android:title="Đã gửi"></item>
+    <item
+        android:id="@+id/menu_plan"
+        android:icon="@drawable/ic_plan"
+        android:title="Đã lên lịch"></item>
+    <item
+        android:id="@+id/menu_all_"
+        android:icon="@drawable/ic_all_inbox"
+        android:title="Tất cả các thư"></item>
+</menu>
