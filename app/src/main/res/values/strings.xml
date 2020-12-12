@@ -20,4 +20,12 @@
     <string name="search">Tìm kiếm trong thư</string>
     <string name="message">Thư</string>
     <string name="meeting">Họp mặt</string>
+    <string name="compose">Soạn thư</string>
+    <string name="from">Từ</string>
+    <string name="to">Tới</string>
+    <string name="cc">Cc</string>
+    <string name="bcc">Bcc</string>
+    <string name="theme">Chủ đề</string>
+    <string name="compose_email">Soạn email</string>
+    <string name="email">fillaytion23@gmail.com</string>
 </resources>
