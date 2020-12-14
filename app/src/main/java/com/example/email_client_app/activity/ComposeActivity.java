@@ -75,7 +75,7 @@ public class ComposeActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.img_send:
                 String user = tvFrom.getText().toString();
-                String passwords = "nguyenanphu@";
+                String passwords = "";
                 String recipient = edtMailTo.getText().toString().trim();
                 //String []recipients = recipient.split(",");
                 String subject = edtMailSubject.getText().toString();
@@ -119,7 +119,7 @@ public class ComposeActivity extends AppCompatActivity implements View.OnClickLi
         protected void onPreExecute() {
             super.onPreExecute();
             progressDialog = ProgressDialog.show(ComposeActivity.this,"Wait a sec..",
-                    "sending..",true,false);
+                    "Sending..",true,false);
             Log.e(getClass().getName(),"create & show progress dialog");
         }
 

@@ -4,7 +4,7 @@
     <item
         android:id="@+id/menu_all"
         android:icon="@drawable/ic_all_inb"
-        android:title="Tất cả hộp thư đến"></item>
+        android:title="@string/inboxes"></item>
     <item android:title="">
         <item
             android:id="@+id/menu_inb"
