@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
@@ -39,6 +41,8 @@ public class ComposeActivity extends AppCompatActivity implements View.OnClickLi
     private TextView tvFrom;
     private ImageView arrowDownFrom;
     private ImageView arrowDownSend;
+    private SharedPreferences preferencesEmail;
+    private SharedPreferences preferencesPasswords;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,11 +59,13 @@ public class ComposeActivity extends AppCompatActivity implements View.OnClickLi
         tvFrom = findViewById(R.id.tv_email_from);
         arrowDownFrom = findViewById(R.id.img_arrow_from_down_1);
         arrowDownSend = findViewById(R.id.img_arrow_from_down_2);
+        preferencesEmail = this.getSharedPreferences("user_email", Context.MODE_PRIVATE);
+        preferencesPasswords = this.getSharedPreferences("user_passwords",Context.MODE_PRIVATE);
+        tvFrom.setText(preferencesEmail.getString("user_email",""));
         imgBack.setOnClickListener(this);
         imgSend.setOnClickListener(this);
         arrowDownFrom.setOnClickListener(this);
         arrowDownSend.setOnClickListener(this);
-        tvFrom.setText(R.string.email);
     }
     @Override
     public void onClick(View v) {
@@ -74,10 +80,9 @@ public class ComposeActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.img_arrow_from_down_2:
                 break;
             case R.id.img_send:
-                String user = tvFrom.getText().toString();
-                String passwords = "";
+                String user = preferencesEmail.getString("user_email","");
+                String passwords = preferencesPasswords.getString("user_passwords","");
                 String recipient = edtMailTo.getText().toString().trim();
-                //String []recipients = recipient.split(",");
                 String subject = edtMailSubject.getText().toString();
                 String message = edtMailDetail.getText().toString();
                 Properties properties = new Properties();
@@ -86,27 +91,45 @@ public class ComposeActivity extends AppCompatActivity implements View.OnClickLi
                 properties.put("mail.smtp.host","smtp.gmail.com");
                 properties.put("mail.smtp.port","587");
                 Log.e(getClass().getName(),"initialize properties");
-                Session session = Session.getInstance(properties, new Authenticator() {
-                    @Override
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(user,passwords);
+                if (user!="" && passwords!=""){
+                    Session session = Session.getInstance(properties, new Authenticator() {
+                        @Override
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(user,passwords);
+                        }
+                    });
+                    Log.e(getClass().getName(),"initialize sessions");
+                    Message mimeMessage = new MimeMessage(session);
+                    Log.e(getClass().getName(),"initialize message content");
+                    try {
+                        mimeMessage.setFrom(new InternetAddress(user));
+                        Log.e(getClass().getName(),"sending email..");
+                        mimeMessage.setRecipients(Message.RecipientType.TO,InternetAddress.parse(recipient));
+                        Log.e(getClass().getName(),"recipient email");
+                        mimeMessage.setSubject(subject);
+                        Log.e(getClass().getName(),"email subject");
+                        mimeMessage.setText(message);
+                        Log.e(getClass().getName(),"email message");
+                        new SendMail().execute(mimeMessage);
+                    } catch (MessagingException e) {
+                        e.printStackTrace();
                     }
-                });
-                Log.e(getClass().getName(),"initialize sessions");
-                Message mimeMessage = new MimeMessage(session);
-                Log.e(getClass().getName(),"initialize message content");
-                try {
-                    mimeMessage.setFrom(new InternetAddress(user));
-                    Log.e(getClass().getName(),"sending email..");
-                    mimeMessage.setRecipients(Message.RecipientType.TO,InternetAddress.parse(recipient));
-                    Log.e(getClass().getName(),"recipient email");
-                    mimeMessage.setSubject(subject);
-                    Log.e(getClass().getName(),"email subject");
-                    mimeMessage.setText(message);
-                    Log.e(getClass().getName(),"email message");
-                    new SendMail().execute(mimeMessage);
-                } catch (MessagingException e) {
-                    e.printStackTrace();
+                }else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(ComposeActivity.this);
+                    builder.setCancelable(false);
+                    builder.setTitle(Html.fromHtml("<font color='#b71c1c'>Invalid email address !</font>"));
+                    builder.setMessage("Go to Settings -> Log out");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            edtMailTo.setText("");
+                            edtMailSubject.setText("");
+                            edtMailDetail.setText("");
+                        }
+                    });
+                    builder.show();
+                    return;
                 }
                 break;
         }

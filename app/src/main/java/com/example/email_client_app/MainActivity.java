@@ -7,7 +7,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -58,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View viewHeader = nav.getHeaderView(0);
         imgHeader = viewHeader.findViewById(R.id.profile_image);
         tvHeaderEmail = viewHeader.findViewById(R.id.tv_mail_header);
+        SharedPreferences sharedPreferencesEmail = this.getSharedPreferences("user_email", Context.MODE_PRIVATE);
+        tvHeaderEmail.setText(sharedPreferencesEmail.getString("user_email",""));
         tvCompose.setOnClickListener(this);
         imageViewBar.setOnClickListener(new View.OnClickListener() {
             @Override
