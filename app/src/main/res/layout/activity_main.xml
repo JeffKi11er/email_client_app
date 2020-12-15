@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:openDrawer="start"
-    android:fitsSystemWindows="true"
     >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -69,7 +68,8 @@
             <FrameLayout
                 android:id="@+id/content_"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_marginBottom="85dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -114,6 +114,7 @@
                 android:layout_below="@id/card_edit"
                 android:orientation="horizontal"
                 android:weightSum="2"
+                android:background="@color/white"
                 >
                 <LinearLayout
                     android:layout_width="0dp"

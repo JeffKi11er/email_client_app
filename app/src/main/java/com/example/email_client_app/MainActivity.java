@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText edtFieldName;
     private EditText edtFieldPass;
     private TextView tvBack;
-//    private FragmentCheck fragmentCheck = new FragmentCheck();
+    private FragmentCheck fragmentCheck = new FragmentCheck();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SharedPreferences sharedPreferencesEmail = this.getSharedPreferences("user_email", Context.MODE_PRIVATE);
         tvHeaderEmail.setText(sharedPreferencesEmail.getString("user_email",""));
         tvCompose.setOnClickListener(this);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck).commit();
         imageViewBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
