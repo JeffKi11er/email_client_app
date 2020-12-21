@@ -5,22 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -56,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragmentSnoozed fragmentSnoozed = new FragmentSnoozed();
     private FragmentSchedule fragmentSchedule = new FragmentSchedule();
     private FragmentImportant fragmentImportant = new FragmentImportant();
+    private FragmentAllMail fragmentAllMail = new FragmentAllMail();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,6 +132,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.menu_important:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentImportant).commit();
+		break;
+            case R.id.menu_all_:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentAllMail).commit();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

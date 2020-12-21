@@ -18,34 +18,37 @@ import com.example.email_client_app.item.ItemEmail;
 import java.util.ArrayList;
 
 public class FragmentAllMail extends Fragment {
-    private ArrayList<ItemEmail>emails;
-    private RecyclerView rclEmails;
+    private ArrayList<ItemEmail>allMails;
+    private RecyclerView rclAllMails;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_check,container,false);
+        View view = inflater.inflate(R.layout.fragment_all_mail,container,false);
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        emails  = new ArrayList<>();
-        emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
+
+        allMails  = new ArrayList<>();
+
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        rclEmails = getActivity().findViewById(R.id.rcl_emails);
-        rclEmails.setAdapter(new AllMailAdapter(getContext(),emails));
+
+        rclAllMails = getActivity().findViewById(R.id.all_mail_recycler_view);
+        rclAllMails.setAdapter(new AllMailAdapter(getContext(),allMails));
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="wrap_content"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -152,31 +153,13 @@
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_weight="2"
-                            android:weightSum="2"
-                            android:orientation="horizontal"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             >
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:gravity="center"
-                                android:layout_weight="1"
-                                android:orientation="vertical"
-                                >
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="match_parent"
-                                android:gravity="center_horizontal"
-                                >
                                 <ImageView
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
                                     android:src="@drawable/ic_star"
-                                    android:id="@+id/img_star_schedule"/>
-                            </LinearLayout>
+                                    android:id="@+id/img_star_schedule" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -194,7 +177,7 @@
                     <ImageView
                         android:id="@+id/img_attached_schedule"
                         android:layout_width="0dp"
-                        android:layout_height="24dp"
+                        android:layout_height="18dp"
                         android:layout_weight="2"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_pdf" />

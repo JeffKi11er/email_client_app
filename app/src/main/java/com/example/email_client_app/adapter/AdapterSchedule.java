@@ -43,6 +43,7 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.MyHold
         holder.descriptionSchedule.setText(schedules.get(position).getDescriptionSchedule());
         Picasso.with(context).load(schedules.get(position).getImgAttachedSchedule()).into(holder.imgAttachedSchedule);
         holder.textAttachedSchedule.setText(schedules.get(position).getTextAttachedSchedule());
+        Picasso.with(context).load(schedules.get(position).getImgStarSchedule()).into(holder.imgStarSchedule);
     }
 
     @Override
@@ -57,9 +58,9 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.MyHold
         private TextView subjectSent;
         private TextView timeSend;
         private TextView descriptionSchedule;
-        private ImageView imgStarSchedule;
         private ImageView imgAttachedSchedule;
         private TextView textAttachedSchedule;
+        private ImageView imgStarSchedule;
 
         public MyHolder(View itemView) {
             super(itemView);
@@ -70,9 +71,9 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.MyHold
             subjectSent = itemView.findViewById(R.id.tv_subject_sent_schedule);
             timeSend = itemView.findViewById(R.id.tv_time_send_schedule);
             descriptionSchedule = itemView.findViewById(R.id.tv_description_schedule);
-            imgStarSchedule = itemView.findViewById(R.id.img_star_schedule);
-            imgStarSchedule = itemView.findViewById(R.id.img_attached_schedule);
+            imgAttachedSchedule = itemView.findViewById(R.id.img_attached_schedule);
             textAttachedSchedule = itemView.findViewById(R.id.text_attached_schedule);
+            imgStarSchedule = itemView.findViewById(R.id.img_star_schedule);
         }
     }
 }
