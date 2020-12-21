@@ -57,7 +57,8 @@ public class ImportantAdapter extends RecyclerView.Adapter<ImportantAdapter.MyHo
         private TextView tvDescription;
         private ImageView imgStar;
         private TextView tvTags;
-
+        private ImageView imgimp;
+        
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             imgProfile = itemView.findViewById(R.id.img_person_sent);
@@ -67,6 +68,7 @@ public class ImportantAdapter extends RecyclerView.Adapter<ImportantAdapter.MyHo
             tvDescription = itemView.findViewById(R.id.tv_description);
             imgStar = itemView.findViewById(R.id.img_star);
             tvTags = itemView.findViewById(R.id.tv_tags);
+            imgimp = itemView.findViewById(R.id.imgimp);
         }
     }
 }
