@@ -22,6 +22,7 @@ import com.example.email_client_app.activity.SettingActivity;
 import com.example.email_client_app.fragment.FragmentAllMail;
 import com.example.email_client_app.fragment.FragmentCheck;
 import com.example.email_client_app.fragment.FragmentDraft;
+import com.example.email_client_app.fragment.FragmentSent;
 import com.example.email_client_app.fragment.FragmentSnoozed;
 import com.example.email_client_app.fragment.FragmentStarred;
 import com.example.email_client_app.fragment.FragmentSchedule;
