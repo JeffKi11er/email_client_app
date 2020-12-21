@@ -16,11 +16,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder> {
+public class AdapterStarred extends RecyclerView.Adapter<AdapterStarred.MyHolder> {
     private Context context;
     private ArrayList<ItemEmail>emails;
 
-    public AdapterItem(Context context, ArrayList<ItemEmail> emails) {
+    public AdapterStarred(Context context, ArrayList<ItemEmail> emails) {
         this.context = context;
         this.emails = emails;
     }
@@ -28,7 +28,7 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder> {
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_email,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_starred,parent,false);
         return new MyHolder(view);
     }
 
@@ -37,7 +37,6 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder> {
         holder.tvNameSent.setText(emails.get(position).getName());
         holder.tvSubject.setText(emails.get(position).getSubject());
         holder.tvDescription.setText(emails.get(position).getDescription());
-        holder.tvTags.setText("Tags");
         holder.tvDateSent.setText(emails.get(position).getDate());
         Picasso.with(context).load(emails.get(position).getImgProfile()).into(holder.imgProfile);
     }
@@ -54,17 +53,15 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder> {
         private TextView tvSubject;
         private TextView tvDescription;
         private ImageView imgStar;
-        private TextView tvTags;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
-            imgProfile = itemView.findViewById(R.id.img_person_sent);
-            tvNameSent = itemView.findViewById(R.id.tv_person_sent);
-            tvDateSent = itemView.findViewById(R.id.tv_time_received);
-            tvSubject = itemView.findViewById(R.id.tv_subject_sent);
-            tvDescription = itemView.findViewById(R.id.tv_description);
+            imgProfile = itemView.findViewById(R.id.img_person_sent1);
+            tvNameSent = itemView.findViewById(R.id.tv_person_received_starred1);
+            tvDateSent = itemView.findViewById(R.id.tv_time_received_starred1);
+            tvSubject = itemView.findViewById(R.id.tv_subject_sent_starred1);
+            tvDescription = itemView.findViewById(R.id.tv_description_starred1);
             imgStar = itemView.findViewById(R.id.img_star);
-            tvTags = itemView.findViewById(R.id.tv_tags);
         }
     }
 }

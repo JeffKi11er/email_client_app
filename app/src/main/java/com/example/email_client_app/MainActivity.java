@@ -29,6 +29,8 @@ import com.example.email_client_app.activity.ComposeActivity;
 import com.example.email_client_app.activity.SettingActivity;
 import com.example.email_client_app.custom.DialogAuthentication;
 import com.example.email_client_app.fragment.FragmentCheck;
+import com.example.email_client_app.fragment.FragmentSnoozed;
+import com.example.email_client_app.fragment.FragmentStarred;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
@@ -45,11 +47,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText edtFieldPass;
     private TextView tvBack;
     private FragmentCheck fragmentCheck = new FragmentCheck();
+    private FragmentStarred fragmentStar = new FragmentStarred();
+    private FragmentSnoozed fragmentSnoozed = new FragmentSnoozed();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+        if(savedInstanceState==null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck).commit();
+            nav.setCheckedItem(R.id.menu_all);
+        }
     }
     private void init() {
         imageViewBar = findViewById(R.id.img_bar);
@@ -63,7 +72,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SharedPreferences sharedPreferencesEmail = this.getSharedPreferences("user_email", Context.MODE_PRIVATE);
         tvHeaderEmail.setText(sharedPreferencesEmail.getString("user_email",""));
         tvCompose.setOnClickListener(this);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck).commit();
+//
+
         imageViewBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +100,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 openLoginDialog();
                 Log.e(getClass().getName(),"start Setting");
                 break;
+            case R.id.menu_star:
+                openStarred();
+                break;
+            case R.id.menu_hiden:
+                openSnoozed();
+                break;
+
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return false;
@@ -99,5 +116,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(MainActivity.this,SettingActivity.class);
         startActivity(intent);
         finish();
+    }
+    private void openStarred() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentStar).commit();
+    }
+    private void openSnoozed() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentSnoozed).commit();
     }
 }
