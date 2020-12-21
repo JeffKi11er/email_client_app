@@ -1,7 +1,6 @@
 package com.example.email_client_app.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,17 +22,11 @@ import com.example.email_client_app.item.ItemEmail;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import javax.mail.Address;
 import javax.mail.BodyPart;
 import javax.mail.Folder;
-import javax.mail.Message;
 import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Store;
-
-import androidx.recyclerview.widget.ItemTouchHelper;
-
-import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class FragmentCheck extends Fragment {
     private RecyclerView rclEmails;

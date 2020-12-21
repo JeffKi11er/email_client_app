@@ -25,7 +25,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.email_client_app.R;
 import com.example.email_client_app.activity.ComposeActivity;
 import com.example.email_client_app.activity.SettingActivity;
 import com.example.email_client_app.fragment.FragmentCheck;
@@ -33,7 +32,6 @@ import com.example.email_client_app.fragment.FragmentDraft;
 import com.example.email_client_app.fragment.FragmentSnoozed;
 import com.example.email_client_app.fragment.FragmentStarred;
 import com.example.email_client_app.fragment.FragmentSchedule;
-import com.example.email_client_app.fragment.FragmentImportant;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
@@ -55,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragmentStarred fragmentStar = new FragmentStarred();
     private FragmentSnoozed fragmentSnoozed = new FragmentSnoozed();
     private FragmentSchedule fragmentSchedule = new FragmentSchedule();
-    private FragmentImportant fragmentImportant = new FragmentImportant();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,9 +134,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.menu_bin:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_,new FragmentDraft()).commit();
-                break;
-            case R.id.menu_important:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentImportant).commit();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
