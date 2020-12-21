@@ -36,13 +36,12 @@ public class ImportantAdapter extends RecyclerView.Adapter<ImportantAdapter.MyHo
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-//        holder.tvNameSent.setText(emails.get(position).getName());
+        holder.tvNameSent.setText(emails.get(position).getName());
         holder.tvSubject.setText(emails.get(position).getSubject());
         holder.tvDescription.setText(emails.get(position).getDescription());
         holder.tvTags.setText("Tags");
-//        holder.tvDateSent.setText(emails.get(position).getDate());
+        holder.tvDateSent.setText(emails.get(position).getDate());
         Picasso.with(context).load(emails.get(position).getImgProfile()).into(holder.imgProfile);
-//        Picasso.with(context).load(R.drawable.ic_important).into(holder.imgimp);
     }
 
     @Override
