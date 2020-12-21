@@ -1,4 +1,4 @@
-package com.example.email_client_app.fragment.all_mail;
+package com.example.email_client_app.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,13 +11,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.email_client_app.R;
-import com.example.email_client_app.adapter.AdapterItem;
-import com.example.email_client_app.adapter.AllMailAdapter;
+import com.example.email_client_app.adapter.AdapterSnoozed;
+import com.example.email_client_app.adapter.AdapterStarred;
 import com.example.email_client_app.item.ItemEmail;
 
 import java.util.ArrayList;
 
-public class FragmentAllMail extends Fragment {
+public class FragmentSnoozed extends Fragment {
     private ArrayList<ItemEmail>emails;
     private RecyclerView rclEmails;
     @Nullable
@@ -46,6 +46,6 @@ public class FragmentAllMail extends Fragment {
         emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
         rclEmails = getActivity().findViewById(R.id.rcl_emails);
-        rclEmails.setAdapter(new AllMailAdapter(getContext(),emails));
+        rclEmails.setAdapter(new AdapterSnoozed(getContext(),emails));
     }
 }

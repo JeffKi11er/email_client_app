@@ -10,8 +10,9 @@ public class ItemSchedule {
     private int imgAttachedSchedule;
     private String textAttachedSchedule;
     private String timeSend;
+    private int imgStarSchedule;
 
-    public ItemSchedule(String emailReceived, String timeReceived, int imgAvatar, boolean starred, String subjectSent, String descriptionSchedule, int imgAttachedSchedule, String timeSend, String textAttachedSchedule) {
+    public ItemSchedule(String emailReceived, String timeReceived, int imgAvatar, boolean starred, String subjectSent, String descriptionSchedule, int imgAttachedSchedule, String timeSend, String textAttachedSchedule, int imgStarSchedule) {
         this.emailReceived = emailReceived;
         this.timeReceived = timeReceived;
         this.imgAvatar = imgAvatar;
@@ -21,6 +22,7 @@ public class ItemSchedule {
         this.timeSend = timeSend;
         this.imgAttachedSchedule = imgAttachedSchedule;
         this.textAttachedSchedule = textAttachedSchedule;
+        this.imgStarSchedule = imgStarSchedule;
     }
 
     public String getEmailReceived() {
@@ -93,5 +95,13 @@ public class ItemSchedule {
 
     public void setTextAttachedSchedule(String textAttachedSchedule) {
         this.textAttachedSchedule = textAttachedSchedule;
+    }
+
+    public int getImgStarSchedule() {
+        return imgStarSchedule;
+    }
+
+    public void setImgStarSchedule(int imgStarSchedule) {
+        this.imgStarSchedule = imgStarSchedule;
     }
 }
