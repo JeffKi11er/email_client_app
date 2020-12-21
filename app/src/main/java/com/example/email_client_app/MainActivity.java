@@ -25,10 +25,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.email_client_app.R;
 import com.example.email_client_app.activity.ComposeActivity;
 import com.example.email_client_app.activity.SettingActivity;
 import com.example.email_client_app.custom.DialogAuthentication;
 import com.example.email_client_app.fragment.FragmentCheck;
+import com.example.email_client_app.fragment.FragmentImportant;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
@@ -45,11 +47,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText edtFieldPass;
     private TextView tvBack;
     private FragmentCheck fragmentCheck = new FragmentCheck();
+    private FragmentImportant fragmentImportant = new FragmentImportant();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+        if(savedInstanceState == null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck).commit();
+            nav.setCheckedItem(R.id.menu_all);
+        }
     }
     private void init() {
         imageViewBar = findViewById(R.id.img_bar);
@@ -90,6 +97,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 openLoginDialog();
                 Log.e(getClass().getName(),"start Setting");
                 break;
+
+            case R.id.menu_important:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentImportant).commit();
+                break;
+
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return false;
