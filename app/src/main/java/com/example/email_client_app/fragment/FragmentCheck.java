@@ -1,4 +1,4 @@
-﻿package com.example.email_client_app.fragment;
+package com.example.email_client_app.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -42,9 +42,6 @@ public class FragmentCheck extends Fragment {
     private ArrayList<ItemEmail> emails;
     private String title;
     private TextView tvTitle;
-public class FragmentCheck extends Fragment {
-    private ArrayList<ItemEmail>emails;
-    private RecyclerView rclEmails;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
