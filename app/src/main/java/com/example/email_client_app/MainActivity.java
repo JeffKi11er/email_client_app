@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,6 +13,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -31,6 +33,14 @@ import com.example.email_client_app.custom.DialogAuthentication;
 import com.example.email_client_app.fragment.FragmentCheck;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Properties;
+
+import javax.mail.BodyPart;
+import javax.mail.Folder;
+import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.Store;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private ImageView imageViewBar;
     private DrawerLayout drawerLayout;
@@ -44,12 +54,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText edtFieldName;
     private EditText edtFieldPass;
     private TextView tvBack;
-    private FragmentCheck fragmentCheck = new FragmentCheck();
+    private String userEmail;
+    private String userPasswords;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+        if (savedInstanceState==null){
+            nav.setCheckedItem(R.id.menu_all);
+            FragmentCheck fragmentCheck = new FragmentCheck();
+            Bundle args = new Bundle();
+            args.putString("title","All Inboxes");
+            fragmentCheck.setArguments(args);
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck).commit();
+        }
     }
     private void init() {
         imageViewBar = findViewById(R.id.img_bar);
@@ -61,9 +80,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imgHeader = viewHeader.findViewById(R.id.profile_image);
         tvHeaderEmail = viewHeader.findViewById(R.id.tv_mail_header);
         SharedPreferences sharedPreferencesEmail = this.getSharedPreferences("user_email", Context.MODE_PRIVATE);
-        tvHeaderEmail.setText(sharedPreferencesEmail.getString("user_email",""));
+        SharedPreferences sharedPreferencesPasswords = this.getSharedPreferences("user_passwords",Context.MODE_PRIVATE);
+        userEmail = sharedPreferencesEmail.getString("user_email","");
+        userPasswords =  sharedPreferencesPasswords.getString("user_passwords","");
+        tvHeaderEmail.setText(userEmail);
         tvCompose.setOnClickListener(this);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck).commit();
         imageViewBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +111,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 openLoginDialog();
                 Log.e(getClass().getName(),"start Setting");
                 break;
+            case R.id.menu_all:
+                FragmentCheck fragmentCheck = new FragmentCheck();
+                Bundle args = new Bundle();
+                args.putString("title","All Inboxes");
+                fragmentCheck.setArguments(args);
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck).commit();
+                break;
+            case R.id.menu_inb:
+                FragmentCheck fragmentCheck1 = new FragmentCheck();
+                Bundle args1 = new Bundle();
+                args1.putString("title","Inbox");
+                fragmentCheck1.setArguments(args1);
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck1).commit();
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return false;
@@ -100,4 +135,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
         finish();
     }
+
 }
