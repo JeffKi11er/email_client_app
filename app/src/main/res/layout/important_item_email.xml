@@ -38,6 +38,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
                         android:ellipsize="end"
+                        android:id="@+id/imgimp"
                         tools:srcCompat="@drawable/ic_important" />
                     <TextView
                         android:id="@+id/tv_person_received"
