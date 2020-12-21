@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.email_client_app.R;
 import com.example.email_client_app.item.ItemEmail;
 import com.squareup.picasso.Picasso;
+
 import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder> {
