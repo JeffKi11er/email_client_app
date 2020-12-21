@@ -66,13 +66,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-        if (savedInstanceState==null){
+        if (savedInstanceState == null) {
             nav.setCheckedItem(R.id.menu_all);
             FragmentCheck fragmentCheck = new FragmentCheck();
             Bundle args = new Bundle();
-            args.putString("title","All Inboxes");
+            args.putString("title", "All Inboxes");
             fragmentCheck.setArguments(args);
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentCheck).commit();
+        }
     }
     private void init() {
         imageViewBar = findViewById(R.id.img_bar);
