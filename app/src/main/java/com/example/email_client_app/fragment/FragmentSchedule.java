@@ -1,4 +1,4 @@
-package com.example.email_client_app.fragment;
+ package com.example.email_client_app.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
