@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragmentSchedule fragmentSchedule = new FragmentSchedule();
     private FragmentImportant fragmentImportant = new FragmentImportant();
     private FragmentAllMail fragmentAllMail = new FragmentAllMail();
+    private FragmentSent fragmentSent = new FragmentSent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,6 +137,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		break;
             case R.id.menu_all_:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentAllMail).commit();
+                break;
+	    case R.id.menu_sent:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentSent).commit();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
