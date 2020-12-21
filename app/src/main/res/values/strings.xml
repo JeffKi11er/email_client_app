@@ -37,4 +37,6 @@
     <string name="tks">No, thanks</string>
     <string name="setting_activity">General settings</string>
     <string name="sign_out">Log out</string>
+    <string name="default_time">10:00 AM</string>
+    <string name="email_received">thanhcotaima1…</string>
 </resources>

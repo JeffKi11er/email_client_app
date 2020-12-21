@@ -29,6 +29,7 @@ import com.example.email_client_app.activity.ComposeActivity;
 import com.example.email_client_app.activity.SettingActivity;
 import com.example.email_client_app.custom.DialogAuthentication;
 import com.example.email_client_app.fragment.FragmentCheck;
+import com.example.email_client_app.fragment.schedule.FragmentSchedule;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
@@ -44,7 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText edtFieldName;
     private EditText edtFieldPass;
     private TextView tvBack;
-//    private FragmentCheck fragmentCheck = new FragmentCheck();
+    private FragmentCheck fragmentCheck = new FragmentCheck();
+    private FragmentSchedule fragmentSchedule = new FragmentSchedule();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SharedPreferences sharedPreferencesEmail = this.getSharedPreferences("user_email", Context.MODE_PRIVATE);
         tvHeaderEmail.setText(sharedPreferencesEmail.getString("user_email",""));
         tvCompose.setOnClickListener(this);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck).commit();
         imageViewBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +92,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 openLoginDialog();
                 Log.e(getClass().getName(),"start Setting");
                 break;
+
+            case R.id.menu_plan:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentSchedule).commit();
+                break;
+
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return false;
