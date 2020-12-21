@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.email_client_app.R;
 import com.example.email_client_app.activity.ComposeActivity;
 import com.example.email_client_app.activity.SettingActivity;
+import com.example.email_client_app.fragment.FragmentAllMail;
 import com.example.email_client_app.fragment.FragmentCheck;
 import com.example.email_client_app.fragment.FragmentDraft;
 import com.example.email_client_app.fragment.FragmentSnoozed;
