@@ -33,10 +33,9 @@ import com.example.email_client_app.custom.DialogAuthentication;
 import com.example.email_client_app.fragment.FragmentCheck;
 import com.example.email_client_app.fragment.FragmentSnoozed;
 import com.example.email_client_app.fragment.FragmentStarred;
+import com.example.email_client_app.fragment.schedule.FragmentSchedule;
 import com.google.android.material.navigation.NavigationView;
-
 import java.util.Properties;
-
 import javax.mail.BodyPart;
 import javax.mail.Folder;
 import javax.mail.Multipart;
@@ -61,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragmentCheck fragmentCheck = new FragmentCheck();
     private FragmentStarred fragmentStar = new FragmentStarred();
     private FragmentSnoozed fragmentSnoozed = new FragmentSnoozed();
+    private FragmentSchedule fragmentSchedule = new FragmentSchedule();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         userPasswords =  sharedPreferencesPasswords.getString("user_passwords","");
         tvHeaderEmail.setText(userEmail);
         tvCompose.setOnClickListener(this);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck).commit();
         imageViewBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,6 +136,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.menu_hiden:
                 openSnoozed();
+                break;
+            case R.id.menu_plan:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentSchedule).commit();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
