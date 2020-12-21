@@ -5,7 +5,6 @@
     android:id="@+id/drawable"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="start"
     >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -57,7 +56,6 @@
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:src="@drawable/ic_search"
-                                android:layout_marginRight="10dp"
                                 android:layout_centerVertical="true"
                                 android:layout_alignParentRight="true"
                                 />
