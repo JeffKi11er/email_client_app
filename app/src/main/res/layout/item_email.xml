@@ -83,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
                         android:id="@+id/tv_subject_sent"
-                        android:text="Subject"
+                        android:text="@string/subject"
                         android:layout_marginLeft="10dp"
                         android:textStyle="bold"
                         android:maxLines="1"

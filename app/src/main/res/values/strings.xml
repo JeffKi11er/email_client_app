@@ -43,4 +43,7 @@
     <string name="email_received">thanhcotaima123</string>
     <string name="draft">Draft</string>
     <string name="numberofmail">2</string>
+    <string name="subject">Subject</string>
+    <string name="description">Description</string>
+    <string name="tags">Tags</string>
 </resources>

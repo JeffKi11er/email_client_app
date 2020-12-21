@@ -36,12 +36,13 @@ public class ImportantAdapter extends RecyclerView.Adapter<ImportantAdapter.MyHo
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        holder.tvNameSent.setText(emails.get(position).getName());
+//        holder.tvNameSent.setText(emails.get(position).getName());
         holder.tvSubject.setText(emails.get(position).getSubject());
         holder.tvDescription.setText(emails.get(position).getDescription());
         holder.tvTags.setText("Tags");
-        holder.tvDateSent.setText(emails.get(position).getDate());
+//        holder.tvDateSent.setText(emails.get(position).getDate());
         Picasso.with(context).load(emails.get(position).getImgProfile()).into(holder.imgProfile);
+//        Picasso.with(context).load(R.drawable.ic_important).into(holder.imgimp);
     }
 
     @Override
@@ -61,13 +62,13 @@ public class ImportantAdapter extends RecyclerView.Adapter<ImportantAdapter.MyHo
         
         public MyHolder(@NonNull View itemView) {
             super(itemView);
-            imgProfile = itemView.findViewById(R.id.img_person_sent);
-            tvNameSent = itemView.findViewById(R.id.tv_person_sent);
-            tvDateSent = itemView.findViewById(R.id.tv_time_received);
-            tvSubject = itemView.findViewById(R.id.tv_subject_sent);
-            tvDescription = itemView.findViewById(R.id.tv_description);
-            imgStar = itemView.findViewById(R.id.img_star);
-            tvTags = itemView.findViewById(R.id.tv_tags);
+            imgProfile = itemView.findViewById(R.id.img_person_important);
+            tvNameSent = itemView.findViewById(R.id.tv_person_important);
+            tvDateSent = itemView.findViewById(R.id.tv_time_received_important);
+            tvSubject = itemView.findViewById(R.id.tv_subject_important);
+            tvDescription = itemView.findViewById(R.id.tv_description_important);
+            imgStar = itemView.findViewById(R.id.img_star_important);
+            tvTags = itemView.findViewById(R.id.tv_tags_important);
             imgimp = itemView.findViewById(R.id.imgimp);
         }
     }
