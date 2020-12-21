@@ -12,18 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.email_client_app.R;
 import com.example.email_client_app.adapter.AdapterItem;
-import com.example.email_client_app.adapter.AdapterStarred;
 import com.example.email_client_app.item.ItemEmail;
 
 import java.util.ArrayList;
 
-public class FragmentStarred extends Fragment {
-    private ArrayList<ItemEmail>emails;
-    private RecyclerView rclEmails;
+public class FragmentDraft extends Fragment {
+    private ArrayList<ItemEmail> emails;
+    private RecyclerView recyclerView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_layout_starred,container,false);
+        View view = inflater.inflate(R.layout.fragment_draft,container,false);
         return view;
     }
 
@@ -45,7 +44,9 @@ public class FragmentStarred extends Fragment {
                 "đã bảo là không có tiêu đề"));
         emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        rclEmails = getActivity().findViewById(R.id.rcl_starred);
-        rclEmails.setAdapter(new AdapterStarred(getContext(),emails));
+
+        recyclerView = getActivity().findViewById(R.id.rcl_draft);
+        recyclerView.setAdapter(new AdapterItem(getContext(),emails));
     }
+
 }
