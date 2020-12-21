@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String userEmail;
     private String userPasswords;
     private FragmentCheck fragmentCheck = new FragmentCheck();
-    private FragmentStarred fragmentStar = new FragmentStarred();
     private FragmentSnoozed fragmentSnoozed = new FragmentSnoozed();
     private FragmentSchedule fragmentSchedule = new FragmentSchedule();
     private FragmentImportant fragmentImportant = new FragmentImportant();
@@ -153,9 +152,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         finish();
     }
     private void openStarred() {
+        FragmentStarred fragmentStar = new FragmentStarred();
+        Bundle argsstarred = new Bundle();
+        argsstarred.putString("title","Starred");
+        fragmentCheck.setArguments(argsstarred);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentStar).commit();
     }
     private void openSnoozed() {
+        FragmentSnoozed fragmentSnoozed = new FragmentSnoozed();
+        Bundle argssnoozed = new Bundle();
+        argssnoozed.putString("title","Snoozed");
+        fragmentCheck.setArguments(argssnoozed);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentSnoozed).commit();
     }
 }
