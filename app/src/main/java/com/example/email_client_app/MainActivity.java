@@ -5,13 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +29,7 @@ import com.example.email_client_app.R;
 import com.example.email_client_app.activity.ComposeActivity;
 import com.example.email_client_app.activity.SettingActivity;
 import com.example.email_client_app.fragment.FragmentCheck;
+import com.example.email_client_app.fragment.FragmentDraft;
 import com.example.email_client_app.fragment.FragmentSnoozed;
 import com.example.email_client_app.fragment.FragmentStarred;
 import com.example.email_client_app.fragment.FragmentSchedule;
@@ -124,6 +134,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.menu_plan:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentSchedule).commit();
+                break;
+            case R.id.menu_bin:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_,new FragmentDraft()).commit();
                 break;
             case R.id.menu_important:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentImportant).commit();
