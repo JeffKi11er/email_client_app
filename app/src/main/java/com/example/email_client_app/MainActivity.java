@@ -31,6 +31,8 @@ import com.example.email_client_app.activity.ComposeActivity;
 import com.example.email_client_app.activity.SettingActivity;
 import com.example.email_client_app.custom.DialogAuthentication;
 import com.example.email_client_app.fragment.FragmentCheck;
+import com.example.email_client_app.fragment.FragmentSnoozed;
+import com.example.email_client_app.fragment.FragmentStarred;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Properties;
@@ -56,6 +58,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvBack;
     private String userEmail;
     private String userPasswords;
+    private FragmentCheck fragmentCheck = new FragmentCheck();
+    private FragmentStarred fragmentStar = new FragmentStarred();
+    private FragmentSnoozed fragmentSnoozed = new FragmentSnoozed();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             args.putString("title","All Inboxes");
             fragmentCheck.setArguments(args);
             getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck).commit();
-        }
     }
     private void init() {
         imageViewBar = findViewById(R.id.img_bar);
@@ -125,6 +129,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 fragmentCheck1.setArguments(args1);
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck1).commit();
                 break;
+            case R.id.menu_star:
+                openStarred();
+                break;
+            case R.id.menu_hiden:
+                openSnoozed();
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return false;
@@ -135,5 +145,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
         finish();
     }
-
+    private void openStarred() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentStar).commit();
+    }
+    private void openSnoozed() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentSnoozed).commit();
+    }
 }
