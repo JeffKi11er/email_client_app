@@ -16,7 +16,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.email_client_app.R;
 import com.example.email_client_app.activity.ComposeActivity;
 import com.example.email_client_app.activity.SettingActivity;
 import com.example.email_client_app.fragment.FragmentAllMail;
@@ -26,7 +25,6 @@ import com.example.email_client_app.fragment.FragmentSent;
 import com.example.email_client_app.fragment.FragmentSnoozed;
 import com.example.email_client_app.fragment.FragmentStarred;
 import com.example.email_client_app.fragment.FragmentSchedule;
-import com.example.email_client_app.fragment.FragmentImportant;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
