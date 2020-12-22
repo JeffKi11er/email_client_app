@@ -104,4 +104,5 @@ public class ItemSchedule {
     public void setImgStarSchedule(int imgStarSchedule) {
         this.imgStarSchedule = imgStarSchedule;
     }
+
 }

@@ -48,14 +48,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragmentStarred fragmentStar = new FragmentStarred();
     private FragmentSnoozed fragmentSnoozed = new FragmentSnoozed();
     private FragmentSchedule fragmentSchedule = new FragmentSchedule();
-<<<<<<< HEAD
-    private FragmentAllMail fragmentAllMail = new FragmentAllMail();
-
-=======
     private FragmentImportant fragmentImportant = new FragmentImportant();
     private FragmentAllMail fragmentAllMail = new FragmentAllMail();
     private FragmentSent fragmentSent = new FragmentSent();
->>>>>>> b01e5324230cd6f8374b34cf8f467435d2ea220d
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,11 +131,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.menu_plan:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentSchedule).commit();
                 break;
-<<<<<<< HEAD
-            case R.id.menu_all_:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentAllMail).commit();
-                break;
-=======
             case R.id.menu_bin:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_,new FragmentDraft()).commit();
                 break;
@@ -152,7 +143,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	    case R.id.menu_sent:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentSent).commit();
                 break;
->>>>>>> b01e5324230cd6f8374b34cf8f467435d2ea220d
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return false;

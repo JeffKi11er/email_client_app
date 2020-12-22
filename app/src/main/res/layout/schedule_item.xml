@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-=======
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="wrap_content"
->>>>>>> b01e5324230cd6f8374b34cf8f467435d2ea220d
+<androidx.cardview.widget.CardView android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
-    android:background="@color/white">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="110dp"
@@ -36,7 +28,7 @@
                 >
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="4"
+                    android:layout_weight="3"
                     android:weightSum="3"
                     android:gravity="center_vertical"
                     android:layout_height="match_parent"
@@ -69,7 +61,7 @@
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_gravity="center_vertical"
@@ -130,6 +122,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="2"
                             android:gravity="center_vertical"
+                            android:text="08:00 PM"
                             android:textColor="@color/red_hard"/>
                     </LinearLayout>
 
@@ -167,11 +160,9 @@
                             android:layout_weight="1"
                             android:orientation="vertical"
                             >
-
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="0dp"
-<<<<<<< HEAD
                             android:layout_weight="1"
                             android:layout_height="match_parent"
                             android:gravity="center_horizontal"
@@ -181,16 +172,6 @@
                                 android:layout_height="25dp"
                                 android:src="@drawable/ic_star"
                                 android:id="@+id/img_star_schedule"/>
-=======
-                            android:layout_weight="2"
-                            android:layout_height="wrap_content"
-                            >
-                                <ImageView
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
-                                    android:src="@drawable/ic_star"
-                                    android:id="@+id/img_star_schedule" />
->>>>>>> b01e5324230cd6f8374b34cf8f467435d2ea220d
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -207,7 +188,6 @@
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/rounded_corner_2">
 
-<<<<<<< HEAD
                 <ImageView
                     android:id="@+id/img_attached_schedule"
                     android:layout_width="0dp"
@@ -215,16 +195,6 @@
                     android:layout_weight="2"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_pdf" />
-=======
-                    <ImageView
-                        android:id="@+id/img_attached_schedule"
-                        android:layout_width="0dp"
-                        android:layout_height="18dp"
-                        android:layout_weight="2"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_pdf" />
->>>>>>> b01e5324230cd6f8374b34cf8f467435d2ea220d
-
                 <TextView
                     android:id="@+id/text_attached_schedule"
                     android:layout_width="wrap_content"

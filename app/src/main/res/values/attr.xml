@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="mcdonald_colors">
+        <item>#FF0000</item>
+        <item>#FFFF00</item>
+    </array>
+
+    <array name="mcdonald_colors_contrast">
+        <item>#FFFF00</item>
+        <item>#FF0000</item>
+    </array>
+</resources>
