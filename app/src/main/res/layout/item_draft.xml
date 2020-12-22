@@ -169,10 +169,13 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
+                            android:orientation="vertical"
                             >
                             <ImageView
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="6dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
                                 android:src="@drawable/ic_star"
                                 android:id="@+id/img_star_draft"/>
                         </LinearLayout>

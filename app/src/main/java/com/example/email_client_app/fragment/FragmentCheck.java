@@ -70,7 +70,7 @@ public class FragmentCheck extends Fragment {
         tvTitle = getActivity().findViewById(R.id.tv_status);
         tvTitle.setText(title);
         rclEmails.setAdapter(new AdapterItem(getContext(), emails));
-        //       new MyAsynk().execute();
+        new MyAsynk().execute();
     }
 
     public class MyAsynk extends AsyncTask<Void, Void, Void> {
@@ -85,30 +85,16 @@ public class FragmentCheck extends Fragment {
                 store.connect("imap.gmail.com", userEmail, userPasswords);
                 Folder inbox = store.getFolder("INBOX");
                 inbox.open(Folder.READ_ONLY);
-//                javax.mail.Message []msg= inbox.getMessages();
-//                for (Message message:msg) {
-////                    Log.e(getClass().getName(),message.getContent().toString());
-//                    Address[] address = message.getFrom();
-//                    for (Address address1:address) {
-//                        Log.e(getClass().getName(),address1.toString() + message.getReceivedDate());
-//                    }
-//                }
                 javax.mail.Message msg = inbox.getMessage(inbox.getMessageCount());
                 javax.mail.Address[] in = msg.getFrom();
                 for (javax.mail.Address address : in) {
-                    Log.e(getClass().getName(), address.toString());
+                    Log.i(getClass().getName(),"FROM:" + address.toString());
                 }
                 Multipart mp = (Multipart) msg.getContent();
                 BodyPart bp = mp.getBodyPart(0);
-//                System.out.println("SENT DATE:" + msg.getSentDate());
-//                System.out.println("SUBJECT:" + msg.getSubject());
-//                System.out.println("CONTENT:" + bp.getContent());
-                String date = msg.getSentDate().toString();
-                String subject = msg.getSubject().toString();
-                String content = bp.getContent().toString();
-                Log.e(getClass().getName(), subject + content + date);
-//                emails.add(new ItemEmail("",date,R.drawable.cat,true,subject,content));
-//                rclEmails.setAdapter(new AdapterItem(getContext(),emails));
+                Log.i(getClass().getName(),"SENT DATE:" + msg.getSentDate());
+                Log.i(getClass().getName(),"SUBJECT:" + msg.getSubject());
+                Log.i(getClass().getName(),"CONTENT:" + bp.getContent());
             } catch (Exception mex) {
                 mex.printStackTrace();
             }
