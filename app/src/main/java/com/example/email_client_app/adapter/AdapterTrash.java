@@ -20,7 +20,7 @@ public class AdapterTrash extends RecyclerView.Adapter<AdapterTrash.TrashHolder>
     private Context context;
     private ArrayList<ItemEmail> emails;
 
-    public AdapterTrash(Context context, ArrayList<ItemEmail> emails){
+    public AdapterTrash(Context context, ArrayList<ItemEmail> emails) {
         this.context = context;
         this.emails = emails;
     }
@@ -28,7 +28,7 @@ public class AdapterTrash extends RecyclerView.Adapter<AdapterTrash.TrashHolder>
     @NonNull
     @Override
     public TrashHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_email,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_trash,parent,false);
         return new AdapterTrash.TrashHolder(view);
     }
 
@@ -40,6 +40,7 @@ public class AdapterTrash extends RecyclerView.Adapter<AdapterTrash.TrashHolder>
         holder.tvDateSent.setText(emails.get(position).getDate());
         Picasso.with(context).load(emails.get(position).getImgProfile()).into(holder.imgProfile);
     }
+
     @Override
     public int getItemCount(){
         return emails.size();
@@ -54,11 +55,11 @@ public class AdapterTrash extends RecyclerView.Adapter<AdapterTrash.TrashHolder>
 
         public TrashHolder(@NonNull View itemView){
             super(itemView);
-            imgProfile = itemView.findViewById(R.id.img_draft);
-            tvNameSent = itemView.findViewById(R.id.tv_person_draft_name);
-            tvDateSent = itemView.findViewById(R.id.tv_time_draft);
-            tvSubject = itemView.findViewById(R.id.tv_subject_draft);
-            tvDescription = itemView.findViewById(R.id.tv_draft_description);
+            imgProfile = itemView.findViewById(R.id.img_trash);
+            tvNameSent = itemView.findViewById(R.id.tv_person_trash_name);
+            tvDateSent = itemView.findViewById(R.id.tv_time_trash);
+            tvSubject = itemView.findViewById(R.id.tv_subject_trash);
+            tvDescription = itemView.findViewById(R.id.tv_trash_description);
         }
     }
 }

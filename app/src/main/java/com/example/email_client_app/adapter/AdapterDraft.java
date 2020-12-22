@@ -28,7 +28,7 @@ public class AdapterDraft extends RecyclerView.Adapter<AdapterDraft.DraftHolder>
     @NonNull
     @Override
     public AdapterDraft.DraftHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_email,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_draft,parent,false);
         return new AdapterDraft.DraftHolder(view);
     }
 
