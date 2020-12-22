@@ -70,7 +70,7 @@ public class FragmentCheck extends Fragment {
         tvTitle = getActivity().findViewById(R.id.tv_status);
         tvTitle.setText(title);
         rclEmails.setAdapter(new AdapterItem(getContext(), emails));
-               new MyAsynk().execute();
+        //       new MyAsynk().execute();
     }
 
     public class MyAsynk extends AsyncTask<Void, Void, Void> {
