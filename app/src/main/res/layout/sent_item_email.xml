@@ -5,194 +5,157 @@
     android:background="@color/white">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="90dp"
         android:orientation="horizontal"
         android:gravity="center_vertical">
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_margin="5dp"
-            android:src="@drawable/name"
-            android:id="@+id/img_person_sent"/>
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/streamer"
+            android:id="@+id/img_person_sent_origin"/>
         <LinearLayout
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:weightSum="3"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="horizontal"
-                android:weightSum="5"
-                >
-                <LinearLayout
+                android:gravity="center_vertical">
+                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="10dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:text="To:"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:id="@+id/tv_person_received"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="10dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:text="@string/user"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:id="@+id/num_mail_sent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="10dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:text="@string/numberofmail"
-                        android:textSize="12sp"
-                        android:textStyle="normal" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
                     android:layout_height="wrap_content"
+                    android:text="@string/to"
+                    android:textSize="17sp"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical">
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/ic_link"
-                        android:layout_margin="3dp"
-                        android:id="@+id/img_insert"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:text="@string/default_time"
-                        android:id="@+id/tv_time_received"/>
+                    android:gravity="center_vertical"
+                    android:weightSum="5"
+                    >
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="17sp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:text="@string/user"
+                            android:id="@+id/tv_person_received_origin"
+                            android:layout_marginLeft="5dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="15sp"
+                            android:id="@+id/num_mail_sent"/>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+                        <TextView
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:layout_marginRight="5dp"
+                            android:text="@string/default_time"
+                            android:layout_gravity="center_vertical"
+                            android:id="@+id/tv_time_received_origin"
+                            />
+                    </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="2">
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:textSize="15sp"
+                    android:text="@string/subject"
+                    android:id="@+id/tv_subject_sent_origin"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="5">
+               <LinearLayout
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="3"
+                   android:gravity="center_vertical"
+                   >
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:id="@+id/tv_description_origin"
+                       android:text="@string/description"
+                       android:textSize="15sp"
+                       android:maxLines="1"
+                       android:singleLine="true"
+                       android:ellipsize="end"
+                       />
+               </LinearLayout>
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
                     android:orientation="horizontal"
-                    >
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.2"
-                        android:gravity="center_vertical"
-                        >
-                    <TextView
-                        android:singleLine="true"
-                        android:ellipsize="end"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:id="@+id/tv_subject_sent"
-                        android:text="Subject"
-                        android:layout_marginLeft="10dp"
-                        android:textStyle="bold"
-                        android:maxLines="1"
-                        />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.8"
-                        android:gravity="center_vertical"
-                        >
-                        <TextView
-                            android:singleLine="true"
-                            android:ellipsize="end"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15sp"
-                            android:text="Inbox"
-                            android:layout_marginLeft="10dp"
-                            android:textStyle="normal"
-                            android:maxLines="1"
-
-                            />
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:weightSum="5"
-                    android:gravity="center_vertical">
-                    <TextView
-                        android:singleLine="true"
-                        android:ellipsize="end"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        android:textSize="15sp"
-                        android:id="@+id/tv_description"
-                        android:text="Description"
-                        />
+                    android:weightSum="3">
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="2"
-                        android:weightSum="2"
-                        android:orientation="horizontal"
                         android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/background_field_email"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
                         >
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="6dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:background="@color/purple_200"
-                            >
-                            <TextView
-                                android:textSize="15sp"
-                                android:text="Tag"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/tv_tags"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="match_parent"
-                            android:gravity="center_horizontal"
-                            >
-                            <ImageView
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
-                                android:src="@drawable/ic_star"
-                                android:id="@+id/img_star"/>
-                        </LinearLayout>
+                        <TextView
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:id="@+id/tv_tags_origin"
+                            android:text="@string/inbox"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        >
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_star"
+                            android:id="@+id/img_star_origin"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

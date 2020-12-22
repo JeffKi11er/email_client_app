@@ -14,28 +14,26 @@ import com.example.email_client_app.R;
 import com.example.email_client_app.item.ItemEmail;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
-public class ImportantAdapter extends RecyclerView.Adapter<ImportantAdapter.MyHolder> {
+public class AdapterDraft extends RecyclerView.Adapter<AdapterDraft.DraftHolder> {
     private Context context;
-    private ArrayList<ItemEmail>emails;
+    private ArrayList<ItemEmail> emails;
 
-    public ImportantAdapter(Context context, ArrayList<ItemEmail> emails) {
+    public AdapterDraft(Context context, ArrayList<ItemEmail> emails) {
         this.context = context;
         this.emails = emails;
     }
 
     @NonNull
     @Override
-    public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.important_item_email,parent,false);
-        return new MyHolder(view);
+    public AdapterDraft.DraftHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_draft,parent,false);
+        return new AdapterDraft.DraftHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DraftHolder holder, int position) {
         holder.tvNameSent.setText(emails.get(position).getName());
         holder.tvSubject.setText(emails.get(position).getSubject());
         holder.tvDescription.setText(emails.get(position).getDescription());
@@ -43,13 +41,12 @@ public class ImportantAdapter extends RecyclerView.Adapter<ImportantAdapter.MyHo
         holder.tvDateSent.setText(emails.get(position).getDate());
         Picasso.with(context).load(emails.get(position).getImgProfile()).into(holder.imgProfile);
     }
-
     @Override
     public int getItemCount() {
         return emails.size();
     }
 
-    public class MyHolder extends RecyclerView.ViewHolder {
+    public class DraftHolder extends RecyclerView.ViewHolder {
         private ImageView imgProfile;
         private TextView tvNameSent;
         private TextView tvDateSent;
@@ -57,18 +54,18 @@ public class ImportantAdapter extends RecyclerView.Adapter<ImportantAdapter.MyHo
         private TextView tvDescription;
         private ImageView imgStar;
         private TextView tvTags;
-        private ImageView imgimp;
-        
-        public MyHolder(@NonNull View itemView) {
+
+        public DraftHolder(@NonNull View itemView) {
             super(itemView);
-            imgProfile = itemView.findViewById(R.id.img_person_important);
-            tvNameSent = itemView.findViewById(R.id.tv_person_important);
-            tvDateSent = itemView.findViewById(R.id.tv_time_received_important);
-            tvSubject = itemView.findViewById(R.id.tv_subject_important);
-            tvDescription = itemView.findViewById(R.id.tv_description_important);
-            imgStar = itemView.findViewById(R.id.img_star_important);
-            tvTags = itemView.findViewById(R.id.tv_tags_important);
-            imgimp = itemView.findViewById(R.id.imgimp);
+            imgProfile = itemView.findViewById(R.id.img_draft);
+            tvNameSent = itemView.findViewById(R.id.tv_person_draft_name);
+            tvDateSent = itemView.findViewById(R.id.tv_time_draft);
+            tvSubject = itemView.findViewById(R.id.tv_subject_draft);
+            tvDescription = itemView.findViewById(R.id.tv_draft_description);
+            imgStar = itemView.findViewById(R.id.img_star_draft);
+            tvTags = itemView.findViewById(R.id.tv_draft_tags);
+
         }
     }
 }
+

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.adapter.AdapterDraft;
 import com.example.email_client_app.adapter.AdapterItem;
 import com.example.email_client_app.item.ItemEmail;
 
@@ -46,7 +47,7 @@ public class FragmentDraft extends Fragment {
                 "đã bảo là không có tiêu đề"));
 
         recyclerView = getActivity().findViewById(R.id.rcl_draft);
-        recyclerView.setAdapter(new AdapterItem(getContext(),emails));
+        recyclerView.setAdapter(new AdapterDraft(getContext(),emails));
     }
 
 }

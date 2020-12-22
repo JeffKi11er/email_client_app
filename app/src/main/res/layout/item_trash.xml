@@ -5,19 +5,17 @@
     android:layout_marginBottom="5dp"
     android:background="@color/white"
     android:orientation="horizontal">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="85dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_draft"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:id="@+id/img_trash"
             android:layout_margin="5dp"
-            android:src="@drawable/name" />
-
+            android:src="@drawable/name"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,53 +26,24 @@
                 android:layout_height="wrap_content"
                 android:weightSum="5"
                 android:orientation="horizontal">
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:weightSum="5">
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="match_parent"
-                        ><TextView
-                        android:id="@+id/tv_person_draft_name"
+                    >
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
                         android:singleLine="true"
-                        android:text="me, Ha"
-                        android:textSize="17sp" /></LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2">
-                        <TextView
-                            android:id="@+id/tv_draft_number"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="5dp"
-                            android:text="3, "
-                            android:textSize="12sp" />
-                        <TextView
-                            android:id="@+id/tv_person_draft"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:text="@string/draft"
-                            android:textColor="@color/red_hard"
-                            android:textSize="17sp" />
-                    </LinearLayout>
+                        android:ellipsize="end"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="17sp"
+                        android:text="Vinh Viral"
+                        android:id="@+id/tv_person_trash_name"
+                        android:maxLines="1"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -88,15 +57,14 @@
                         android:layout_height="25dp"
                         android:src="@drawable/ic_link"
                         android:layout_margin="3dp"
-                        android:id="@+id/img_draft_insert"/>
+                        android:id="@+id/img_trash_insert"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
                         android:text="@string/default_time"
-                        android:id="@+id/tv_time_draft"/>
+                        android:id="@+id/tv_time_trash"/>
                 </LinearLayout>
-
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -115,7 +83,7 @@
                         android:singleLine="true"
                         android:ellipsize="end"
                         android:textSize="15sp"
-                        android:id="@+id/tv_subject_draft"
+                        android:id="@+id/tv_subject_trash"
                         android:text="Subject"
                         android:layout_marginLeft="10dp"
                         android:textStyle="bold"
@@ -138,48 +106,13 @@
                         android:layout_marginLeft="10dp"
                         android:maxLines="1"
                         android:textSize="15sp"
-                        android:id="@+id/tv_draft_description"
+                        android:id="@+id/tv_trash_description"
                         android:text="Description"
                         />
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:weightSum="2"
-                        android:orientation="horizontal"
-                        >
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:layout_marginBottom="6dp"
-                            android:orientation="vertical"
-                            android:background="@drawable/background_field_email"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="15sp"
-                                android:text="@string/inbox"
-                                android:layout_gravity="center"
-                                android:id="@+id/tv_draft_tags"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            >
-                            <ImageView
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
-                                android:src="@drawable/ic_star"
-                                android:id="@+id/img_star_draft"/>
-                        </LinearLayout>
-                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
 
 </androidx.cardview.widget.CardView>
