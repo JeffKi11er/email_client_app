@@ -59,19 +59,19 @@ public class FragmentCheck extends Fragment {
         userEmail = sharedPreferencesEmail.getString("user_email", "");
         userPasswords = sharedPreferencesPasswords.getString("user_passwords", "");
         emails = new ArrayList<>();
-        emails.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.cat, true, "Không tiêu đề",
+        emails.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen An Thiet", "16/12/2020", R.drawable.cat, true, "Không tiêu đề",
+        emails.add(new ItemEmail("Nguyen An Thiet", "16/12/2020", R.drawable.streamer, true, "Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Vinh", "15/12/2020", R.drawable.cat, true, "Không tiêu đề",
+        emails.add(new ItemEmail("Vinh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Hieu", "15/12/2020", R.drawable.cat, true, "Không tiêu đề",
+        emails.add(new ItemEmail("Hieu", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Hieu", "15/12/2020", R.drawable.cat, true, "Không tiêu đề",
+        emails.add(new ItemEmail("Hieu", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.cat, true, "Không tiêu đề",
+        emails.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.cat, true, "Không tiêu đề",
+        emails.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
         rclEmails = getActivity().findViewById(R.id.rcl_emails);
         tvTitle = getActivity().findViewById(R.id.tv_status);

@@ -156,7 +156,7 @@
                         android:layout_weight="1"
                         android:layout_margin="7dp"
                         android:orientation="vertical"
-                        android:background="@color/teal_200"
+                        android:background="@drawable/background_field_email"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         >
@@ -165,7 +165,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/tv_tags_important"
                             android:textSize="10sp"
-                            android:text="@string/tags"
+                            android:text="@string/inbox"
                             android:layout_gravity="center"/>
                     </LinearLayout>
                     <LinearLayout

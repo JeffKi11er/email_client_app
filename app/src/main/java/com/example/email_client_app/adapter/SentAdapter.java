@@ -43,7 +43,7 @@ public class SentAdapter extends RecyclerView.Adapter<SentAdapter.MyHolder> {
         holder.tvTags.setText("Tags");
         holder.tvDateSent.setText(emails.get(position).getDate());
         Picasso.with(context).load(emails.get(position).getImgProfile()).into(holder.imgProfile);
-        holder.numofmail.setText(emails.get(position).getNumofmail());
+//        holder.numofmail.setText(emails.get(position).getNumofmail());
     }
 
     @Override
@@ -63,13 +63,13 @@ public class SentAdapter extends RecyclerView.Adapter<SentAdapter.MyHolder> {
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
-            imgProfile = itemView.findViewById(R.id.img_person_sent);
-            tvNameSent = itemView.findViewById(R.id.tv_person_sent);
-            tvDateSent = itemView.findViewById(R.id.tv_time_received);
-            tvSubject = itemView.findViewById(R.id.tv_subject_sent);
-            tvDescription = itemView.findViewById(R.id.tv_description);
-            imgStar = itemView.findViewById(R.id.img_star);
-            tvTags = itemView.findViewById(R.id.tv_tags);
+            imgProfile = itemView.findViewById(R.id.img_person_sent_origin);
+            tvNameSent = itemView.findViewById(R.id.tv_person_received_origin);
+            tvDateSent = itemView.findViewById(R.id.tv_time_received_origin);
+            tvSubject = itemView.findViewById(R.id.tv_subject_sent_origin);
+            tvDescription = itemView.findViewById(R.id.tv_description_origin);
+            imgStar = itemView.findViewById(R.id.img_star_origin);
+            tvTags = itemView.findViewById(R.id.tv_tags_origin);
             numofmail = itemView.findViewById(R.id.num_mail_sent);
         }
     }
