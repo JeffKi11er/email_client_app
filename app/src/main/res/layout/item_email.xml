@@ -83,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
                         android:id="@+id/tv_subject_sent"
-                        android:text="@string/subject"
+                        android:text="Subject"
                         android:layout_marginLeft="10dp"
                         android:textStyle="bold"
                         android:maxLines="1"
@@ -121,11 +121,11 @@
                             android:layout_marginBottom="6dp"
                             android:layout_weight="1"
                             android:orientation="vertical"
-                            android:background="@drawable/background_field_email"
+                            android:background="@color/purple_200"
                             >
                             <TextView
                                 android:textSize="15sp"
-                                android:text="@string/inbox"
+                                android:text="Tag"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

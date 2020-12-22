@@ -33,19 +33,19 @@ public class FragmentAllMail extends Fragment {
 
         allMails  = new ArrayList<>();
 
-        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
 
         rclAllMails = getActivity().findViewById(R.id.all_mail_recycler_view);

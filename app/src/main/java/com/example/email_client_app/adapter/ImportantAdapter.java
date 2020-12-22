@@ -61,13 +61,13 @@ public class ImportantAdapter extends RecyclerView.Adapter<ImportantAdapter.MyHo
         
         public MyHolder(@NonNull View itemView) {
             super(itemView);
-            imgProfile = itemView.findViewById(R.id.img_person_important);
-            tvNameSent = itemView.findViewById(R.id.tv_person_important);
-            tvDateSent = itemView.findViewById(R.id.tv_time_received_important);
-            tvSubject = itemView.findViewById(R.id.tv_subject_important);
-            tvDescription = itemView.findViewById(R.id.tv_description_important);
-            imgStar = itemView.findViewById(R.id.img_star_important);
-            tvTags = itemView.findViewById(R.id.tv_tags_important);
+            imgProfile = itemView.findViewById(R.id.img_person_sent);
+            tvNameSent = itemView.findViewById(R.id.tv_person_sent);
+            tvDateSent = itemView.findViewById(R.id.tv_time_received);
+            tvSubject = itemView.findViewById(R.id.tv_subject_sent);
+            tvDescription = itemView.findViewById(R.id.tv_description);
+            imgStar = itemView.findViewById(R.id.img_star);
+            tvTags = itemView.findViewById(R.id.tv_tags);
             imgimp = itemView.findViewById(R.id.imgimp);
         }
     }

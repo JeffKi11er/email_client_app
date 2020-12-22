@@ -34,19 +34,19 @@ public class FragmentSent extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         sent = new ArrayList<>();
-        sent.add(new ItemSentEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        sent.add(new ItemSentEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề",6));
-        sent.add(new ItemSentEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        sent.add(new ItemSentEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề",4));
-        sent.add(new ItemSentEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        sent.add(new ItemSentEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề",3));
-        sent.add(new ItemSentEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        sent.add(new ItemSentEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề",2));
-        sent.add(new ItemSentEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        sent.add(new ItemSentEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề",4));
-        sent.add(new ItemSentEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        sent.add(new ItemSentEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề",2));
-        sent.add(new ItemSentEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        sent.add(new ItemSentEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.cat,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề",3));
 
         sent_recycler = getActivity().findViewById(R.id.rcl_sent);

@@ -33,19 +33,19 @@ public class FragmentImportant extends Fragment {
 
         important = new ArrayList<>();
 
-        important.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
+        important.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.cat, true, "Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        important.add(new ItemEmail("Nguyen An Thiet", "16/12/2020", R.drawable.streamer, true, "Không tiêu đề",
+        important.add(new ItemEmail("Nguyen An Thiet", "16/12/2020", R.drawable.cat, true, "Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        important.add(new ItemEmail("Vinh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
+        important.add(new ItemEmail("Vinh", "15/12/2020", R.drawable.cat, true, "Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        important.add(new ItemEmail("Hieu", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
+        important.add(new ItemEmail("Hieu", "15/12/2020", R.drawable.cat, true, "Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        important.add(new ItemEmail("Hieu", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
+        important.add(new ItemEmail("Hieu", "15/12/2020", R.drawable.cat, true, "Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        important.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
+        important.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.cat, true, "Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        important.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
+        important.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.cat, true, "Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
 
         important_recycler = getActivity().findViewById(R.id.rcl_important);
