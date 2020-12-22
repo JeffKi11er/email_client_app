@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 import com.squareup.picasso.Picasso;
 import org.w3c.dom.Text;
@@ -19,10 +20,14 @@ import java.util.ArrayList;
 public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder> {
     private Context context;
     private ArrayList<ItemEmail>emails;
-
+    private ItemListener listener;
     public AdapterItem(Context context, ArrayList<ItemEmail> emails) {
         this.context = context;
         this.emails = emails;
+    }
+
+    public void setListener(ItemListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -40,6 +45,23 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder> {
         holder.tvTags.setText("Tags");
         holder.tvDateSent.setText(emails.get(position).getDate());
         Picasso.with(context).load(emails.get(position).getImgProfile()).into(holder.imgProfile);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener!=null){
+                    listener.onClick(position);
+                }
+            }
+        });
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (listener!=null){
+                    listener.onLongClick(position);
+                }
+                return true;
+            }
+        });
     }
 
     @Override

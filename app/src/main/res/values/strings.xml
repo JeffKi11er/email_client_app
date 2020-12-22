@@ -11,6 +11,14 @@
     <string name="all">All mail</string>
     <string name="spams">Spam</string>
     <string name="bin">Trash</string>
+    <string name="primary">Primary</string>
+    <string name="social">Social</string>
+    <string name="reply">Reply</string>
+    <string name="reply_all">Reply All</string>
+    <string name="forward">Forward</string>
+    <string name="spam_guide">Items that have been in Spam for more than 30 days will be automatically deleted.</string>
+    <string name="empty_spam">Empty Spam now</string>
+    <string name="promotion">Promotions</string>
     <string name="gg_tools">GOOGLE APPS</string>
     <string name="calendar">Calendar</string>
     <string name="contact">Contacts</string>

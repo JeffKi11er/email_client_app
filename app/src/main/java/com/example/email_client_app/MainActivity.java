@@ -1,6 +1,7 @@
 package com.example.email_client_app;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -8,6 +9,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -65,10 +69,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentCheck).commit();
         }
     }
-
+    private ColorStateList setTintForNavigation( int color1,int color2){
+        int [][]states = {new int[]{android.R.attr.state_pressed},new int[]{-android.R.attr.state_pressed}};
+        int colors[]={color1,color2};
+        nav.setItemIconTintList(new ColorStateList(states,colors));
+        return new ColorStateList(states,colors);
+    }
     private void init() {
         imageViewBar = findViewById(R.id.img_bar);
         nav = findViewById(R.id.navigationView);
+//        nav.setItemIconTintList(new ColorStateList(states,colors));
+//        nav.setItemTextColor(new ColorStateList(states,colors));
+//        nav.setBackgroundTintList(new ColorStateList(states,colors));
+        nav.setItemIconTintList(setTintForNavigation(R.color.red_hard,Color.BLACK));
+        nav.setItemTextColor(setTintForNavigation(R.color.red_hard,Color.BLACK));
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            nav.setBackgroundTintList(setTintForNavigation(Color.GREEN,Color.WHITE));
+//        }
         nav.setNavigationItemSelectedListener(this);
         drawerLayout = findViewById(R.id.drawable);
         tvCompose = findViewById(R.id.tv_mes);
@@ -89,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -100,7 +116,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -118,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.menu_inb:
                 FragmentCheck fragmentCheck1 = new FragmentCheck();
                 Bundle args1 = new Bundle();
-                args1.putString("title", "Inbox");
+                args1.putString("title", "Primary");
                 fragmentCheck1.setArguments(args1);
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentCheck1).commit();
                 break;
@@ -147,7 +162,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_,new FragmentTrash()).commit();
                 break;
         }
-        drawerLayout.closeDrawer(GravityCompat.START);
         return false;
     }
 
