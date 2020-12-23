@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.email_client_app.activity.ComposeActivity;
+import com.example.email_client_app.activity.MeetingActivity;
 import com.example.email_client_app.activity.SettingActivity;
 import com.example.email_client_app.fragment.FragmentAllMail;
 import com.example.email_client_app.fragment.FragmentCheck;
@@ -117,7 +118,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imgMeeting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent intent = new Intent(MainActivity.this, MeetingActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
         imgMessage.setOnClickListener(new View.OnClickListener() {
