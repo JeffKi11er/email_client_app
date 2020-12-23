@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView imageViewBar;
     private DrawerLayout drawerLayout;
     private NavigationView nav;
+    private TextView tvMessage;
+    private TextView tvMeeting;
+    private ImageView imgMessage;
+    private ImageView imgMeeting;
     private TextView tvCompose;
     private ImageView imgHeader;
     private TextView tvHeaderEmail;
@@ -90,6 +94,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         nav.setNavigationItemSelectedListener(this);
         drawerLayout = findViewById(R.id.drawable);
         tvCompose = findViewById(R.id.tv_mes);
+        tvMessage = findViewById(R.id.tv_message);
+        tvMeeting = findViewById(R.id.tv_meeting);
+        imgMessage = findViewById(R.id.img_message);
+        imgMeeting = findViewById(R.id.img_meeting);
         View viewHeader = nav.getHeaderView(0);
         imgHeader = viewHeader.findViewById(R.id.profile_image);
         tvHeaderEmail = viewHeader.findViewById(R.id.tv_mail_header);
@@ -104,6 +112,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(nav);
+            }
+        });
+        imgMeeting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
+        imgMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

@@ -3,6 +3,7 @@ package com.example.email_client_app.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Canvas;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +16,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.email_client_app.R;
@@ -32,6 +35,8 @@ import javax.mail.Folder;
 import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Store;
+
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class FragmentCheck extends Fragment implements ItemListener{
     private RecyclerView rclEmails;
@@ -93,9 +98,39 @@ public class FragmentCheck extends Fragment implements ItemListener{
         AdapterItem adapterItem = new AdapterItem(getContext(), emails);
         rclEmails.setAdapter(adapterItem);
         adapterItem.setListener(this);
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(rclEmails);
         new MyAsynk().execute();
     }
+    ItemEmail itemEmail = null;
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
 
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            int position = viewHolder.getAdapterPosition();
+            switch (direction){
+                case ItemTouchHelper.LEFT:
+                    itemEmail = emails.get(position);
+                    emails.remove(position);
+                    rclEmails.setAdapter(new AdapterItem(getContext(),emails));
+            }
+        }
+
+        @Override
+        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+            new RecyclerViewSwipeDecorator.Builder(c,recyclerView,viewHolder,dX,dY,actionState,isCurrentlyActive)
+                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(),R.color.green))
+                    .addSwipeLeftActionIcon(R.drawable.ic_all_inb_white)
+                    .create()
+                    .decorate();
+            View itemView = viewHolder.itemView;
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
+    };
     @Override
     public void onClick(int position) {
 
