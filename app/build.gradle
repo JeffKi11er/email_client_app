@@ -28,6 +28,7 @@ android {
     }
 }
 dependencies {
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
     implementation 'com.github.Mursaat:AnimatedGradientTextView:v0.0.6'
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,8 @@ import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterItem;
 import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.FoldingCube;
 
 import java.util.ArrayList;
 import java.util.Properties;
@@ -52,6 +55,7 @@ public class FragmentCheck extends Fragment implements ItemListener{
     private LinearLayout lnPromotion;
     private LinearLayout lnSocial;
     private ArrayList<String>messages = new ArrayList<>();
+    private ProgressBar progressBar;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -87,6 +91,10 @@ public class FragmentCheck extends Fragment implements ItemListener{
         tvTitle = getActivity().findViewById(R.id.tv_status);
         lnPromotion = getActivity().findViewById(R.id.ln_promotions);
         lnSocial = getActivity().findViewById(R.id.ln_social);
+        progressBar = (ProgressBar)getActivity().findViewById(R.id.spin_kit);
+        Sprite doubleBounce = new FoldingCube();
+        progressBar.setIndeterminateDrawable(doubleBounce);
+        progressBar.setVisibility(View.GONE);
         if (title!=null && title.equals("All Inboxes")){
             lnPromotion.setVisibility(View.GONE);
             lnSocial.setVisibility(View.GONE);
@@ -114,9 +122,24 @@ public class FragmentCheck extends Fragment implements ItemListener{
             int position = viewHolder.getAdapterPosition();
             switch (direction){
                 case ItemTouchHelper.LEFT:
+//                    progressBar.setVisibility(View.VISIBLE);
                     itemEmail = emails.get(position);
                     emails.remove(position);
                     rclEmails.setAdapter(new AdapterItem(getContext(),emails));
+//                    new Runnable() {
+//                        public void run() {
+//                            try{
+//                                Thread.sleep(2000);
+//                            }
+//                            catch (Exception e) {
+//                                Log.e("tag", e.getMessage());
+//                            }
+//                            // dismiss the progress dialog
+//                            progressBar.setVisibility(View.GONE);
+//                        }
+//                    };
+                    break;
+
             }
         }
 
