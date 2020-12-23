@@ -1,5 +1,7 @@
 package com.example.email_client_app.fragment;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -126,18 +128,25 @@ public class FragmentCheck extends Fragment implements ItemListener{
                     itemEmail = emails.get(position);
                     emails.remove(position);
                     rclEmails.setAdapter(new AdapterItem(getContext(),emails));
-//                    new Runnable() {
-//                        public void run() {
-//                            try{
-//                                Thread.sleep(2000);
-//                            }
-//                            catch (Exception e) {
-//                                Log.e("tag", e.getMessage());
-//                            }
-//                            // dismiss the progress dialog
-//                            progressBar.setVisibility(View.GONE);
-//                        }
-//                    };
+                    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+// ...Irrelevant code for customizing the buttons and title
+                    LayoutInflater inflater = getLayoutInflater();
+                    View dialogView = inflater.inflate(R.layout.dialog_progress, null);
+                    dialogBuilder.setView(dialogView);
+                    AlertDialog alertDialog = dialogBuilder.create();
+                    new Thread() {
+                        public void run() {
+                            try{
+                                Thread.sleep(2000);
+                            }
+                            catch (Exception e) {
+                                Log.e("tag", e.getMessage());
+                            }
+                            // dismiss the progress dialog
+                            alertDialog.dismiss();
+                        }
+                    }.start();
+                    alertDialog.show();
                     break;
 
             }
