@@ -28,6 +28,7 @@ import com.example.email_client_app.fragment.FragmentDraft;
 import com.example.email_client_app.fragment.FragmentImportant;
 import com.example.email_client_app.fragment.FragmentSent;
 import com.example.email_client_app.fragment.FragmentSnoozed;
+import com.example.email_client_app.fragment.FragmentSocialPromotion;
 import com.example.email_client_app.fragment.FragmentStarred;
 import com.example.email_client_app.fragment.FragmentSchedule;
 import com.example.email_client_app.fragment.FragmentTrash;
@@ -160,6 +161,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.menu_spam:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_,new FragmentTrash()).commit();
+                break;
+            case R.id.menu_promotion:
+                FragmentSocialPromotion fragmentSocialPromotion = new FragmentSocialPromotion();
+                Bundle argSocial = new Bundle();
+                argSocial.putString("title_p", "Promotions");
+                fragmentSocialPromotion.setArguments(argSocial);
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentSocialPromotion).commit();
+                break;
+            case R.id.menu_social:
+                FragmentSocialPromotion fragmentSocial = new FragmentSocialPromotion();
+                Bundle argRealSocial = new Bundle();
+                argRealSocial.putString("title_p", "Social");
+                fragmentSocial.setArguments(argRealSocial);
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentSocial).commit();
                 break;
         }
         return false;
