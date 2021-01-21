@@ -10,6 +10,7 @@
     <color name="red_hard">#d32f2f</color>
     <color name="yellow">#FFC107</color>
     <color name="gray">#bdbdbd</color>
+    <color name="light_gray">#DFDDDD</color>
     <color name="light_red">#ffa4a2</color>
     <color name="green">#4CAF50</color>
     <color name="blue">#0384F4</color>

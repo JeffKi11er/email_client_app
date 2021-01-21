@@ -38,8 +38,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="17sp"
-                        android:textStyle="bold"
+                        android:textSize="15dp"
                         android:text="@string/user"
                         android:id="@+id/tv_person_sent"
                         android:maxLines="1"/>
@@ -77,11 +76,12 @@
                     android:gravity="center_vertical"
                     >
                     <TextView
+                        android:textColor="#000"
                         android:singleLine="true"
                         android:ellipsize="end"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp"
+                        android:textSize="17sp"
                         android:id="@+id/tv_subject_sent"
                         android:text="@string/subject"
                         android:layout_marginLeft="10dp"

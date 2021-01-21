@@ -1,4 +1,4 @@
-package com.example.email_client_app.adapter;
+ package com.example.email_client_app.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

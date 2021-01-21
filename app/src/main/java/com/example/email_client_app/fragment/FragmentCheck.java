@@ -97,6 +97,8 @@ public class FragmentCheck extends Fragment implements ItemListener{
         Sprite doubleBounce = new FoldingCube();
         progressBar.setIndeterminateDrawable(doubleBounce);
         progressBar.setVisibility(View.GONE);
+        lnPromotion.setVisibility(View.GONE);
+        lnSocial.setVisibility(View.GONE);
         if (title!=null && title.equals("All Inboxes")){
             lnPromotion.setVisibility(View.GONE);
             lnSocial.setVisibility(View.GONE);
