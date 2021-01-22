@@ -64,6 +64,8 @@ public class FragmentCheck extends Fragment implements ItemListener{
         View view = inflater.inflate(R.layout.fragment_check, container, false);
         if (getArguments()!=null){
             title = getArguments().getString("title");
+        }else {
+            title = "Primary";
         }
         return view;
     }

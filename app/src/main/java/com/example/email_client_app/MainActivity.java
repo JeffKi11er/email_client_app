@@ -33,6 +33,7 @@ import com.example.email_client_app.fragment.FragmentSocialPromotion;
 import com.example.email_client_app.fragment.FragmentStarred;
 import com.example.email_client_app.fragment.FragmentSchedule;
 import com.example.email_client_app.fragment.FragmentTrash;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
@@ -41,9 +42,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private NavigationView nav;
     private TextView tvMessage;
     private TextView tvMeeting;
+    private boolean shown = false;
     private ImageView imgMessage;
     private ImageView imgMeeting;
-    private TextView tvCompose;
+    private FloatingActionButton floatingNew, floatingCamera, floatingCompose, floatingActtachment;
     private ImageView imgHeader;
     private TextView tvHeaderEmail;
     private TextView tvHeaderUser;
@@ -94,11 +96,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        }
         nav.setNavigationItemSelectedListener(this);
         drawerLayout = findViewById(R.id.drawable);
-        tvCompose = findViewById(R.id.tv_mes);
+//        tvCompose = findViewById(R.id.tv_mes);
         tvMessage = findViewById(R.id.tv_message);
         tvMeeting = findViewById(R.id.tv_meeting);
         imgMessage = findViewById(R.id.img_message);
         imgMeeting = findViewById(R.id.img_meeting);
+        floatingNew = findViewById(R.id.floating_new);
+        floatingCompose = findViewById(R.id.fab_compose);
+        floatingActtachment = findViewById(R.id.fab_attachment);
+        floatingCamera = findViewById(R.id.fab_camera);
         View viewHeader = nav.getHeaderView(0);
         imgHeader = viewHeader.findViewById(R.id.profile_image);
         tvHeaderEmail = viewHeader.findViewById(R.id.tv_mail_header);
@@ -107,7 +113,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         userEmail = sharedPreferencesEmail.getString("user_email", "");
         userPasswords = sharedPreferencesPasswords.getString("user_passwords", "");
         tvHeaderEmail.setText(userEmail);
-        tvCompose.setOnClickListener(this);
+        floatingNew.setOnClickListener(this);
+        floatingActtachment.setOnClickListener(this);
+        floatingCompose.setOnClickListener(this);
+        floatingCamera.setOnClickListener(this);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentCheck).commit();
         imageViewBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,7 +142,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_mes:
+            case R.id.floating_new:
+                if (!shown){
+                    floatingCamera.show();
+                    floatingActtachment.show();
+                    floatingCompose.show();
+                    shown =true;
+                }else {
+                    floatingCamera.hide();
+                    floatingActtachment.hide();
+                    floatingCompose.hide();
+                    shown = false;
+                }
+                break;
+            case R.id.fab_compose:
                 Intent intent = new Intent(MainActivity.this, ComposeActivity.class);
                 startActivity(intent);
                 finish();
