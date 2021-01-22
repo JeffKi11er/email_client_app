@@ -13,12 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.email_client_app.R;
 import com.example.email_client_app.adapter.AdapterDraft;
 import com.example.email_client_app.adapter.AdapterItem;
+import com.example.email_client_app.helper.BrainResource;
 import com.example.email_client_app.item.ItemEmail;
 
 import java.util.ArrayList;
 
 public class FragmentDraft extends Fragment {
-    private ArrayList<ItemEmail> emails;
+    private ArrayList<ItemEmail> emails = new ArrayList<>();
     private RecyclerView recyclerView;
     @Nullable
     @Override
@@ -30,22 +31,7 @@ public class FragmentDraft extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        emails  = new ArrayList<>();
-        emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-
+        emails  = BrainResource.getEmails();
         recyclerView = getActivity().findViewById(R.id.rcl_draft);
         recyclerView.setAdapter(new AdapterDraft(getContext(),emails));
     }

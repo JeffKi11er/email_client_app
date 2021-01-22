@@ -10,6 +10,7 @@
     <string name="plan">Scheduled</string>
     <string name="all">All mail</string>
     <string name="spams">Spam</string>
+    <string name="search_result">RESULTS IN EMAILS</string>
     <string name="bin">Trash</string>
     <string name="primary">Primary</string>
     <string name="social">Social</string>

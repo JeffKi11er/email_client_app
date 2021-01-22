@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,8 +18,9 @@ import com.example.email_client_app.item.ItemEmail;
 import com.squareup.picasso.Picasso;
 import org.w3c.dom.Text;
 import java.util.ArrayList;
+import java.util.List;
 
-public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder> {
+ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder>{
     private Context context;
     private ArrayList<ItemEmail>emails;
     private ItemListener listener;
@@ -68,7 +71,10 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder> {
     public int getItemCount() {
         return emails.size();
     }
-
+    public void filterList(ArrayList<ItemEmail>emailFilter){
+        emails = emailFilter;
+        notifyDataSetChanged();
+    }
     public class MyHolder extends RecyclerView.ViewHolder {
         private ImageView imgProfile;
         private TextView tvNameSent;

@@ -13,12 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.email_client_app.R;
 import com.example.email_client_app.adapter.AdapterItem;
 import com.example.email_client_app.adapter.AllMailAdapter;
+import com.example.email_client_app.helper.BrainResource;
 import com.example.email_client_app.item.ItemEmail;
 
 import java.util.ArrayList;
 
 public class FragmentAllMail extends Fragment {
-    private ArrayList<ItemEmail>allMails;
+    private ArrayList<ItemEmail>allMails = new ArrayList<>();
     private RecyclerView rclAllMails;
     @Nullable
     @Override
@@ -30,24 +31,7 @@ public class FragmentAllMail extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        allMails  = new ArrayList<>();
-
-        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-
+        allMails = BrainResource.getEmails();
         rclAllMails = getActivity().findViewById(R.id.all_mail_recycler_view);
         rclAllMails.setAdapter(new AllMailAdapter(getContext(),allMails));
     }

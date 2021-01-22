@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.email_client_app.R;
 import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterItem;
+import com.example.email_client_app.helper.BrainResource;
 import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 import com.github.ybq.android.spinkit.sprite.Sprite;
@@ -47,7 +48,7 @@ public class FragmentCheck extends Fragment implements ItemListener{
     private RecyclerView rclEmails;
     private String userEmail;
     private String userPasswords;
-    private ArrayList<ItemEmail> emails;
+    private ArrayList<ItemEmail> emails = new ArrayList<>();
     private String title;
     private TextView tvTitle;
     private String address_to_string;
@@ -76,21 +77,7 @@ public class FragmentCheck extends Fragment implements ItemListener{
         SharedPreferences sharedPreferencesPasswords = getActivity().getSharedPreferences("user_passwords", Context.MODE_PRIVATE);
         userEmail = sharedPreferencesEmail.getString("user_email", "");
         userPasswords = sharedPreferencesPasswords.getString("user_passwords", "");
-        emails = new ArrayList<>();
-        emails.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen An Thiet", "16/12/2020", R.drawable.streamer, true, "Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Vinh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Hieu", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Hieu", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
-        emails.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
-                "đã bảo là không có tiêu đề"));
+        emails = BrainResource.getEmails();
         rclEmails = getActivity().findViewById(R.id.rcl_emails);
         tvTitle = getActivity().findViewById(R.id.tv_status);
         lnPromotion = getActivity().findViewById(R.id.ln_promotions);

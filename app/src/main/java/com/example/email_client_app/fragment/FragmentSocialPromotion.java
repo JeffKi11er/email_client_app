@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.email_client_app.R;
 import com.example.email_client_app.activity.AdsActivity;
 import com.example.email_client_app.adapter.AdapterSocial;
+import com.example.email_client_app.helper.BrainResource;
 import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemSocial;
 
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 
 public class FragmentSocialPromotion extends Fragment implements ItemListener {
     private RecyclerView rclListSocial;
-    private ArrayList<ItemSocial>socials;
+    private ArrayList<ItemSocial>socials = new ArrayList<>();
     private String title;
     private TextView tvTitle;
     @Nullable
@@ -38,29 +39,7 @@ public class FragmentSocialPromotion extends Fragment implements ItemListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        socials = new ArrayList<>();
-        socials.add(new ItemSocial("FaceBook","23/12/2012",R.drawable.streamer,true,"You received " +
-                "a message","Get 1000+ messages from your scocial media",R.drawable.camera,false));
-        socials.add(new ItemSocial("FaceBook","23/12/2012",R.drawable.streamer,true,"You received " +
-                "a message","Get 1000+ messages from your scocial media",R.drawable.camera,true));
-        socials.add(new ItemSocial("FaceBook","23/12/2012",R.drawable.streamer,true,"You received " +
-                "a message","Get 1000+ messages from your scocial media",R.drawable.camera,true));
-        socials.add(new ItemSocial("FaceBook","23/12/2012",R.drawable.streamer,true,"You received " +
-                "a message","Get 1000+ messages from your scocial media",R.drawable.camera,false));
-        socials.add(new ItemSocial("FaceBook","23/12/2012",R.drawable.streamer,true,"You received " +
-                "a message","Get 1000+ messages from your scocial media",R.drawable.camera,false));
-        socials.add(new ItemSocial("FaceBook","23/12/2012",R.drawable.streamer,true,"You received " +
-                "a message","Get 1000+ messages from your scocial media",R.drawable.camera,true));
-        socials.add(new ItemSocial("FaceBook","23/12/2012",R.drawable.streamer,true,"You received " +
-                "a message","Get 1000+ messages from your scocial media",R.drawable.camera,false));
-        socials.add(new ItemSocial("FaceBook","23/12/2012",R.drawable.streamer,true,"You received " +
-                "a message","Get 1000+ messages from your scocial media",R.drawable.camera,false));
-        socials.add(new ItemSocial("FaceBook","23/12/2012",R.drawable.streamer,true,"You received " +
-                "a message","Get 1000+ messages from your scocial media",R.drawable.camera,false));
-        socials.add(new ItemSocial("FaceBook","23/12/2012",R.drawable.streamer,true,"You received " +
-                "a message","Get 1000+ messages from your scocial media",R.drawable.camera,true));
-        socials.add(new ItemSocial("FaceBook","23/12/2012",R.drawable.streamer,true,"You received " +
-                "a message","Get 1000+ messages from your scocial media",R.drawable.camera,false));
+        socials = BrainResource.getSocialItems();
         rclListSocial = getActivity().findViewById(R.id.rcl_promotion_social);
         tvTitle = getActivity().findViewById(R.id.tv_social_title);
         AdapterSocial adapterSocial = new AdapterSocial(socials,getContext());
