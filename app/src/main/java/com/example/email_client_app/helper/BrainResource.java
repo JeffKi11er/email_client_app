@@ -1,5 +1,8 @@
 package com.example.email_client_app.helper;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import com.example.email_client_app.R;
 import com.example.email_client_app.item.ItemEmail;
 import com.example.email_client_app.item.ItemSchedule;
@@ -14,7 +17,7 @@ public class BrainResource {
         ArrayList<ItemEmail>itemEmails = new ArrayList<>();
         itemEmails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020", R.drawable.streamer,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        itemEmails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        itemEmails.add(new ItemEmail("Nguyen An Thiet","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
         itemEmails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));

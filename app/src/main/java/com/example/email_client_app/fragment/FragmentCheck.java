@@ -158,7 +158,15 @@ public class FragmentCheck extends Fragment implements ItemListener{
     public void onClick(int position) {
 
         Intent intent = new Intent(getActivity(), DetailActivity.class);
-//        intent.putStringArrayListExtra("message",messages);
+        ItemEmail email = emails.get(position);
+        intent.putExtra("name",email.getName());
+        intent.putExtra("date",email.getDate());
+        intent.putExtra("imgProfile",email.getImgProfile());
+        intent.putExtra("starred",email.isStarred());
+        intent.putExtra("subject",email.getSubject());
+        intent.putExtra("description",email.getDescription());
+
+
         startActivity(intent);
     }
 
