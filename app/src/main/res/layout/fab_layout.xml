@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_compose"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="102dp"
+        android:src="@drawable/ic_edit"
+        app:backgroundTint="@color/red_hard"
+        android:visibility="invisible"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:id="@+id/fab_attachment"
+        app:backgroundTint="@color/red_hard"
+        android:src="@drawable/ic_camera_for_float"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="162dp"
+        android:layout_marginRight="75dp"
+        android:visibility="invisible"
+        />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:id="@+id/fab_camera"
+        app:backgroundTint="@color/red_hard"
+        android:src="@drawable/ic_attach_file"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="188dp"
+        android:layout_marginRight="16dp"
+        android:visibility="invisible"/>
+</FrameLayout>
+

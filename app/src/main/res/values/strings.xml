@@ -11,6 +11,14 @@
     <string name="all">All mail</string>
     <string name="spams">Spam</string>
     <string name="bin">Trash</string>
+    <string name="primary">Primary</string>
+    <string name="social">Social</string>
+    <string name="reply">Reply</string>
+    <string name="reply_all">Reply All</string>
+    <string name="forward">Forward</string>
+    <string name="spam_guide">Items that have been in Spam for more than 30 days will be automatically deleted.</string>
+    <string name="empty_spam">Empty Spam now</string>
+    <string name="promotion">Promotions</string>
     <string name="gg_tools">GOOGLE APPS</string>
     <string name="calendar">Calendar</string>
     <string name="contact">Contacts</string>
@@ -23,7 +31,6 @@
     <string name="meeting">Meet</string>
     <string name="compose">Compose</string>
     <string name="from">From</string>
-    <string name="to">To</string>
     <string name="cc">Cc</string>
     <string name="bcc">Bcc</string>
     <string name="theme">Subject</string>
@@ -43,4 +50,8 @@
     <string name="email_received">thanhcotaima123</string>
     <string name="draft">Draft</string>
     <string name="numberofmail">2</string>
+    <string name="subject">Subject</string>
+    <string name="description">Description</string>
+    <string name="tags">Tags</string>
+    <string name="to">To:</string>
 </resources>

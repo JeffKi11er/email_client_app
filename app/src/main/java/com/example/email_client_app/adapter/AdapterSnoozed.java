@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,7 +53,7 @@ public class AdapterSnoozed extends RecyclerView.Adapter<AdapterSnoozed.MyHolder
         private TextView tvDateSent;
         private TextView tvSubject;
         private TextView tvDescription;
-        private ImageView imgStar;
+        private ToggleButton imgStar;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,7 +62,7 @@ public class AdapterSnoozed extends RecyclerView.Adapter<AdapterSnoozed.MyHolder
             tvDateSent = itemView.findViewById(R.id.tv_time_received_starred2);
             tvSubject = itemView.findViewById(R.id.tv_subject_sent_starred2);
             tvDescription = itemView.findViewById(R.id.tv_description_starred2);
-            imgStar = itemView.findViewById(R.id.img_star);
+            imgStar = itemView.findViewById(R.id.star_toggle_snoozed);
         }
     }
 }

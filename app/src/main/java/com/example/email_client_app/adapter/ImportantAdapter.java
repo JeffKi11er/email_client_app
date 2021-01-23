@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,18 +58,17 @@ public class ImportantAdapter extends RecyclerView.Adapter<ImportantAdapter.MyHo
         private TextView tvDescription;
         private ImageView imgStar;
         private TextView tvTags;
-        private ImageView imgimp;
+        private ToggleButton starToggleImportant;
         
         public MyHolder(@NonNull View itemView) {
             super(itemView);
-            imgProfile = itemView.findViewById(R.id.img_person_sent);
-            tvNameSent = itemView.findViewById(R.id.tv_person_sent);
-            tvDateSent = itemView.findViewById(R.id.tv_time_received);
-            tvSubject = itemView.findViewById(R.id.tv_subject_sent);
-            tvDescription = itemView.findViewById(R.id.tv_description);
-            imgStar = itemView.findViewById(R.id.img_star);
-            tvTags = itemView.findViewById(R.id.tv_tags);
-            imgimp = itemView.findViewById(R.id.imgimp);
+            imgProfile = itemView.findViewById(R.id.img_person_important);
+            tvNameSent = itemView.findViewById(R.id.tv_person_important);
+            tvDateSent = itemView.findViewById(R.id.tv_time_received_important);
+            tvSubject = itemView.findViewById(R.id.tv_subject_important);
+            tvDescription = itemView.findViewById(R.id.tv_description_important);
+            tvTags = itemView.findViewById(R.id.tv_tags_important);
+            starToggleImportant = itemView.findViewById(R.id.star_toggle_important);
         }
     }
 }

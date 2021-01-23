@@ -9,9 +9,8 @@
         android:layout_width="96dp"
         android:layout_margin="10dp"
         android:layout_height="96dp"
-        android:src="@drawable/name"
-        app:civ_border_width="2dp"
-        app:civ_border_color="#F44336"/>
+        android:src="@drawable/cat_meow"
+        app:civ_border_width="2dp"/>
     <TextView
         android:id="@+id/tv_email_user"
         android:layout_width="wrap_content"

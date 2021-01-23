@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,13 +38,9 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.MyHold
     public void onBindViewHolder(@NonNull AdapterSchedule.MyHolder holder, int position) {
         Picasso.with(context).load(schedules.get(position).getImgAvatar()).into(holder.imgAvatar);
         holder.emailReceived.setText(schedules.get(position).getEmailReceived());
-        holder.timeReceived.setText(schedules.get(position).getTimeReceived());
         holder.subjectSent.setText(schedules.get(position).getSubjectSent());
         holder.timeSend.setText(schedules.get(position).getTimeSend());
         holder.descriptionSchedule.setText(schedules.get(position).getDescriptionSchedule());
-        Picasso.with(context).load(schedules.get(position).getImgAttachedSchedule()).into(holder.imgAttachedSchedule);
-        holder.textAttachedSchedule.setText(schedules.get(position).getTextAttachedSchedule());
-        Picasso.with(context).load(schedules.get(position).getImgStarSchedule()).into(holder.imgStarSchedule);
     }
 
     @Override
@@ -54,26 +51,20 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.MyHold
     public class MyHolder extends RecyclerView.ViewHolder {
         private ImageView imgAvatar;
         private TextView emailReceived;
-        private TextView timeReceived;
         private TextView subjectSent;
         private TextView timeSend;
         private TextView descriptionSchedule;
-        private ImageView imgAttachedSchedule;
-        private TextView textAttachedSchedule;
-        private ImageView imgStarSchedule;
+        private ToggleButton starToggleSchedule;
 
         public MyHolder(View itemView) {
             super(itemView);
 
             imgAvatar = itemView.findViewById(R.id.img_person_sent_schedule);
             emailReceived = itemView.findViewById(R.id.tv_person_received_schedule);
-            timeReceived = itemView.findViewById(R.id.tv_time_received_schedule);
             subjectSent = itemView.findViewById(R.id.tv_subject_sent_schedule);
             timeSend = itemView.findViewById(R.id.tv_time_send_schedule);
             descriptionSchedule = itemView.findViewById(R.id.tv_description_schedule);
-            imgAttachedSchedule = itemView.findViewById(R.id.img_attached_schedule);
-            textAttachedSchedule = itemView.findViewById(R.id.text_attached_schedule);
-            imgStarSchedule = itemView.findViewById(R.id.img_star_schedule);
+            starToggleSchedule = itemView.findViewById(R.id.star_toggle_schedule);
         }
     }
 }

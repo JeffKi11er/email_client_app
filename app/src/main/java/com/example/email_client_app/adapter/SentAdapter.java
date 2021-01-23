@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,7 +44,7 @@ public class SentAdapter extends RecyclerView.Adapter<SentAdapter.MyHolder> {
         holder.tvTags.setText("Tags");
         holder.tvDateSent.setText(emails.get(position).getDate());
         Picasso.with(context).load(emails.get(position).getImgProfile()).into(holder.imgProfile);
-        holder.numofmail.setText(emails.get(position).getNumofmail());
+//        holder.numofmail.setText(emails.get(position).getNumofmail());
     }
 
     @Override
@@ -57,20 +58,20 @@ public class SentAdapter extends RecyclerView.Adapter<SentAdapter.MyHolder> {
         private TextView tvDateSent;
         private TextView tvSubject;
         private TextView tvDescription;
-        private ImageView imgStar;
+        private ToggleButton starToggleSent;
         private TextView tvTags;
-        private TextView numofmail;
+        private TextView numOfMail;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
-            imgProfile = itemView.findViewById(R.id.img_person_sent);
-            tvNameSent = itemView.findViewById(R.id.tv_person_sent);
-            tvDateSent = itemView.findViewById(R.id.tv_time_received);
-            tvSubject = itemView.findViewById(R.id.tv_subject_sent);
-            tvDescription = itemView.findViewById(R.id.tv_description);
-            imgStar = itemView.findViewById(R.id.img_star);
-            tvTags = itemView.findViewById(R.id.tv_tags);
-            numofmail = itemView.findViewById(R.id.num_mail_sent);
+            imgProfile = itemView.findViewById(R.id.img_person_sent_origin);
+            tvNameSent = itemView.findViewById(R.id.tv_person_received_origin);
+            tvDateSent = itemView.findViewById(R.id.tv_time_received_origin);
+            tvSubject = itemView.findViewById(R.id.tv_subject_sent_origin);
+            tvDescription = itemView.findViewById(R.id.tv_description_origin);
+            starToggleSent = itemView.findViewById(R.id.star_toggle_sent);
+            tvTags = itemView.findViewById(R.id.tv_tags_origin);
+            numOfMail = itemView.findViewById(R.id.num_mail_sent);
         }
     }
 }

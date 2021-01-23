@@ -28,6 +28,8 @@ android {
     }
 }
 dependencies {
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
     implementation 'com.github.Mursaat:AnimatedGradientTextView:v0.0.6'
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
     implementation 'com.ernestoyaquello.dragdropswiperecyclerview:drag-drop-swipe-recyclerview:0.6.0'
@@ -43,6 +45,7 @@ dependencies {
     implementation files('libs\\activation.jar')
     implementation files('libs\\additionnal.jar')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

@@ -1,6 +1,7 @@
 package com.example.email_client_app;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -8,6 +9,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -16,24 +20,32 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.email_client_app.R;
 import com.example.email_client_app.activity.ComposeActivity;
+import com.example.email_client_app.activity.MeetingActivity;
 import com.example.email_client_app.activity.SettingActivity;
 import com.example.email_client_app.fragment.FragmentAllMail;
 import com.example.email_client_app.fragment.FragmentCheck;
 import com.example.email_client_app.fragment.FragmentDraft;
+import com.example.email_client_app.fragment.FragmentImportant;
 import com.example.email_client_app.fragment.FragmentSent;
 import com.example.email_client_app.fragment.FragmentSnoozed;
+import com.example.email_client_app.fragment.FragmentSocialPromotion;
 import com.example.email_client_app.fragment.FragmentStarred;
 import com.example.email_client_app.fragment.FragmentSchedule;
-import com.example.email_client_app.fragment.FragmentImportant;
+import com.example.email_client_app.fragment.FragmentTrash;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private ImageView imageViewBar;
     private DrawerLayout drawerLayout;
     private NavigationView nav;
-    private TextView tvCompose;
+    private TextView tvMessage;
+    private TextView tvMeeting;
+    private boolean shown = false;
+    private ImageView imgMessage;
+    private ImageView imgMeeting;
+    private FloatingActionButton floatingNew, floatingCamera, floatingCompose, floatingActtachment;
     private ImageView imgHeader;
     private TextView tvHeaderEmail;
     private TextView tvHeaderUser;
@@ -45,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String userEmail;
     private String userPasswords;
     private FragmentCheck fragmentCheck = new FragmentCheck();
-    private FragmentStarred fragmentStar = new FragmentStarred();
     private FragmentSnoozed fragmentSnoozed = new FragmentSnoozed();
     private FragmentSchedule fragmentSchedule = new FragmentSchedule();
     private FragmentImportant fragmentImportant = new FragmentImportant();
@@ -66,61 +77,111 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentCheck).commit();
         }
     }
+    private ColorStateList setTintForNavigation( int color1,int color2){
+        int [][]states = {new int[]{android.R.attr.state_pressed},new int[]{-android.R.attr.state_pressed}};
+        int colors[]={color1,color2};
+        nav.setItemIconTintList(new ColorStateList(states,colors));
+        return new ColorStateList(states,colors);
+    }
     private void init() {
         imageViewBar = findViewById(R.id.img_bar);
         nav = findViewById(R.id.navigationView);
+//        nav.setItemIconTintList(new ColorStateList(states,colors));
+//        nav.setItemTextColor(new ColorStateList(states,colors));
+//        nav.setBackgroundTintList(new ColorStateList(states,colors));
+        nav.setItemIconTintList(setTintForNavigation(R.color.red_hard,Color.BLACK));
+        nav.setItemTextColor(setTintForNavigation(R.color.red_hard,Color.BLACK));
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            nav.setBackgroundTintList(setTintForNavigation(Color.GREEN,Color.WHITE));
+//        }
         nav.setNavigationItemSelectedListener(this);
         drawerLayout = findViewById(R.id.drawable);
-        tvCompose = findViewById(R.id.tv_mes);
+//        tvCompose = findViewById(R.id.tv_mes);
+        tvMessage = findViewById(R.id.tv_message);
+        tvMeeting = findViewById(R.id.tv_meeting);
+        imgMessage = findViewById(R.id.img_message);
+        imgMeeting = findViewById(R.id.img_meeting);
+        floatingNew = findViewById(R.id.floating_new);
+        floatingCompose = findViewById(R.id.fab_compose);
+        floatingActtachment = findViewById(R.id.fab_attachment);
+        floatingCamera = findViewById(R.id.fab_camera);
         View viewHeader = nav.getHeaderView(0);
         imgHeader = viewHeader.findViewById(R.id.profile_image);
         tvHeaderEmail = viewHeader.findViewById(R.id.tv_mail_header);
         SharedPreferences sharedPreferencesEmail = this.getSharedPreferences("user_email", Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferencesPasswords = this.getSharedPreferences("user_passwords",Context.MODE_PRIVATE);
-        userEmail = sharedPreferencesEmail.getString("user_email","");
-        userPasswords =  sharedPreferencesPasswords.getString("user_passwords","");
+        SharedPreferences sharedPreferencesPasswords = this.getSharedPreferences("user_passwords", Context.MODE_PRIVATE);
+        userEmail = sharedPreferencesEmail.getString("user_email", "");
+        userPasswords = sharedPreferencesPasswords.getString("user_passwords", "");
         tvHeaderEmail.setText(userEmail);
-        tvCompose.setOnClickListener(this);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck).commit();
+        floatingNew.setOnClickListener(this);
+        floatingActtachment.setOnClickListener(this);
+        floatingCompose.setOnClickListener(this);
+        floatingCamera.setOnClickListener(this);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentCheck).commit();
         imageViewBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(nav);
             }
         });
-    }
+        imgMeeting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MeetingActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        imgMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+    }
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.tv_mes:
+        switch (v.getId()) {
+            case R.id.floating_new:
+                if (!shown){
+                    floatingCamera.show();
+                    floatingActtachment.show();
+                    floatingCompose.show();
+                    shown =true;
+                }else {
+                    floatingCamera.hide();
+                    floatingActtachment.hide();
+                    floatingCompose.hide();
+                    shown = false;
+                }
+                break;
+            case R.id.fab_compose:
                 Intent intent = new Intent(MainActivity.this, ComposeActivity.class);
                 startActivity(intent);
                 finish();
                 break;
         }
     }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menu_setting:
                 openLoginDialog();
-                Log.e(getClass().getName(),"start Setting");
+                Log.e(getClass().getName(), "start Setting");
                 break;
             case R.id.menu_all:
                 FragmentCheck fragmentCheck = new FragmentCheck();
                 Bundle args = new Bundle();
-                args.putString("title","All Inboxes");
+                args.putString("title", "All Inboxes");
                 fragmentCheck.setArguments(args);
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentCheck).commit();
                 break;
             case R.id.menu_inb:
                 FragmentCheck fragmentCheck1 = new FragmentCheck();
                 Bundle args1 = new Bundle();
-                args1.putString("title","Inbox");
+                args1.putString("title", "Primary");
                 fragmentCheck1.setArguments(args1);
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentCheck1).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentCheck1).commit();
                 break;
             case R.id.menu_star:
                 openStarred();
@@ -129,34 +190,60 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 openSnoozed();
                 break;
             case R.id.menu_plan:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentSchedule).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentSchedule).commit();
                 break;
             case R.id.menu_bin:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_,new FragmentDraft()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_, new FragmentDraft()).commit();
                 break;
             case R.id.menu_important:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentImportant).commit();
-		break;
-            case R.id.menu_all_:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentAllMail).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentImportant).commit();
                 break;
-	    case R.id.menu_sent:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_,fragmentSent).commit();
+            case R.id.menu_all_:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentAllMail).commit();
+                break;
+            case R.id.menu_sent:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentSent).commit();
+                break;
+            case R.id.menu_spam:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_,new FragmentTrash()).commit();
+                break;
+            case R.id.menu_promotion:
+                FragmentSocialPromotion fragmentSocialPromotion = new FragmentSocialPromotion();
+                Bundle argSocial = new Bundle();
+                argSocial.putString("title_p", "Promotions");
+                fragmentSocialPromotion.setArguments(argSocial);
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentSocialPromotion).commit();
+                break;
+            case R.id.menu_social:
+                FragmentSocialPromotion fragmentSocial = new FragmentSocialPromotion();
+                Bundle argRealSocial = new Bundle();
+                argRealSocial.putString("title_p", "Social");
+                fragmentSocial.setArguments(argRealSocial);
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentSocial).commit();
                 break;
         }
-        drawerLayout.closeDrawer(GravityCompat.START);
         return false;
     }
 
     private void openLoginDialog() {
-        Intent intent = new Intent(MainActivity.this,SettingActivity.class);
+        Intent intent = new Intent(MainActivity.this, SettingActivity.class);
         startActivity(intent);
         finish();
     }
+
     private void openStarred() {
+        FragmentStarred fragmentStar = new FragmentStarred();
+        Bundle argsstarred = new Bundle();
+        argsstarred.putString("title", "Starred");
+        fragmentCheck.setArguments(argsstarred);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentStar).commit();
     }
+
     private void openSnoozed() {
+        FragmentSnoozed fragmentSnoozed = new FragmentSnoozed();
+        Bundle argssnoozed = new Bundle();
+        argssnoozed.putString("title", "Snoozed");
+        fragmentCheck.setArguments(argssnoozed);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentSnoozed).commit();
     }
 }

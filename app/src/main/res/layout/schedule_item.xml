@@ -5,19 +5,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:padding="14dp">
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="5dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="top"
+            android:layout_marginRight="3dp"
             android:src="@drawable/avatar"
             android:id="@+id/img_person_sent_schedule"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="4"
+            android:layout_height="wrap_content"
+            android:weightSum="5"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -25,35 +27,31 @@
                 android:layout_weight="1"
                 android:orientation="horizontal"
                 android:weightSum="5"
+                android:layout_marginBottom="3dp"
                 >
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="3.5"
                     android:weightSum="3"
                     android:gravity="center_vertical"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     >
                     <TextView
-                        android:singleLine="true"
-                        android:ellipsize="end"
-                        android:layout_gravity="center_vertical"
+                        android:layout_gravity="center"
                         android:layout_marginLeft="10dp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.35"
-                        android:textSize="17sp"
+                        android:layout_weight="0.5"
+                        android:textSize="14sp"
                         android:textStyle="bold"
-                        android:text="To: "
-                        android:maxLines="1"/>
+                        android:text="@string/to"/>
 
                     <TextView
                         android:singleLine="true"
-                        android:ellipsize="end"
                         android:gravity="center_vertical"
-                        android:layout_marginLeft="10dp"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="2"
+                        android:layout_weight="2.2"
                         android:textSize="14sp"
                         android:text="@string/email_received"
                         android:id="@+id/tv_person_received_schedule"
@@ -61,31 +59,32 @@
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
                     android:orientation="horizontal"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
                     android:weightSum="3">
 
-                    <LinearLayout
+                    <ImageView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_clock"
+                        app:tint="@color/red_hard" />
 
                     <TextView
+                        android:id="@+id/tv_time_send_schedule"
                         android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="2"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:text="@string/default_time"
-                        android:id="@+id/tv_time_received_schedule"/>
+                        android:gravity="center_vertical"
+                        android:text="08:00 PM"
+                        android:textColor="@color/red_hard"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_weight="2.5"
                 android:orientation="vertical"
                 android:weightSum="2">
                 <LinearLayout
@@ -102,7 +101,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="3"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp"
+                        android:textSize="14sp"
                         android:id="@+id/tv_subject_sent_schedule"
                         android:text="Subject"
                         android:layout_marginLeft="10dp"
@@ -110,29 +109,7 @@
                         android:maxLines="1"
                         />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_clock"
-                            app:tint="@color/red_hard" />
-
-                        <TextView
-                            android:id="@+id/tv_time_send_schedule"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:gravity="center_vertical"
-                            android:text="08:00 PM"
-                            android:textColor="@color/red_hard"/>
-                    </LinearLayout>
 
                 </LinearLayout>
                 <LinearLayout
@@ -150,7 +127,8 @@
                         android:layout_weight="3"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
-                        android:textSize="15sp"
+                        android:gravity="center_vertical"
+                        android:textSize="14sp"
                         android:id="@+id/tv_description_schedule"
                         android:text="Description"
                         />
@@ -175,11 +153,13 @@
                             android:layout_height="match_parent"
                             android:gravity="center_horizontal"
                             >
-                            <ImageView
+                            <ToggleButton
+                                android:id="@+id/star_toggle_schedule"
                                 android:layout_width="25dp"
                                 android:layout_height="25dp"
-                                android:src="@drawable/ic_star"
-                                android:id="@+id/img_star_schedule"/>
+                                android:background="@drawable/star_toggle"
+                                android:textOff=""
+                                android:textOn="" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -189,27 +169,25 @@
                 android:id="@+id/attached_file_schedule"
                 android:layout_width="175dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.5"
+                android:background="@drawable/rounded_corner_2"
                 android:orientation="horizontal"
-                android:weightSum="4"
                 android:paddingLeft="14dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/rounded_corner_2">
+                android:weightSum="4">
 
                 <ImageView
-                    android:id="@+id/img_attached_schedule"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
-                    android:layout_weight="2"
                     android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:src="@drawable/ic_pdf" />
                 <TextView
                     android:id="@+id/text_attached_schedule"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:layout_gravity="center"
                     android:text="[889 USTH] 1004..."/>
             </LinearLayout>
         </LinearLayout>

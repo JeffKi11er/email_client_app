@@ -1,4 +1,4 @@
-package com.example.email_client_app.adapter;
+ package com.example.email_client_app.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,11 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 import com.squareup.picasso.Picasso;
 import org.w3c.dom.Text;
@@ -19,10 +21,14 @@ import java.util.ArrayList;
 public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder> {
     private Context context;
     private ArrayList<ItemEmail>emails;
-
+    private ItemListener listener;
     public AdapterItem(Context context, ArrayList<ItemEmail> emails) {
         this.context = context;
         this.emails = emails;
+    }
+
+    public void setListener(ItemListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -37,9 +43,25 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder> {
         holder.tvNameSent.setText(emails.get(position).getName());
         holder.tvSubject.setText(emails.get(position).getSubject());
         holder.tvDescription.setText(emails.get(position).getDescription());
-        holder.tvTags.setText("Tags");
         holder.tvDateSent.setText(emails.get(position).getDate());
         Picasso.with(context).load(emails.get(position).getImgProfile()).into(holder.imgProfile);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener!=null){
+                    listener.onClick(position);
+                }
+            }
+        });
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (listener!=null){
+                    listener.onLongClick(position);
+                }
+                return true;
+            }
+        });
     }
 
     @Override
@@ -53,8 +75,7 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder> {
         private TextView tvDateSent;
         private TextView tvSubject;
         private TextView tvDescription;
-        private ImageView imgStar;
-        private TextView tvTags;
+        private ToggleButton imgStar;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,7 +85,6 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder> {
             tvSubject = itemView.findViewById(R.id.tv_subject_sent);
             tvDescription = itemView.findViewById(R.id.tv_description);
             imgStar = itemView.findViewById(R.id.img_star);
-            tvTags = itemView.findViewById(R.id.tv_tags);
         }
     }
 }

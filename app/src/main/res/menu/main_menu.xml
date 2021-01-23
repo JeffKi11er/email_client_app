@@ -9,7 +9,15 @@
         <item
             android:id="@+id/menu_inb"
             android:icon="@drawable/ic_inb"
-            android:title="@string/inbox"></item>
+            android:title="@string/primary"></item>
+        <item
+            android:id="@+id/menu_social"
+            android:icon="@drawable/ic_social"
+            android:title="@string/social"></item>
+        <item
+            android:id="@+id/menu_promotion"
+            android:icon="@drawable/ic_promotion"
+            android:title="@string/promotion"></item>
     </item>
     <item android:title="@string/branches">
         <menu>
