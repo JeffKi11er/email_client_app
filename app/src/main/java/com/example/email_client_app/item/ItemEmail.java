@@ -8,7 +8,7 @@ public class ItemEmail {
     private String subject;
     private String description;
 
-    public ItemEmail(String name, String date, int imgProfile, boolean starred, String subject,String description) {
+    public ItemEmail(String name, String date, int imgProfile, boolean starred, String subject, String description) {
         this.name = name;
         this.date = date;
         this.imgProfile = imgProfile;

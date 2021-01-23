@@ -110,13 +110,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
-                    <ImageView
+                    <ToggleButton
+                        android:id="@+id/img_star"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/ic_star"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="15dp"
-                        android:id="@+id/img_star_social"/>
+                        android:background="@drawable/star_toggle"
+                        android:textOff=""
+                        android:textOn="" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>

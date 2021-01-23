@@ -10,6 +10,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,7 +54,6 @@ import static android.graphics.Typeface.BOLD;
         }
         holder.tvSubject.setText(emails.get(position).getSubject());
         holder.tvDescription.setText(emails.get(position).getDescription());
-        holder.tvTags.setText("Tags");
         holder.tvDateSent.setText(emails.get(position).getDate());
         Picasso.with(context).load(emails.get(position).getImgProfile()).into(holder.imgProfile);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -89,8 +89,7 @@ import static android.graphics.Typeface.BOLD;
         private TextView tvDateSent;
         private TextView tvSubject;
         private TextView tvDescription;
-        private ImageView imgStar;
-        private TextView tvTags;
+        private ToggleButton imgStar;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
@@ -100,7 +99,6 @@ import static android.graphics.Typeface.BOLD;
             tvSubject = itemView.findViewById(R.id.tv_subject_sent);
             tvDescription = itemView.findViewById(R.id.tv_description);
             imgStar = itemView.findViewById(R.id.img_star);
-            tvTags = itemView.findViewById(R.id.tv_tags);
         }
     }
 }

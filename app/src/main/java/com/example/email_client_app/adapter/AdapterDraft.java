@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,7 +53,7 @@ public class AdapterDraft extends RecyclerView.Adapter<AdapterDraft.DraftHolder>
         private TextView tvDateSent;
         private TextView tvSubject;
         private TextView tvDescription;
-        private ImageView imgStar;
+        private ToggleButton imgStarDraft;
         private TextView tvTags;
 
         public DraftHolder(@NonNull View itemView) {
@@ -62,7 +63,7 @@ public class AdapterDraft extends RecyclerView.Adapter<AdapterDraft.DraftHolder>
             tvDateSent = itemView.findViewById(R.id.tv_time_draft);
             tvSubject = itemView.findViewById(R.id.tv_subject_draft);
             tvDescription = itemView.findViewById(R.id.tv_draft_description);
-            imgStar = itemView.findViewById(R.id.img_star_draft);
+            imgStarDraft = itemView.findViewById(R.id.img_star_draft);
             tvTags = itemView.findViewById(R.id.tv_draft_tags);
 
         }

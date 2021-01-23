@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,9 +58,9 @@ public class SentAdapter extends RecyclerView.Adapter<SentAdapter.MyHolder> {
         private TextView tvDateSent;
         private TextView tvSubject;
         private TextView tvDescription;
-        private ImageView imgStar;
+        private ToggleButton starToggleSent;
         private TextView tvTags;
-        private TextView numofmail;
+        private TextView numOfMail;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
@@ -68,9 +69,9 @@ public class SentAdapter extends RecyclerView.Adapter<SentAdapter.MyHolder> {
             tvDateSent = itemView.findViewById(R.id.tv_time_received_origin);
             tvSubject = itemView.findViewById(R.id.tv_subject_sent_origin);
             tvDescription = itemView.findViewById(R.id.tv_description_origin);
-            imgStar = itemView.findViewById(R.id.img_star_origin);
+            starToggleSent = itemView.findViewById(R.id.star_toggle_sent);
             tvTags = itemView.findViewById(R.id.tv_tags_origin);
-            numofmail = itemView.findViewById(R.id.num_mail_sent);
+            numOfMail = itemView.findViewById(R.id.num_mail_sent);
         }
     }
 }

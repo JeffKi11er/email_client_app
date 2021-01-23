@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,7 +58,7 @@ public class ImportantAdapter extends RecyclerView.Adapter<ImportantAdapter.MyHo
         private TextView tvDescription;
         private ImageView imgStar;
         private TextView tvTags;
-        private ImageView imgimp;
+        private ToggleButton starToggleImportant;
         
         public MyHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,9 +67,8 @@ public class ImportantAdapter extends RecyclerView.Adapter<ImportantAdapter.MyHo
             tvDateSent = itemView.findViewById(R.id.tv_time_received_important);
             tvSubject = itemView.findViewById(R.id.tv_subject_important);
             tvDescription = itemView.findViewById(R.id.tv_description_important);
-            imgStar = itemView.findViewById(R.id.img_star_important);
             tvTags = itemView.findViewById(R.id.tv_tags_important);
-            imgimp = itemView.findViewById(R.id.imgimp);
+            starToggleImportant = itemView.findViewById(R.id.star_toggle_important);
         }
     }
 }
