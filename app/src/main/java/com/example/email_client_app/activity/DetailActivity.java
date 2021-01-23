@@ -173,9 +173,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.img_stored_detail:
                 break;
             case R.id.img_bin_detail:
-                BrainResource.removeEmail(new ItemEmail(name,date,imgProfilePicture,starred,subject,description));
-                startActivity(new Intent(this, MainActivity.class));
-                finish();
                 break;
             case R.id.img_inb_detail:
                 startActivity(new Intent(this, MainActivity.class));
