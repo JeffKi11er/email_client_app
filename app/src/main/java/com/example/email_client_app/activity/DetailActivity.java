@@ -9,9 +9,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.email_client_app.MainActivity;
 import com.example.email_client_app.R;
+import com.example.email_client_app.helper.BrainResource;
+import com.example.email_client_app.item.ItemEmail;
 
 import java.util.ArrayList;
 
@@ -33,9 +36,36 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private TextView tvDescription;
     private SharedPreferences preferencesEmail;
 
+    private ImageView imgArrowdowndetail;
+    private ImageView imgReturnloop;
+    private ImageView imgToolpopup;
+    private ImageView imgDetailstar;
+    private ImageView imgStoreddetail;
+    private ImageView imgBindetail;
+    private ImageView imgInbdetail;
+    private ImageView imgMoredetail;
+    private TextView tvReply;
+    private TextView tvForward;
+    private TextView tvReplyall;
+
+    private String name;
+    private String date;
+    private int imgProfilePicture;
+    private boolean starred;
+    private String subject;
+    private String description;
+
     @Override
     protected void onStart() {
         super.onStart();
+        Intent intent = getIntent();
+        name = intent.getStringExtra("name");
+        date = intent.getStringExtra("date");
+        imgProfilePicture = intent.getIntExtra("imgProfile",0);
+        starred = intent.getBooleanExtra("starred",false);
+        subject = intent.getStringExtra("subject");
+        description = intent.getStringExtra("description");
+        Toast.makeText(this,name+date+imgProfilePicture+starred+subject+description,Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -71,7 +101,35 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         imgReturnLoop = findViewById(R.id.img_return_loop);
         imgMoreChoose = findViewById(R.id.img_tool_pop_up);
         tvDescription = findViewById(R.id.tv_detail_description);
+
+        tvReply = findViewById(R.id.tv_reply);
+        tvReplyall = findViewById(R.id.tv_reply_all);
+        tvForward = findViewById(R.id.tv_forward);
+        imgArrowdowndetail = findViewById(R.id.img_arrow_down_detail);
+        imgReturnLoop = findViewById(R.id.img_return_loop);
+        imgToolpopup = findViewById(R.id.img_tool_pop_up);
+        imgDetailstar = findViewById(R.id.img_detail_star);
+        imgStoreddetail= findViewById(R.id.img_stored_detail);
+        imgBindetail = findViewById(R.id.img_bin_detail);
+        imgInbdetail = findViewById(R.id.img_inb_detail);
+        imgMoredetail = findViewById(R.id.img_more_detail);
+
+
+
+
         imgArrowBack.setOnClickListener(this);
+        tvReply.setOnClickListener(this);
+        tvReplyall.setOnClickListener(this);
+        tvForward.setOnClickListener(this);
+        imgArrowdowndetail.setOnClickListener(this);
+        imgReturnLoop.setOnClickListener(this);
+        imgDetailstar.setOnClickListener(this);
+        imgDetailstar.setOnClickListener(this);
+        imgStoreddetail.setOnClickListener(this);
+        imgBindetail.setOnClickListener(this);
+        imgInbdetail.setOnClickListener(this);
+        imgMoredetail.setOnClickListener(this);
+
         tvUser.setText(user);
 //        if (getMessages!=null && getMessages.size()>0){
 //            tvReceived.setText(getMessages.get(0));
@@ -96,6 +154,35 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.img_arrow_back_detail:
                 startActivity(new Intent(this, MainActivity.class));
                 finish();
+                break;
+            case R.id.tv_reply:
+
+                break;
+            case R.id.tv_reply_all:
+                break;
+            case R.id.tv_forward:
+                break;
+            case R.id.img_arrow_down_detail:
+                break;
+            case R.id.img_return_loop:
+                break;
+            case R.id.img_tool_pop_up:
+                break;
+            case R.id.img_detail_star:
+                break;
+            case R.id.img_stored_detail:
+                break;
+            case R.id.img_bin_detail:
+                BrainResource.removeEmail(new ItemEmail(name,date,imgProfilePicture,starred,subject,description));
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+                break;
+            case R.id.img_inb_detail:
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+                ///SharedPreference to bold the text style
+                break;
+            case R.id.img_more_detail:
                 break;
         }
     }
