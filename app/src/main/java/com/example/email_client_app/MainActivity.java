@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void filter(String toString) {
         ArrayList<ItemEmail>emails = new ArrayList<>();
         for (ItemEmail email: BrainResource.getEmails()){
-            if (email.getSubject().toLowerCase().contains(toString.toLowerCase())){
+            if (email.getName().toLowerCase().contains(toString.toLowerCase())){
                 emails.add(email);
             }
         }

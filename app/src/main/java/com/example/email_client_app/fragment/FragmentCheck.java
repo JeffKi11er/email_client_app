@@ -23,6 +23,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.email_client_app.R;
 import com.example.email_client_app.activity.DetailActivity;
@@ -59,6 +60,7 @@ public class FragmentCheck extends Fragment implements ItemListener{
     private LinearLayout lnSocial;
     private ArrayList<String>messages = new ArrayList<>();
     private ProgressBar progressBar;
+    private SwipeRefreshLayout swipeRefresh;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -83,6 +85,7 @@ public class FragmentCheck extends Fragment implements ItemListener{
         lnPromotion = getActivity().findViewById(R.id.ln_promotions);
         lnSocial = getActivity().findViewById(R.id.ln_social);
         progressBar = (ProgressBar)getActivity().findViewById(R.id.spin_kit);
+        swipeRefresh = getActivity().findViewById(R.id.swipe_to_refresh);
         Sprite doubleBounce = new FoldingCube();
         progressBar.setIndeterminateDrawable(doubleBounce);
         progressBar.setVisibility(View.GONE);
@@ -96,6 +99,13 @@ public class FragmentCheck extends Fragment implements ItemListener{
             lnSocial.setVisibility(View.VISIBLE);
         }
         tvTitle.setText(title);
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Toast.makeText(getContext(),"Nothing to show",Toast.LENGTH_LONG).show();
+                swipeRefresh.setRefreshing(false);
+            }
+        });
         AdapterItem adapterItem = new AdapterItem(getContext(), emails);
         rclEmails.setAdapter(adapterItem);
         adapterItem.setListener(this);

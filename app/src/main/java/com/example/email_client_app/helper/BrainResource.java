@@ -19,15 +19,15 @@ public class BrainResource {
                 "đã bảo là không có tiêu đề"));
         itemEmails.add(new ItemEmail("Nguyen An Thiet","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        itemEmails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        itemEmails.add(new ItemEmail("Tran Minh Hieu","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        itemEmails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        itemEmails.add(new ItemEmail("Nguyen Thanh Vinh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        itemEmails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        itemEmails.add(new ItemEmail("Nguyen Nhu Hieu","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        itemEmails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        itemEmails.add(new ItemEmail("Dang Nhu Quynh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
-        itemEmails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+        itemEmails.add(new ItemEmail("Nguyen Bich Mai","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
                 "đã bảo là không có tiêu đề"));
         return itemEmails;
     }

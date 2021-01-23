@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.email_client_app.R;
 import com.example.email_client_app.adapter.AdapterItem;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 public class FragmentAllMail extends Fragment {
     private ArrayList<ItemEmail>allMails = new ArrayList<>();
     private RecyclerView rclAllMails;
+    private SwipeRefreshLayout swipeRefreshAll;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -33,6 +36,14 @@ public class FragmentAllMail extends Fragment {
         super.onActivityCreated(savedInstanceState);
         allMails = BrainResource.getEmails();
         rclAllMails = getActivity().findViewById(R.id.all_mail_recycler_view);
+        swipeRefreshAll = getActivity().findViewById(R.id.swipe_to_all);
         rclAllMails.setAdapter(new AllMailAdapter(getContext(),allMails));
+        swipeRefreshAll.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Toast.makeText(getContext(),"Nothing to show",Toast.LENGTH_LONG).show();
+                swipeRefreshAll.setRefreshing(false);
+            }
+        });
     }
 }
