@@ -28,6 +28,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.email_client_app.R;
 import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterItem;
+import com.example.email_client_app.helper.AppConstants;
 import com.example.email_client_app.helper.BrainResource;
 import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
@@ -45,6 +46,11 @@ import javax.mail.Store;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
+import static android.app.Activity.RESULT_OK;
+import static com.example.email_client_app.helper.AppConstants.REQUEST_CODE;
+import static com.example.email_client_app.helper.AppConstants.RESULT_DELETE;
+import static com.example.email_client_app.helper.AppConstants.RESULT_UNSEEN;
+
 public class FragmentCheck extends Fragment implements ItemListener{
     private RecyclerView rclEmails;
     private String userEmail;
@@ -61,6 +67,7 @@ public class FragmentCheck extends Fragment implements ItemListener{
     private ArrayList<String>messages = new ArrayList<>();
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefresh;
+    private ItemEmail emailTransfer;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -166,18 +173,15 @@ public class FragmentCheck extends Fragment implements ItemListener{
     };
     @Override
     public void onClick(int position) {
-
         Intent intent = new Intent(getActivity(), DetailActivity.class);
-        ItemEmail email = emails.get(position);
-        intent.putExtra("name",email.getName());
-        intent.putExtra("date",email.getDate());
-        intent.putExtra("imgProfile",email.getImgProfile());
-        intent.putExtra("starred",email.isStarred());
-        intent.putExtra("subject",email.getSubject());
-        intent.putExtra("description",email.getDescription());
-
-
-        startActivity(intent);
+        emailTransfer = emails.get(position);
+        intent.putExtra("name",emailTransfer.getName());
+        intent.putExtra("date",emailTransfer.getDate());
+        intent.putExtra("imgProfile",emailTransfer.getImgProfile());
+        intent.putExtra("starred",emailTransfer.isStarred());
+        intent.putExtra("subject",emailTransfer.getSubject());
+        intent.putExtra("description",emailTransfer.getDescription());
+        startActivityForResult(intent, REQUEST_CODE);
     }
 
     @Override
@@ -219,6 +223,25 @@ public class FragmentCheck extends Fragment implements ItemListener{
                 mex.printStackTrace();
             }
             return null;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==REQUEST_CODE){
+            if (resultCode == RESULT_DELETE){
+                emails.remove(emailTransfer);
+                AdapterItem adapter = new AdapterItem(getContext(),emails);
+                rclEmails.setAdapter(adapter);
+                adapter.setListener(this);
+            }
+            if (resultCode == RESULT_UNSEEN){
+                emailTransfer.setStarred(true);
+                AdapterItem adapter = new AdapterItem(getContext(),emails);
+                rclEmails.setAdapter(adapter);
+                adapter.setListener(this);
+            }
         }
     }
 }

@@ -64,4 +64,5 @@ public class ItemEmail {
     public void setSubject(String subject) {
         this.subject = subject;
     }
+
 }

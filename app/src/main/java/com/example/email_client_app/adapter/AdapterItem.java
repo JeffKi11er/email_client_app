@@ -1,6 +1,8 @@
  package com.example.email_client_app.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,8 @@ import com.squareup.picasso.Picasso;
 import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.graphics.Typeface.BOLD;
 
  public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyHolder>{
     private Context context;
@@ -43,6 +47,10 @@ import java.util.List;
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.tvNameSent.setText(emails.get(position).getName());
+        if (emails.get(position).isStarred()){
+            holder.tvNameSent.setTypeface(holder.tvNameSent.getTypeface(), Typeface.BOLD);
+            holder.tvNameSent.setTextColor(Color.parseColor("#212121"));
+        }
         holder.tvSubject.setText(emails.get(position).getSubject());
         holder.tvDescription.setText(emails.get(position).getDescription());
         holder.tvTags.setText("Tags");

@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imgHeader = viewHeader.findViewById(R.id.profile_image);
         tvHeaderEmail = viewHeader.findViewById(R.id.tv_mail_header);
         rlvSearch.setVisibility(View.GONE);
+        imgStatus.setImageResource(R.drawable.ic_search);
         SharedPreferences sharedPreferencesEmail = this.getSharedPreferences("user_email", Context.MODE_PRIVATE);
         SharedPreferences sharedPreferencesPasswords = this.getSharedPreferences("user_passwords", Context.MODE_PRIVATE);
         userEmail = sharedPreferencesEmail.getString("user_email", "");

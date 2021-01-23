@@ -18,6 +18,9 @@ import com.example.email_client_app.item.ItemEmail;
 
 import java.util.ArrayList;
 
+import static com.example.email_client_app.helper.AppConstants.RESULT_DELETE;
+import static com.example.email_client_app.helper.AppConstants.RESULT_UNSEEN;
+
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView tvSubject;
     private ImageView imgStored;
@@ -173,11 +176,14 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.img_stored_detail:
                 break;
             case R.id.img_bin_detail:
+                Intent intent = new Intent(this, MainActivity.class);
+                setResult(RESULT_DELETE,intent);
+                finish();
                 break;
             case R.id.img_inb_detail:
-                startActivity(new Intent(this, MainActivity.class));
+                Intent intent1 = new Intent(this, MainActivity.class);
+                setResult(RESULT_UNSEEN,intent1);
                 finish();
-                ///SharedPreference to bold the text style
                 break;
             case R.id.img_more_detail:
                 break;
