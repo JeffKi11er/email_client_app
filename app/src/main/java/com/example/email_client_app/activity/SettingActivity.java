@@ -18,6 +18,7 @@ import com.example.email_client_app.helper.LoginDialogListener;
 
 public class SettingActivity extends AppCompatActivity implements View.OnClickListener, LoginDialogListener {
     private TextView tvLogOut;
+    private TextView tvAddAccount;
     private ImageView imgReturn;
     private TextView tvEmailUser;
     private TextView tvPasswordsUser;
@@ -32,6 +33,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void init() {
+        tvAddAccount = findViewById(R.id.tv_add_account);
         tvLogOut = findViewById(R.id.tv_log_out);
         imgReturn = findViewById(R.id.img_return);
         tvEmailUser = findViewById(R.id.tv_email_login);
@@ -63,6 +65,10 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 Intent intent = new Intent(SettingActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
+                break;
+            case R.id.tv_add_account:
+                AddacountActivity addacountActivity = new AddacountActivity();
+
                 break;
         }
     }
