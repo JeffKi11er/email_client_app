@@ -98,7 +98,7 @@
                                         android:layout_marginLeft="5dp"
                                         android:textSize="15sp"
                                         android:text="@string/default_time"
-                                        android:layout_gravity="center"
+                                        android:layout_gravity="center_vertical"
                                         android:id="@+id/tv_time_received_important"/>
                                 </LinearLayout>
                             </LinearLayout>
