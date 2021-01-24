@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="30dp"
+                android:layout_height="match_parent">
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                tools:srcCompat="@drawable/ic_email"></ImageView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="25dp"
+                android:layout_height="match_parent">
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:text="Set up email"
+                android:textSize="36dp">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_gravity="center">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center_vertical">
+
+        <RelativeLayout
+            android:layout_width="25dp"
+            android:layout_height="match_parent"></RelativeLayout>
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            tools:srcCompat="@drawable/icon_google"></ImageView>
+
+        <RelativeLayout
+            android:layout_width="25dp"
+            android:layout_height="match_parent"></RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Google"
+            android:textSize="25dp"
+            ></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_gravity="center">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center_vertical">
+
+        <RelativeLayout
+            android:layout_width="25dp"
+            android:layout_height="match_parent"></RelativeLayout>
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            tools:srcCompat="@drawable/icon_microsoft_outlook"></ImageView>
+
+        <RelativeLayout
+            android:layout_width="25dp"
+            android:layout_height="match_parent"></RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Outlook, Hotmail and Live"
+            android:textSize="25dp"
+            ></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_gravity="center">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center_vertical">
+
+        <RelativeLayout
+            android:layout_width="25dp"
+            android:layout_height="match_parent"></RelativeLayout>
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            tools:srcCompat="@drawable/ic_email_purple"></ImageView>
+
+        <RelativeLayout
+            android:layout_width="25dp"
+            android:layout_height="match_parent"></RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Yahoo"
+            android:textSize="25dp"
+            ></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_gravity="center">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center_vertical">
+
+        <RelativeLayout
+            android:layout_width="25dp"
+            android:layout_height="match_parent"></RelativeLayout>
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            tools:srcCompat="@drawable/icon_microsoft_exchange"></ImageView>
+
+        <RelativeLayout
+            android:layout_width="25dp"
+            android:layout_height="match_parent"></RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Exchange and Office 365"
+            android:textSize="25dp"
+            ></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_gravity="center">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center_vertical">
+
+        <RelativeLayout
+            android:layout_width="25dp"
+            android:layout_height="match_parent"></RelativeLayout>
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            tools:srcCompat="@drawable/ic_email_white"></ImageView>
+
+        <RelativeLayout
+            android:layout_width="25dp"
+            android:layout_height="match_parent"></RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Other"
+            android:textSize="25dp"
+            ></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_gravity="center">
+    </LinearLayout>
+</LinearLayout>
