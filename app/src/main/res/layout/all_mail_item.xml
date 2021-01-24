@@ -68,6 +68,9 @@
                         android:orientation="horizontal"
                         android:gravity="center">
                         <TextView
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:maxLines="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="15sp"
@@ -137,29 +140,39 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/attached_file_allmail"
-                            android:layout_width="175dp"
+                            android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1.5"
-                            android:background="@drawable/rounded_corner_2"
-                            android:orientation="horizontal"
-                            android:paddingLeft="14dp"
-                            android:weightSum="4">
+                            android:weightSum="7">
 
-                            <ImageView
+                            <LinearLayout
+                                android:id="@+id/attached_file_allmail"
                                 android:layout_width="0dp"
-                                android:layout_height="24dp"
-                                android:layout_gravity="center"
-                                android:layout_weight="2"
-                                android:src="@drawable/ic_pdf" />
+                                android:layout_weight="6"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/rounded_corner_2"
+                                android:orientation="horizontal"
+                                android:paddingLeft="14dp"
+                                android:weightSum="4">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="2"
-                                android:gravity="center"
-                                android:text="[889 USTH] 1004..."/>
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="24dp"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="2"
+                                    android:src="@drawable/ic_pdf" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="2"
+                                    android:gravity="center"
+                                    android:text="[889 USTH] 1004..."
+                                    android:singleLine="true"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"/>
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
 

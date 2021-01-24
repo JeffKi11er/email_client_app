@@ -73,7 +73,10 @@
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
                         android:text="@string/default_time"
-                        android:id="@+id/tv_time_trash"/>
+                        android:id="@+id/tv_time_trash"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:maxLines="1"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
