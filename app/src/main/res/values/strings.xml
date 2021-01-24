@@ -12,6 +12,7 @@
     <string name="spams">Spam</string>
     <string name="search_result">RESULTS IN EMAILS</string>
     <string name="bin">Trash</string>
+    <string name="available_add">Available add-ons:</string>
     <string name="primary">Primary</string>
     <string name="social">Social</string>
     <string name="reply">Reply</string>
