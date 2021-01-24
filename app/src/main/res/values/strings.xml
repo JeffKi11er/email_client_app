@@ -10,6 +10,10 @@
     <string name="plan">Scheduled</string>
     <string name="all">All mail</string>
     <string name="spams">Spam</string>
+    <string name="move_to">Move to</string>
+    <string name="timenavi">TimeNavi</string>
+    <string name="add_error">Add-on error</string>
+    <string name="add_time_content">This add-on is designed to help you when composing messages and has no content to display right now</string>
     <string name="search_result">RESULTS IN EMAILS</string>
     <string name="bin">Trash</string>
     <string name="available_add">Available add-ons:</string>
@@ -23,6 +27,7 @@
     <string name="promotion">Promotions</string>
     <string name="gg_tools">GOOGLE APPS</string>
     <string name="calendar">Calendar</string>
+    <string name="cancel">Cancel</string>
     <string name="contact">Contacts</string>
     <string name="setting">Settings</string>
     <string name="help">Help and feedback</string>

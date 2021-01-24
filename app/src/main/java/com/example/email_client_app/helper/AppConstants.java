@@ -4,4 +4,5 @@ public interface AppConstants {
     int REQUEST_CODE = 200;
     int RESULT_DELETE = 201;
     int RESULT_UNSEEN = 202;
+    int RESULT_STORED = 203;
 }
