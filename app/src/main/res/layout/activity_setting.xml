@@ -30,7 +30,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/setting_activity"
+                    android:text="@string/setting"
                     android:textSize="19sp"
                     android:textColor="#000"
                     />
@@ -54,6 +54,18 @@
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="@string/setting_activity"
+            android:layout_marginLeft="15dp"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -105,5 +117,17 @@
             android:text="@string/sign_out"
             android:layout_marginLeft="15dp"
             android:id="@+id/tv_log_out"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="@string/addaccount"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/tv_add_account"/>
     </LinearLayout>
 </LinearLayout>
