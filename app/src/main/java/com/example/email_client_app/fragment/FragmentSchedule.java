@@ -23,7 +23,6 @@ import com.example.email_client_app.item.ItemSchedule;
 import java.util.ArrayList;
 
 public class FragmentSchedule extends Fragment {
-    private RecyclerView schedule_recycler;
     private ArrayList<ItemSchedule> schedule = new ArrayList<>();
     private RecyclerView rclSchedule;
     private SwipeRefreshLayout swipeRefreshSchedule;
@@ -39,8 +38,8 @@ public class FragmentSchedule extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         schedule = BrainResource.getScheduleEmails();
-        schedule_recycler = getActivity().findViewById(R.id.schedule_recycler);
-        schedule_recycler.setAdapter(new AdapterSchedule(getContext(), schedule));
+        rclSchedule = getActivity().findViewById(R.id.schedule_recycler);
+        rclSchedule.setAdapter(new AdapterSchedule(getContext(), schedule));
         swipeRefreshSchedule = getActivity().findViewById(R.id.swipe_to_schedule);
         rclSchedule.setAdapter(new AdapterSchedule(getContext(),schedule));
         swipeRefreshSchedule.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
