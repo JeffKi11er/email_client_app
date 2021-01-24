@@ -11,175 +11,204 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:weightSum="7"
         android:padding="14dp">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_draft"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginRight="3dp"
-            android:layout_gravity="top"
-            android:src="@drawable/name" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_draft"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="top"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:weightSum="5"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="match_parent"
-                        ><TextView
-                        android:id="@+id/tv_person_draft_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="10dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:text="me, Ha"
-                        android:textSize="17sp" /></LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2">
-                        <TextView
-                            android:id="@+id/tv_draft_number"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="5dp"
-                            android:text="3, "
-                            android:textSize="12sp" />
-                        <TextView
-                            android:id="@+id/tv_person_draft"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:text="@string/draft"
-                            android:textColor="@color/red_hard"
-                            android:textSize="17sp" />
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical">
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/ic_link"
-                        android:layout_margin="3dp"
-                        android:id="@+id/img_draft_insert"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:text="@string/default_time"
-                        android:id="@+id/tv_time_draft"/>
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="2">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:ellipsize="end"
-                        android:textSize="15sp"
-                        android:id="@+id/tv_subject_draft"
-                        android:text="Subject"
-                        android:layout_marginLeft="10dp"
-                        android:textStyle="bold"
-                        android:maxLines="1"
-                        />
-                </LinearLayout>
+                android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:orientation="horizontal"
                     android:weightSum="5"
-                    android:gravity="center_vertical">
-                    <TextView
+                    >
+                    <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
                         android:layout_weight="3"
-                        android:singleLine="true"
-                        android:ellipsize="end"
-                        android:layout_marginLeft="10dp"
-                        android:maxLines="1"
-                        android:textSize="15sp"
-                        android:id="@+id/tv_draft_description"
-                        android:text="Description"
-                        />
+                        android:gravity="center_vertical"
+                        android:layout_height="match_parent"
+                        >
+                        <TextView
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:text="@string/user"
+                            android:id="@+id/tv_person_draft_name"
+                            android:maxLines="1"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:text="@string/default_time"
+                            android:id="@+id/tv_time_draft"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="4"
+                    android:weightSum="5"
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:weightSum="2"
-                        android:orientation="horizontal"
-                        >
+                        android:layout_weight="3"
+                        android:weightSum="4"
+                        android:orientation="vertical">
+
                         <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2.5"
                             android:orientation="vertical"
-                            android:background="@drawable/rounded_corner"
-                            >
+                            android:weightSum="2">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:layout_marginTop="3dp"
+                                android:gravity="center_vertical"
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_subject_draft"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:text="Subject"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:singleLine="true"
+                                    android:ellipsize="end"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:maxLines="1"
+                                    android:textSize="14sp"
+                                    android:id="@+id/tv_draft_description"
+                                    android:text="Description"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/attached_file_allmail"
+                            android:layout_width="175dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1.5"
+                            android:background="@drawable/rounded_corner_2"
+                            android:orientation="horizontal"
+                            android:paddingLeft="14dp"
+                            android:weightSum="4">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="2"
+                                android:src="@drawable/ic_pdf" />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15sp"
-                                android:text="@string/inbox"
                                 android:layout_gravity="center"
-                                android:id="@+id/tv_draft_tags"/>
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:text="[889 USTH] 1004..."/>
                         </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+
                         <LinearLayout
                             android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:weightSum="2"
+                            android:orientation="horizontal"
+                            android:gravity="center"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical"
                             >
-                            <ToggleButton
-                                android:id="@+id/img_star_draft"
-                                android:layout_gravity="center"
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
-                                android:background="@drawable/star_toggle"
-                                android:textOff=""
-                                android:textOn="" />
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:background="@drawable/rounded_corner"
+                                >
+                                <TextView
+                                    android:textSize="15sp"
+                                    android:text="Inbox"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/tv_draft_tags"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                >
+                                <ToggleButton
+                                    android:id="@+id/img_star_draft"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:background="@drawable/star_toggle"
+                                    android:textOff=""
+                                    android:textOn="" />
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
