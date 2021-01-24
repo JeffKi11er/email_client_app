@@ -233,6 +233,44 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.pop_mute:
                 return true;
             case R.id.pop_snooze:
+                Dialog dialog1 = new Dialog(this);
+                dialog1.setContentView(R.layout.dialog_snoozed);
+                ImageView imgToday = dialog1.findViewById(R.id.img_today);
+                ImageView imgTomorrow = dialog1.findViewById(R.id.img_tomorrow);
+                ImageView imgWeek = dialog1.findViewById(R.id.img_next_week);
+                ImageView imgWeekend = dialog1.findViewById(R.id.img_weekend);
+                ImageView imgSelectDate = dialog1.findViewById(R.id.img_calendar_set);
+                imgToday.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog1.dismiss();
+                    }
+                });
+                imgTomorrow.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog1.dismiss();
+                    }
+                });
+                imgWeek.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog1.dismiss();
+                    }
+                });
+                imgWeekend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog1.dismiss();
+                    }
+                });
+                imgSelectDate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog1.dismiss();
+                    }
+                });
+                dialog1.show();
                 return true;
             case R.id.pop_report:
                 return true;
