@@ -65,6 +65,9 @@
                     android:orientation="horizontal"
                     android:gravity="center">
                     <TextView
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
@@ -96,13 +99,14 @@
                             android:textColor="#000"
                             android:singleLine="true"
                             android:ellipsize="end"
+                            android:maxLines="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
                             android:id="@+id/tv_subject_sent"
                             android:text="@string/subject"
                             android:textStyle="bold"
-                            android:maxLines="1"
+
                             />
                     </LinearLayout>
                     <LinearLayout
