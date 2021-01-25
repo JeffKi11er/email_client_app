@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/pop_move_to"
+        android:title="Move to"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/pop_snooze"
+        android:title="Snooze"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/pop_change_labels"
+        android:title="Change labels"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/pop_mark_not_important"
+        android:title="Mark as not important"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/pop_mute"
+        android:title="Mute"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/pop_print"
+        android:title="Print"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/pop_report"
+        android:title="Report spam"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/pop_add_tasks"
+        android:title="Add to Tasks"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/pop_help"
+        android:title="Help and feedback"
+        app:showAsAction="withText"/>
+</menu>
