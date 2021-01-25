@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.email_client_app.R;
@@ -83,7 +84,9 @@ import static android.graphics.Typeface.BOLD;
         emails = emailFilter;
         notifyDataSetChanged();
     }
-    public class MyHolder extends RecyclerView.ViewHolder {
+
+
+     public class MyHolder extends RecyclerView.ViewHolder {
         private ImageView imgProfile;
         private TextView tvNameSent;
         private TextView tvDateSent;

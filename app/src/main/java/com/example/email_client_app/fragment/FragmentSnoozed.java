@@ -1,6 +1,7 @@
 package com.example.email_client_app.fragment;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,12 +19,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterItem;
 import com.example.email_client_app.adapter.AdapterSnoozed;
 import com.example.email_client_app.adapter.AdapterStarred;
 import com.example.email_client_app.adapter.AdapterSnoozed;
 import com.example.email_client_app.adapter.SentAdapter;
 import com.example.email_client_app.helper.BrainResource;
+import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 import com.example.email_client_app.item.ItemSentEmail;
 
@@ -31,10 +34,13 @@ import java.util.ArrayList;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
-public class FragmentSnoozed extends Fragment {
+import static com.example.email_client_app.helper.AppConstants.REQUEST_CODE;
+
+public class FragmentSnoozed extends Fragment implements ItemListener {
     private ArrayList<ItemEmail>emails = new ArrayList<>();
     private RecyclerView rclsnoozed;
     private SwipeRefreshLayout swipeRefreshsnoozed;
+    private ItemEmail emailTransfer;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,7 +53,9 @@ public class FragmentSnoozed extends Fragment {
         super.onActivityCreated(savedInstanceState);
         emails  = BrainResource.getEmails();
         rclsnoozed = getActivity().findViewById(R.id.rcl_snoozed);
-        rclsnoozed.setAdapter(new AdapterSnoozed(getContext(),emails));
+        AdapterSnoozed adapterSnoozed = new AdapterSnoozed(getContext(),emails);
+        rclsnoozed.setAdapter(adapterSnoozed);
+        adapterSnoozed.setListener(this);
         swipeRefreshsnoozed = getActivity().findViewById(R.id.swipe_to_snoozed);
         swipeRefreshsnoozed.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -74,7 +82,9 @@ public class FragmentSnoozed extends Fragment {
 //                    progressBar.setVisibility(View.VISIBLE);
                     itemEmail = emails.get(position);
                     emails.remove(position);
-                    rclsnoozed.setAdapter(new AdapterItem(getContext(), emails));
+                    AdapterSnoozed adapterDraft = new AdapterSnoozed(getContext(), emails);
+                    rclsnoozed.setAdapter(adapterDraft);
+
                     AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
 // ...Irrelevant code for customizing the buttons and title
                     LayoutInflater inflater = getLayoutInflater();
@@ -109,4 +119,22 @@ public class FragmentSnoozed extends Fragment {
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
     };
+
+    @Override
+    public void onClick(int position) {
+        Intent intent = new Intent(getActivity(), DetailActivity.class);
+        emailTransfer = emails.get(position);
+        intent.putExtra("name",emailTransfer.getName());
+        intent.putExtra("date",emailTransfer.getDate());
+        intent.putExtra("imgProfile",emailTransfer.getImgProfile());
+        intent.putExtra("starred",emailTransfer.isStarred());
+        intent.putExtra("subject",emailTransfer.getSubject());
+        intent.putExtra("description",emailTransfer.getDescription());
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    @Override
+    public void onLongClick(int position) {
+
+    }
 }

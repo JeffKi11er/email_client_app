@@ -21,6 +21,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.email_client_app.R;
 import com.example.email_client_app.activity.AdsActivity;
+import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterItem;
 import com.example.email_client_app.adapter.AdapterSocial;
 import com.example.email_client_app.adapter.AdapterSocial;
@@ -33,12 +34,15 @@ import java.util.ArrayList;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
+import static com.example.email_client_app.helper.AppConstants.REQUEST_CODE;
+
 public class FragmentSocialPromotion extends Fragment implements ItemListener {
     private ArrayList<ItemSocial>socials = new ArrayList<>();
     private String title;
     private TextView tvTitle;
     private RecyclerView rclsocial;
     private SwipeRefreshLayout swipeRefreshsocial;
+    private ItemSocial emailTransfer;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -68,6 +72,7 @@ public class FragmentSocialPromotion extends Fragment implements ItemListener {
                 swipeRefreshsocial.setRefreshing(false);
             }
         });
+        adapterSocial.setListener(this);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(rclsocial);
     }
@@ -123,8 +128,12 @@ public class FragmentSocialPromotion extends Fragment implements ItemListener {
     };
     @Override
     public void onClick(int position) {
-        startActivity(new Intent(getActivity(), AdsActivity.class));
-        getActivity().finish();
+        Intent intent = new Intent(getActivity(), DetailActivity.class);
+        emailTransfer = socials.get(position);
+        intent.putExtra("errorSpam",emailTransfer.isErrorSpam());
+        intent.putExtra("imgMedia",emailTransfer.getImgMedia());
+
+        startActivityForResult(intent, REQUEST_CODE);
     }
 
     @Override

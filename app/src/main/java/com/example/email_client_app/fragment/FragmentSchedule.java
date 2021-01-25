@@ -1,6 +1,7 @@
 package com.example.email_client_app.fragment;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,11 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterItem;
 import com.example.email_client_app.adapter.AdapterSchedule;
 import com.example.email_client_app.adapter.AdapterSchedule;
 import com.example.email_client_app.adapter.AdapterSchedule;
 import com.example.email_client_app.helper.BrainResource;
+import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 import com.example.email_client_app.item.ItemSchedule;
 
@@ -30,11 +33,13 @@ import java.util.ArrayList;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
-public class FragmentSchedule extends Fragment {
+import static com.example.email_client_app.helper.AppConstants.REQUEST_CODE;
+
+public class FragmentSchedule extends Fragment implements ItemListener {
     private ArrayList<ItemSchedule> schedule = new ArrayList<>();
     private RecyclerView rclSchedule;
     private SwipeRefreshLayout swipeRefreshSchedule;
-
+    private ItemSchedule emailTransfer;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,8 +52,10 @@ public class FragmentSchedule extends Fragment {
         super.onActivityCreated(savedInstanceState);
         schedule = BrainResource.getScheduleEmails();
         rclSchedule = getActivity().findViewById(R.id.schedule_recycler);
-        rclSchedule.setAdapter(new AdapterSchedule(getContext(), schedule));
+
         swipeRefreshSchedule = getActivity().findViewById(R.id.swipe_to_schedule);
+
+
         rclSchedule.setAdapter(new AdapterSchedule(getContext(),schedule));
         swipeRefreshSchedule.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -57,6 +64,9 @@ public class FragmentSchedule extends Fragment {
                 swipeRefreshSchedule.setRefreshing(false);
             }
         });
+        AdapterSchedule adapterSchedule = new AdapterSchedule(getContext(), schedule);
+        rclSchedule.setAdapter(adapterSchedule);
+        adapterSchedule.setListener(this);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(rclSchedule);
     }
@@ -75,7 +85,9 @@ public class FragmentSchedule extends Fragment {
 //                    progressBar.setVisibility(View.VISIBLE);
                     itemEmail = schedule.get(position);
                     schedule.remove(position);
-                    rclSchedule.setAdapter(new AdapterSchedule(getContext(), schedule));
+                    AdapterSchedule adapterSchedule = new AdapterSchedule(getContext(), schedule);
+                    rclSchedule.setAdapter(adapterSchedule);
+
                     AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
 // ...Irrelevant code for customizing the buttons and title
                     LayoutInflater inflater = getLayoutInflater();
@@ -110,4 +122,21 @@ public class FragmentSchedule extends Fragment {
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
     };
+
+    @Override
+    public void onClick(int position) {
+        Intent intent = new Intent(getActivity(), DetailActivity.class);
+        emailTransfer = schedule.get(position);
+        intent.putExtra("emailReceived",emailTransfer.getEmailReceived());
+        intent.putExtra("imgAvatar",emailTransfer.getImgAvatar());
+        intent.putExtra("starred",emailTransfer.isStarred());
+        intent.putExtra("subjectSent",emailTransfer.getSubjectSent());
+        intent.putExtra("descriptionSchedule",emailTransfer.getDescriptionSchedule());
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    @Override
+    public void onLongClick(int position) {
+
+    }
 }

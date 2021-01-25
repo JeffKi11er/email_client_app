@@ -10,9 +10,11 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemSchedule;
 import com.squareup.picasso.Picasso;
 
@@ -21,12 +23,15 @@ import java.util.ArrayList;
 public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.MyHolder> {
     private Context context;
     private ArrayList<ItemSchedule>schedules;
+    private ItemListener listener;
 
     public AdapterSchedule(Context context, ArrayList<ItemSchedule> schedules) {
         this.context = context;
         this.schedules = schedules;
     }
-
+    public void setListener(ItemListener listener) {
+        this.listener = listener;
+    }
     @NonNull
     @Override
     public AdapterSchedule.MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,12 +46,22 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.MyHold
         holder.subjectSent.setText(schedules.get(position).getSubjectSent());
         holder.timeSend.setText(schedules.get(position).getTimeSend());
         holder.descriptionSchedule.setText(schedules.get(position).getDescriptionSchedule());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener!=null){
+                    listener.onClick(position);
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return schedules.size();
     }
+
+
 
     public class MyHolder extends RecyclerView.ViewHolder {
         private ImageView imgAvatar;
