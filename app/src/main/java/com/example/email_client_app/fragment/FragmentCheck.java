@@ -49,6 +49,7 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import static android.app.Activity.RESULT_OK;
 import static com.example.email_client_app.helper.AppConstants.REQUEST_CODE;
 import static com.example.email_client_app.helper.AppConstants.RESULT_DELETE;
+import static com.example.email_client_app.helper.AppConstants.RESULT_STORED;
 import static com.example.email_client_app.helper.AppConstants.RESULT_UNSEEN;
 
 public class FragmentCheck extends Fragment implements ItemListener{
@@ -241,6 +242,13 @@ public class FragmentCheck extends Fragment implements ItemListener{
                 AdapterItem adapter = new AdapterItem(getContext(),emails);
                 rclEmails.setAdapter(adapter);
                 adapter.setListener(this);
+            }
+            if (resultCode == RESULT_STORED){
+                emails.remove(emailTransfer);
+                AdapterItem adapter = new AdapterItem(getContext(),emails);
+                rclEmails.setAdapter(adapter);
+                adapter.setListener(this);
+                Toast.makeText(getContext(),"1 archived",Toast.LENGTH_LONG).show();
             }
         }
     }

@@ -1,181 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="wrap_content"
+
+<androidx.cardview.widget.CardView
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:padding="14dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:weightSum="7"
+        android:padding="14dp">
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:layout_weight="1">
+
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
                 android:src="@drawable/cat"
                 android:layout_gravity="top"
                 android:id="@+id/img_person_sent2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="6"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_person_received_starred2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="To: thanhcotaim..."
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:id="@+id/tv_time_received_starred2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/default_time"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:weightSum="2">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.5"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:weightSum="6">
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/tv_subject_sent_starred2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:gravity="center_vertical">
-
-                        <TextView
-                            android:id="@+id/tv_person_received_starred2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"
-                            android:ellipsize="end"
-                            android:gravity="center_vertical"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:text="To: thanhcotaim..."
-                            android:textSize="17sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="2"
+                        android:layout_weight="4"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="Subject"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/tv_time_received_starred2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/default_time"
-                            android:textSize="15sp" />
-                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:weightSum="2">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:weightSum="6">
-
-                        <TextView
-                            android:id="@+id/tv_subject_sent_starred2"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_weight="4"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:text="Subject"
-                            android:gravity="center_vertical"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:weightSum="5">
-
-                        <TextView
-                            android:id="@+id/tv_description_starred2"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_weight="4.4"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:gravity="center_vertical"
-                            android:text="Description"
-                            android:textSize="15sp" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.6"
-                            android:orientation="horizontal">
-
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center_horizontal">
-
-                                <ToggleButton
-                                    android:id="@+id/star_toggle_snoozed"
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
-                                    android:background="@drawable/star_toggle"
-                                    android:textOff=""
-                                    android:textOn="" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/attached_file1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.5"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingLeft="10dp"
-                    android:weightSum="4">
+                    android:weightSum="5">
 
                     <TextView
-                        android:id="@+id/tv_snoozed"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tv_description_starred2"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:layout_gravity="center_vertical"
+                        android:layout_weight="4.4"
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:text="Snoozed until Tomorrow, 08:00"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="#ff9100"/>
+                        android:gravity="center_vertical"
+                        android:text="Description"
+                        android:textSize="15sp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.6"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal">
+
+                            <ToggleButton
+                                android:id="@+id/star_toggle_snoozed"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:background="@drawable/star_toggle"
+                                android:textOff=""
+                                android:textOn="" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/attached_file1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <TextView
+                    android:id="@+id/tv_snoozed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="Snoozed until Tomorrow, 08:00"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#ff9100"/>
+            </LinearLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
 
 

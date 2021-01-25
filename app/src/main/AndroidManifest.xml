@@ -17,6 +17,7 @@
         <activity android:name=".activity.ComposeActivity" />
         <activity android:name=".activity.AdsActivity"/>
         <activity android:name=".activity.MeetingActivity"/>
+        <activity android:name=".activity.AddacountActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,4 +34,5 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
 </manifest>
