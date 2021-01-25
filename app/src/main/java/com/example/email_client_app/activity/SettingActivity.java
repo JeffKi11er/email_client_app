@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.email_client_app.MainActivity;
 import com.example.email_client_app.R;
 import com.example.email_client_app.custom.DialogAuthentication;
+import com.example.email_client_app.custom.LoginActivity;
 import com.example.email_client_app.helper.LoginDialogListener;
 
 public class SettingActivity extends AppCompatActivity implements View.OnClickListener, LoginDialogListener, PopupMenu.OnMenuItemClickListener {
@@ -64,8 +65,8 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 showPopUp(v);
                 break;
             case R.id.tv_add_account:
-                DialogAuthentication dialogAuthentication = new DialogAuthentication();
-                dialogAuthentication.show(getSupportFragmentManager(),"logout fragment dialog");
+                Intent loginIntent = new Intent(this, LoginActivity.class);
+                startActivity(loginIntent);
                 break;
             case R.id.img_return:
                 SharedPreferences.Editor editorM = preferencesEmail.edit();
