@@ -40,6 +40,11 @@ public class AdapterSnoozed extends RecyclerView.Adapter<AdapterSnoozed.MyHolder
         holder.tvDescription.setText(emails.get(position).getDescription());
         holder.tvDateSent.setText(emails.get(position).getDate());
         Picasso.with(context).load(emails.get(position).getImgProfile()).into(holder.imgProfile);
+        if (emails.get(position).getSnoozed().equals("")){
+            holder.tvSnoozed.setText("No snoozed in this email");
+        }else {
+            holder.tvSnoozed.setText(emails.get(position).getSnoozed());
+        }
     }
 
     @Override
@@ -54,7 +59,7 @@ public class AdapterSnoozed extends RecyclerView.Adapter<AdapterSnoozed.MyHolder
         private TextView tvSubject;
         private TextView tvDescription;
         private ToggleButton imgStar;
-
+        private TextView tvSnoozed;
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             imgProfile = itemView.findViewById(R.id.img_person_sent2);
@@ -63,6 +68,7 @@ public class AdapterSnoozed extends RecyclerView.Adapter<AdapterSnoozed.MyHolder
             tvSubject = itemView.findViewById(R.id.tv_subject_sent_starred2);
             tvDescription = itemView.findViewById(R.id.tv_description_starred2);
             imgStar = itemView.findViewById(R.id.star_toggle_snoozed);
+            tvSnoozed = itemView.findViewById(R.id.tv_snoozed);
         }
     }
 }

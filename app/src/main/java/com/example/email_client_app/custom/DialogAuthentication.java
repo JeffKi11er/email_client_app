@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,26 +24,32 @@ public class DialogAuthentication extends AppCompatDialogFragment {
     private LoginDialogListener listener;
     private EditText edtFieldName;
     private EditText edtFieldPass;
-    private TextView tvBack;
+//    private TextView tvBack;
     private Button btnLogin;
 
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.PauseDialog);
+
+        Dialog d = dialog.setView(new View(getActivity())).create();
+        // (That new View is just there to have something inside the dialog that can grow big enough to cover the whole screen.)
+
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_login,null);
+        View view = inflater.inflate(R.layout.login,null);
         dialog.setView(view);
-        edtFieldName = view.findViewById(R.id.img_field_user);
-        edtFieldPass = view.findViewById(R.id.img_field_passwords);
-        tvBack = view.findViewById(R.id.tv_back);
-        btnLogin = view.findViewById(R.id.btn_authentication);
-        tvBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+
+
+        edtFieldName = view.findViewById(R.id.img_field_Hlogin);
+        edtFieldPass = view.findViewById(R.id.img_field_Hpasswords);
+//        tvBack = view.findViewById(R.id.tv_back);
+        btnLogin = view.findViewById(R.id.btn_Hauthentication);
+//        tvBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dismiss();
+//            }
+//        });
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
