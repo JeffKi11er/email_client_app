@@ -3,21 +3,28 @@ package com.example.email_client_app.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.email_client_app.MainActivity;
 import com.example.email_client_app.R;
 import com.example.email_client_app.dialog.BottomSheetFragmentDialog;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import static com.example.email_client_app.helper.AppConstants.RESULT_DELETE;
 import static com.example.email_client_app.helper.AppConstants.RESULT_STORED;
@@ -284,6 +291,19 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 imgSelectDate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Calendar calendar = Calendar.getInstance();
+                        int date = calendar.get(Calendar.DATE);
+                        int month = calendar.get(Calendar.MONTH);
+                        int year = calendar.get(Calendar.YEAR);
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                calendar.set(year,month,dayOfMonth);
+                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                                tvTime.setText(simpleDateFormat.format(calendar.getTime()));
+                            }
+                        },year,month,date);
+                        datePickerDialog.show();
                         dialog1.dismiss();
                     }
                 });
