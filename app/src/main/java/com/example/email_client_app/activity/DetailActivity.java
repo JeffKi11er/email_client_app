@@ -211,6 +211,23 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.pop_add_tasks:
                 return true;
             case R.id.pop_change_labels:
+                Dialog dialog2 = new Dialog(this);
+                dialog2.setContentView(R.layout.dialog_label_as);
+                TextView tvCancelLabel = dialog2.findViewById(R.id.tv_label_cancel);
+                TextView tvOKLabel = dialog2.findViewById(R.id.tv_label_ok);
+                tvCancelLabel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog2.dismiss();
+                    }
+                });
+                tvOKLabel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog2.dismiss();
+                    }
+                });
+                dialog2.show();
                 return true;
             case R.id.pop_help:
                 return true;

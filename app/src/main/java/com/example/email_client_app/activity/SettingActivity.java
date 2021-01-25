@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.example.email_client_app.MainActivity;
@@ -16,11 +18,12 @@ import com.example.email_client_app.R;
 import com.example.email_client_app.custom.DialogAuthentication;
 import com.example.email_client_app.helper.LoginDialogListener;
 
-public class SettingActivity extends AppCompatActivity implements View.OnClickListener, LoginDialogListener {
-    private TextView tvLogOut;
+public class SettingActivity extends AppCompatActivity implements View.OnClickListener, LoginDialogListener, PopupMenu.OnMenuItemClickListener {
+    private TextView tvAccountWebsite;
     private TextView tvAddAccount;
     private ImageView imgReturn;
     private TextView tvEmailUser;
+    private ImageView imgDot;
     private TextView tvPasswordsUser;
     private SharedPreferences preferencesEmail;
     private SharedPreferences preferencesPasswords;
@@ -34,22 +37,33 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
 
     private void init() {
         tvAddAccount = findViewById(R.id.tv_add_account);
-        tvLogOut = findViewById(R.id.tv_log_out);
+        tvAccountWebsite = findViewById(R.id.tv_add_account_website);
         imgReturn = findViewById(R.id.img_return);
+        imgDot = findViewById(R.id.img_dot);
         tvEmailUser = findViewById(R.id.tv_email_login);
         tvPasswordsUser = findViewById(R.id.tv_passwords_login);
         preferencesEmail = this.getSharedPreferences("user_email", Context.MODE_PRIVATE);
         tvEmailUser.setText(preferencesEmail.getString("user_email",""));
         preferencesPasswords = this.getSharedPreferences("user_passwords",Context.MODE_PRIVATE);
         tvPasswordsUser.setText(preferencesPasswords.getString("user_passwords",""));
-        tvLogOut.setOnClickListener(this);
+        tvAccountWebsite.setOnClickListener(this);
         imgReturn.setOnClickListener(this);
+        tvAddAccount.setOnClickListener(this);
+        imgDot.setOnClickListener(this);
     }
-
+    private void showPopUp(View v) {
+        PopupMenu popupMenu = new PopupMenu(this,v);
+        popupMenu.setOnMenuItemClickListener(this);
+        popupMenu.inflate(R.menu.menu_manage_account);
+        popupMenu.show();
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.tv_log_out:
+            case R.id.img_dot:
+                showPopUp(v);
+                break;
+            case R.id.tv_add_account:
                 DialogAuthentication dialogAuthentication = new DialogAuthentication();
                 dialogAuthentication.show(getSupportFragmentManager(),"logout fragment dialog");
                 break;
@@ -66,9 +80,9 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(intent);
                 finish();
                 break;
-            case R.id.tv_add_account:
-                AddacountActivity addacountActivity = new AddacountActivity();
-
+            case R.id.tv_add_account_website:
+                Intent intent1 = new Intent(this,AddacountActivity.class);
+                startActivity(intent1);
                 break;
         }
     }
@@ -77,5 +91,13 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     public void applyText(String email, String passwords) {
         tvEmailUser.setText(email);
         tvPasswordsUser.setText(passwords);
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()){
+            default:
+                return false;
+        }
     }
 }

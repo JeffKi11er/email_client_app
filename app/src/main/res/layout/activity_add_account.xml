@@ -23,197 +23,180 @@
             </RelativeLayout>
 
             <ImageView
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                tools:srcCompat="@drawable/ic_email"></ImageView>
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_email"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <RelativeLayout
-                android:layout_width="25dp"
-                android:layout_height="match_parent">
-            </RelativeLayout>
             <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:text="Set up email"
-                android:textSize="36dp">
+                android:textColor="@color/black"
+                android:textSize="25sp">
             </TextView>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp">
-        </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="360dp"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@color/gray"
+        android:layout_gravity="center">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_google"/>
+        <TextView
+            android:textColor="@color/black"
+            android:layout_marginLeft="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/google"
+            android:textSize="17sp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@color/gray"
+        android:layout_gravity="center">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_microsoft_outlook"/>
+        <TextView
+            android:textColor="@color/black"
+            android:layout_marginLeft="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/outlook"
+            android:textSize="17sp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/gray"
         android:layout_gravity="center">
     </LinearLayout>
     <LinearLayout
+        android:layout_margin="15dp"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="center_vertical">
-
-        <RelativeLayout
-            android:layout_width="25dp"
-            android:layout_height="match_parent"></RelativeLayout>
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
         <ImageView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            tools:srcCompat="@drawable/icon_google"></ImageView>
-
-        <RelativeLayout
-            android:layout_width="25dp"
-            android:layout_height="match_parent"></RelativeLayout>
-
+            android:src="@drawable/ic_email_purple"/>
         <TextView
+            android:textColor="@color/black"
+            android:layout_marginLeft="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Google"
-            android:textSize="25dp"
-            ></TextView>
+            android:text="@string/yahoo"
+            android:textSize="17sp"
+            />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:background="@color/gray"
         android:layout_gravity="center">
     </LinearLayout>
     <LinearLayout
+        android:layout_margin="15dp"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="center_vertical">
-
-        <RelativeLayout
-            android:layout_width="25dp"
-            android:layout_height="match_parent"></RelativeLayout>
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
         <ImageView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            tools:srcCompat="@drawable/icon_microsoft_outlook"></ImageView>
-
-        <RelativeLayout
-            android:layout_width="25dp"
-            android:layout_height="match_parent"></RelativeLayout>
-
+            android:src="@drawable/icon_microsoft_exchange"/>
         <TextView
+            android:textColor="@color/black"
+            android:layout_marginLeft="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Outlook, Hotmail and Live"
-            android:textSize="25dp"
-            ></TextView>
+            android:text="@string/exchange"
+            android:textSize="17sp"
+            />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:background="@color/gray"
         android:layout_gravity="center">
     </LinearLayout>
     <LinearLayout
+        android:layout_margin="15dp"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="center_vertical">
-
-        <RelativeLayout
-            android:layout_width="25dp"
-            android:layout_height="match_parent"></RelativeLayout>
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
         <ImageView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            tools:srcCompat="@drawable/ic_email_purple"></ImageView>
-
-        <RelativeLayout
-            android:layout_width="25dp"
-            android:layout_height="match_parent"></RelativeLayout>
-
+            android:src="@drawable/ic_email_white"/>
         <TextView
+            android:textColor="@color/black"
+            android:layout_marginLeft="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Yahoo"
-            android:textSize="25dp"
-            ></TextView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="360dp"
-        android:layout_height="1dp"
-        android:background="@color/gray"
-        android:layout_gravity="center">
+            android:text="@string/other_mail"
+            android:textSize="17sp"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="center_vertical">
-
-        <RelativeLayout
-            android:layout_width="25dp"
-            android:layout_height="match_parent"></RelativeLayout>
-
-        <ImageView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_gravity="center"
-            tools:srcCompat="@drawable/icon_microsoft_exchange"></ImageView>
-
-        <RelativeLayout
-            android:layout_width="25dp"
-            android:layout_height="match_parent"></RelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Exchange and Office 365"
-            android:textSize="25dp"
-            ></TextView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="360dp"
-        android:layout_height="1dp"
-        android:background="@color/gray"
-        android:layout_gravity="center">
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="center_vertical">
-
-        <RelativeLayout
-            android:layout_width="25dp"
-            android:layout_height="match_parent"></RelativeLayout>
-
-        <ImageView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_gravity="center"
-            tools:srcCompat="@drawable/ic_email_white"></ImageView>
-
-        <RelativeLayout
-            android:layout_width="25dp"
-            android:layout_height="match_parent"></RelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Other"
-            android:textSize="25dp"
-            ></TextView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="360dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:layout_height="1dp"
         android:background="@color/gray"
         android:layout_gravity="center">

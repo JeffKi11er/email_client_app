@@ -30,6 +30,7 @@
     <string name="select_date_time">Select date and time</string>
     <string name="cancel">Cancel</string>
     <string name="move_to">Move to</string>
+    <string name="label_as">Label as</string>
     <string name="timenavi">TimeNavi</string>
     <string name="add_error">Add-on error</string>
     <string name="add_time_content">This add-on is designed to help you when composing messages and has no content to display right now</string>
@@ -67,4 +68,9 @@
     <string name="tags">Tags</string>
     <string name="to">To:</string>
     <string name="addaccount">Add account</string>
+    <string name="google">Google</string>
+    <string name="outlook">Outlook, Hotmail and Live</string>
+    <string name="yahoo">Yahoo</string>
+    <string name="exchange">Exchange and Office 365</string>
+    <string name="other_mail">Other</string>
 </resources>
