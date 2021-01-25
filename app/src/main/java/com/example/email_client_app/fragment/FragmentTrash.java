@@ -1,6 +1,7 @@
 package com.example.email_client_app.fragment;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,21 +19,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterItem;
 import com.example.email_client_app.adapter.AdapterStarred;
 import com.example.email_client_app.adapter.AdapterTrash;
 import com.example.email_client_app.adapter.AdapterTrash;
 import com.example.email_client_app.helper.BrainResource;
+import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 
 import java.util.ArrayList;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
-public class FragmentTrash extends Fragment {
+import static com.example.email_client_app.helper.AppConstants.REQUEST_CODE;
+
+public class FragmentTrash extends Fragment implements ItemListener {
     private ArrayList<ItemEmail> emails = new ArrayList<>();
     private RecyclerView rcltrash;
     private SwipeRefreshLayout swipeRefreshtrash;
+    private ItemEmail emailTransfer;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,7 +53,9 @@ public class FragmentTrash extends Fragment {
         rcltrash = getActivity().findViewById(R.id.rcl_trash);
         rcltrash.setAdapter(new AdapterTrash(getContext(),emails));
         swipeRefreshtrash = getActivity().findViewById(R.id.swipe_to_trash);
-        rcltrash.setAdapter(new AdapterTrash(getContext(),emails));
+        AdapterTrash adapterTrash = new AdapterTrash(getContext(),emails);
+        rcltrash.setAdapter(adapterTrash);
+        adapterTrash.setListener(this);
         swipeRefreshtrash.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -108,5 +116,23 @@ public class FragmentTrash extends Fragment {
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
     };
+
+    @Override
+    public void onClick(int position) {
+        Intent intent = new Intent(getActivity(), DetailActivity.class);
+        emailTransfer = emails.get(position);
+        intent.putExtra("name",emailTransfer.getName());
+        intent.putExtra("date",emailTransfer.getDate());
+        intent.putExtra("imgProfile",emailTransfer.getImgProfile());
+        intent.putExtra("starred",emailTransfer.isStarred());
+        intent.putExtra("subject",emailTransfer.getSubject());
+        intent.putExtra("description",emailTransfer.getDescription());
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    @Override
+    public void onLongClick(int position) {
+
+    }
 }
 

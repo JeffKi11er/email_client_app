@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 import com.squareup.picasso.Picasso;
 
@@ -22,12 +23,14 @@ import java.util.ArrayList;
 public class AllMailAdapter extends RecyclerView.Adapter<AllMailAdapter.MyHolder> {
     private Context context;
     private ArrayList<ItemEmail>emails;
-
+    private ItemListener listener;
     public AllMailAdapter(Context context, ArrayList<ItemEmail> emails) {
         this.context = context;
         this.emails = emails;
     }
-
+    public void setListener(ItemListener listener) {
+        this.listener = listener;
+    }
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,6 +46,14 @@ public class AllMailAdapter extends RecyclerView.Adapter<AllMailAdapter.MyHolder
         holder.tvTags.setText("Tags");
         holder.tvDateSent.setText(emails.get(position).getDate());
         Picasso.with(context).load(emails.get(position).getImgProfile()).into(holder.imgProfile);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener!=null){
+                    listener.onClick(position);
+                }
+            }
+        });
     }
 
     @Override

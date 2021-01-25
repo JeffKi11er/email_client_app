@@ -1,6 +1,7 @@
 package com.example.email_client_app.fragment;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,11 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterSchedule;
 import com.example.email_client_app.adapter.SentAdapter;
 import com.example.email_client_app.adapter.ImportantAdapter;
 import com.example.email_client_app.adapter.SentAdapter;
 import com.example.email_client_app.helper.BrainResource;
+import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 import com.example.email_client_app.item.ItemSchedule;
 import com.example.email_client_app.item.ItemSentEmail;
@@ -31,11 +34,13 @@ import java.util.ArrayList;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
-public class FragmentSent extends Fragment {
+import static com.example.email_client_app.helper.AppConstants.REQUEST_CODE;
+
+public class FragmentSent extends Fragment implements ItemListener {
     private ArrayList<ItemSentEmail> sent = new ArrayList<>();
     private RecyclerView rclsent;
     private SwipeRefreshLayout swipeRefreshsent;
-
+    private ItemSentEmail emailTransfer;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,7 +53,9 @@ public class FragmentSent extends Fragment {
         super.onActivityCreated(savedInstanceState);
         sent = BrainResource.getSentEmails();
         rclsent = getActivity().findViewById(R.id.rcl_sent);
-        rclsent.setAdapter(new SentAdapter(getContext(), sent));
+        SentAdapter sentAdapter = new SentAdapter(getContext(), sent);
+        rclsent.setAdapter(sentAdapter);
+        sentAdapter.setListener(this);
         swipeRefreshsent = getActivity().findViewById(R.id.swipe_to_sent);
         swipeRefreshsent.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -110,4 +117,22 @@ public class FragmentSent extends Fragment {
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
     };
+
+    @Override
+    public void onClick(int position) {
+        Intent intent = new Intent(getActivity(), DetailActivity.class);
+        emailTransfer = sent.get(position);
+        intent.putExtra("name",emailTransfer.getName());
+        intent.putExtra("date",emailTransfer.getDate());
+        intent.putExtra("imgProfile",emailTransfer.getImgProfile());
+        intent.putExtra("starred",emailTransfer.isStarred());
+        intent.putExtra("subject",emailTransfer.getSubject());
+        intent.putExtra("description",emailTransfer.getDescription());
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    @Override
+    public void onLongClick(int position) {
+
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.email_client_app.fragment;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,21 +19,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterItem;
 import com.example.email_client_app.adapter.ImportantAdapter;
 import com.example.email_client_app.adapter.ImportantAdapter;
 import com.example.email_client_app.helper.BrainResource;
+import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 
 import java.util.ArrayList;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
-public class FragmentImportant extends Fragment {
+import static com.example.email_client_app.helper.AppConstants.REQUEST_CODE;
+
+public class FragmentImportant extends Fragment implements ItemListener {
     private ArrayList<ItemEmail> important = new ArrayList<>();
     private RecyclerView rclImportants;
     private SwipeRefreshLayout swipeRefreshImportant;
-
+    private ItemEmail emailTransfer;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,7 +50,9 @@ public class FragmentImportant extends Fragment {
         super.onActivityCreated(savedInstanceState);
         important = BrainResource.getEmails();
         rclImportants = getActivity().findViewById(R.id.rcl_important);
-        rclImportants.setAdapter(new ImportantAdapter(getContext(), important));
+        ImportantAdapter importantAdapter = new ImportantAdapter(getContext(), important);
+        rclImportants.setAdapter(importantAdapter);
+        importantAdapter.setListener(this);
         swipeRefreshImportant = getActivity().findViewById(R.id.swipe_to_important);
         swipeRefreshImportant.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -107,4 +114,22 @@ public class FragmentImportant extends Fragment {
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
     };
+
+    @Override
+    public void onClick(int position) {
+        Intent intent = new Intent(getActivity(), DetailActivity.class);
+        emailTransfer = important.get(position);
+        intent.putExtra("name",emailTransfer.getName());
+        intent.putExtra("date",emailTransfer.getDate());
+        intent.putExtra("imgProfile",emailTransfer.getImgProfile());
+        intent.putExtra("starred",emailTransfer.isStarred());
+        intent.putExtra("subject",emailTransfer.getSubject());
+        intent.putExtra("description",emailTransfer.getDescription());
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    @Override
+    public void onLongClick(int position) {
+
+    }
 }

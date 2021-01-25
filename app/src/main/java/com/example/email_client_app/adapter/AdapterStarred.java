@@ -8,9 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 import com.squareup.picasso.Picasso;
 
@@ -19,12 +21,14 @@ import java.util.ArrayList;
 public class AdapterStarred extends RecyclerView.Adapter<AdapterStarred.MyHolder> {
     private Context context;
     private ArrayList<ItemEmail>emails;
-
+    private ItemListener listener;
     public AdapterStarred(Context context, ArrayList<ItemEmail> emails) {
         this.context = context;
         this.emails = emails;
     }
-
+    public void setListener(ItemListener listener) {
+        this.listener = listener;
+    }
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,11 +43,22 @@ public class AdapterStarred extends RecyclerView.Adapter<AdapterStarred.MyHolder
         holder.tvDescription.setText(emails.get(position).getDescription());
         holder.tvDateSent.setText(emails.get(position).getDate());
         Picasso.with(context).load(emails.get(position).getImgProfile()).into(holder.imgProfile);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener!=null){
+                    listener.onClick(position);
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return emails.size();
+    }
+
+    public void setListener(ItemTouchHelper.SimpleCallback simpleCallback) {
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {

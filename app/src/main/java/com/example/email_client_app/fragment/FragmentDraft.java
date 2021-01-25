@@ -1,6 +1,7 @@
  package com.example.email_client_app.fragment;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,19 +19,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterDraft;
 import com.example.email_client_app.adapter.AdapterItem;
 import com.example.email_client_app.helper.BrainResource;
+import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 
 import java.util.ArrayList;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
- public class FragmentDraft extends Fragment {
+import static com.example.email_client_app.helper.AppConstants.REQUEST_CODE;
+
+ public class FragmentDraft extends Fragment implements ItemListener {
      private ArrayList<ItemEmail> emails = new ArrayList<>();
      private RecyclerView recyclerView;
      private SwipeRefreshLayout swipeRefreshDraft;
+     private ItemEmail emailTransfer;
 
      @Nullable
      @Override
@@ -72,7 +78,9 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 //                    progressBar.setVisibility(View.VISIBLE);
                      itemEmail = emails.get(position);
                      emails.remove(position);
-                     recyclerView.setAdapter(new AdapterDraft(getContext(), emails));
+                     AdapterDraft adapterDraft = new AdapterDraft(getContext(), emails);
+                     recyclerView.setAdapter(adapterDraft);
+                     adapterDraft.setListener(this);
                      AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
 // ...Irrelevant code for customizing the buttons and title
                      LayoutInflater inflater = getLayoutInflater();
@@ -107,4 +115,21 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
              super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
          }
      };
+     @Override
+     public void onClick(int position) {
+         Intent intent = new Intent(getActivity(), DetailActivity.class);
+         emailTransfer = emails.get(position);
+         intent.putExtra("name",emailTransfer.getName());
+         intent.putExtra("date",emailTransfer.getDate());
+         intent.putExtra("imgProfile",emailTransfer.getImgProfile());
+         intent.putExtra("starred",emailTransfer.isStarred());
+         intent.putExtra("subject",emailTransfer.getSubject());
+         intent.putExtra("description",emailTransfer.getDescription());
+         startActivityForResult(intent, REQUEST_CODE);
+     }
+
+     @Override
+     public void onLongClick(int position) {
+
+     }
  }

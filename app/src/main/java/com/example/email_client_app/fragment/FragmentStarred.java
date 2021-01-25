@@ -1,6 +1,7 @@
 package com.example.email_client_app.fragment;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,11 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterItem;
 import com.example.email_client_app.adapter.AdapterSocial;
 import com.example.email_client_app.adapter.AdapterStarred;
 import com.example.email_client_app.adapter.AdapterStarred;
 import com.example.email_client_app.helper.BrainResource;
+import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 import com.example.email_client_app.item.ItemSocial;
 
@@ -30,10 +33,13 @@ import java.util.ArrayList;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
-public class FragmentStarred extends Fragment {
+import static com.example.email_client_app.helper.AppConstants.REQUEST_CODE;
+
+public class FragmentStarred extends Fragment implements ItemListener {
     private ArrayList<ItemEmail>emails = new ArrayList<>();
     private RecyclerView rclstarred;
     private SwipeRefreshLayout swipeRefreshstarred;
+    private ItemEmail emailTransfer;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,7 +53,8 @@ public class FragmentStarred extends Fragment {
         emails  = BrainResource.getEmails();
         rclstarred = getActivity().findViewById(R.id.rcl_starred);
         swipeRefreshstarred = getActivity().findViewById(R.id.swipe_to_starred);
-        rclstarred.setAdapter(new AdapterStarred(getContext(),emails));
+        AdapterStarred adapterStarred = new AdapterStarred(getContext(),emails);
+        rclstarred.setAdapter(adapterStarred);
         swipeRefreshstarred.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -55,6 +62,7 @@ public class FragmentStarred extends Fragment {
                 swipeRefreshstarred.setRefreshing(false);
             }
         });
+        adapterStarred.setListener(this);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(rclstarred);
     }
@@ -73,7 +81,8 @@ public class FragmentStarred extends Fragment {
 //                    progressBar.setVisibility(View.VISIBLE);
                     itemEmail = emails.get(position);
                     emails.remove(position);
-                    rclstarred.setAdapter(new AdapterStarred(getContext(),emails));
+                    AdapterStarred adapterStarred = new AdapterStarred(getContext(),emails);
+                    rclstarred.setAdapter(adapterStarred);
                     AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
 // ...Irrelevant code for customizing the buttons and title
                     LayoutInflater inflater = getLayoutInflater();
@@ -108,4 +117,22 @@ public class FragmentStarred extends Fragment {
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
     };
+
+    @Override
+    public void onClick(int position) {
+        Intent intent = new Intent(getActivity(), DetailActivity.class);
+        emailTransfer = emails.get(position);
+        intent.putExtra("name",emailTransfer.getName());
+        intent.putExtra("date",emailTransfer.getDate());
+        intent.putExtra("imgProfile",emailTransfer.getImgProfile());
+        intent.putExtra("starred",emailTransfer.isStarred());
+        intent.putExtra("subject",emailTransfer.getSubject());
+        intent.putExtra("description",emailTransfer.getDescription());
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    @Override
+    public void onLongClick(int position) {
+
+    }
 }

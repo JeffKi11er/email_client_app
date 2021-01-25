@@ -9,9 +9,11 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 import com.squareup.picasso.Picasso;
 
@@ -20,12 +22,15 @@ import java.util.ArrayList;
 public class AdapterSnoozed extends RecyclerView.Adapter<AdapterSnoozed.MyHolder> {
     private Context context;
     private ArrayList<ItemEmail>emails;
+    private ItemListener listener;
 
     public AdapterSnoozed(Context context, ArrayList<ItemEmail> emails) {
         this.context = context;
         this.emails = emails;
     }
-
+    public void setListener(ItemListener listener) {
+        this.listener = listener;
+    }
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,6 +45,14 @@ public class AdapterSnoozed extends RecyclerView.Adapter<AdapterSnoozed.MyHolder
         holder.tvDescription.setText(emails.get(position).getDescription());
         holder.tvDateSent.setText(emails.get(position).getDate());
         Picasso.with(context).load(emails.get(position).getImgProfile()).into(holder.imgProfile);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener!=null){
+                    listener.onClick(position);
+                }
+            }
+        });
         if (emails.get(position).getSnoozed().equals("")){
             holder.tvSnoozed.setText("No snoozed in this email");
         }else {
@@ -51,6 +64,8 @@ public class AdapterSnoozed extends RecyclerView.Adapter<AdapterSnoozed.MyHolder
     public int getItemCount() {
         return emails.size();
     }
+
+
 
     public class MyHolder extends RecyclerView.ViewHolder {
         private ImageView imgProfile;
