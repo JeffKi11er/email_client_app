@@ -61,17 +61,12 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.tv_log_out:
-//                DialogAuthentication dialogAuthentication = new DialogAuthentication();
-//                dialogAuthentication.show(getSupportFragmentManager(),"logout fragment dialog");
-                Intent loginIntent = new Intent(this, LoginActivity.class);
-                startActivity(loginIntent);
             case R.id.img_dot:
                 showPopUp(v);
                 break;
             case R.id.tv_add_account:
-                DialogAuthentication dialogAuthentication = new DialogAuthentication();
-                dialogAuthentication.show(getSupportFragmentManager(),"logout fragment dialog");
+                Intent loginIntent = new Intent(this, LoginActivity.class);
+                startActivity(loginIntent);
                 break;
             case R.id.img_return:
                 SharedPreferences.Editor editorM = preferencesEmail.edit();

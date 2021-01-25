@@ -78,7 +78,6 @@
     <string name="google_icon">google icon</string>
     <string name="facebook_icon">facebook icon</string>
     <string name="new_user_register_now">New User? Register Now</string>
-</resources>
     <string name="addaccount">Add account</string>
     <string name="google">Google</string>
     <string name="outlook">Outlook, Hotmail and Live</string>
@@ -86,3 +85,4 @@
     <string name="exchange">Exchange and Office 365</string>
     <string name="other_mail">Other</string>
 </resources>
+
