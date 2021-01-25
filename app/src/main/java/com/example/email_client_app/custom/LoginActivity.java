@@ -1,5 +1,6 @@
 package com.example.email_client_app.custom;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.email_client_app.MainActivity;
 import com.example.email_client_app.R;
 import com.example.email_client_app.helper.LoginDialogListener;
+
+import static com.example.email_client_app.helper.AppConstants.RESULT_UNSEEN;
 
 public class LoginActivity extends AppCompatActivity {
     private ImageView imgMail;
@@ -29,17 +32,19 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void init() {
-
-        edtFieldName = findViewById(R.id.img_field_user);
-        edtFieldPass = findViewById(R.id.img_field_passwords);
-        btnLogin = findViewById(R.id.btn_authentication);
+        edtFieldName = findViewById(R.id.img_field_Hlogin);
+        edtFieldPass = findViewById(R.id.img_field_Hpasswords);
+        btnLogin = findViewById(R.id.btn_Hauthentication);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String emailComing = edtFieldName.getText().toString();
                 String passwordsComing = edtFieldPass.getText().toString();
-                listener.applyText(emailComing,passwordsComing);
-//                dismiss();
+                Intent intent1 = new Intent(LoginActivity.this, MainActivity.class);
+                intent1.putExtra("email authen",emailComing);
+                intent1.putExtra("password authen",passwordsComing);
+                setResult(Activity.RESULT_OK,intent1);
+                finish();
             }
         });
     }

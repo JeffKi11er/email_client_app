@@ -157,7 +157,6 @@ public class FragmentCheck extends Fragment implements ItemListener{
                     }.start();
                     alertDialog.show();
                     break;
-
             }
         }
 

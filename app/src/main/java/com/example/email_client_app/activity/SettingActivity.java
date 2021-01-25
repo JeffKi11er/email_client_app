@@ -1,7 +1,9 @@
 package com.example.email_client_app.activity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,7 +21,9 @@ import com.example.email_client_app.custom.DialogAuthentication;
 import com.example.email_client_app.custom.LoginActivity;
 import com.example.email_client_app.helper.LoginDialogListener;
 
-public class SettingActivity extends AppCompatActivity implements View.OnClickListener, LoginDialogListener, PopupMenu.OnMenuItemClickListener {
+import static com.example.email_client_app.helper.AppConstants.REQUEST_MAIL_PASS;
+
+public class SettingActivity extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
     private TextView tvAccountWebsite;
     private TextView tvAddAccount;
     private ImageView imgReturn;
@@ -66,7 +70,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.tv_add_account:
                 Intent loginIntent = new Intent(this, LoginActivity.class);
-                startActivity(loginIntent);
+                startActivityForResult(loginIntent,REQUEST_MAIL_PASS);
                 break;
             case R.id.img_return:
                 SharedPreferences.Editor editorM = preferencesEmail.edit();
@@ -88,17 +92,30 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    @Override
-    public void applyText(String email, String passwords) {
-        tvEmailUser.setText(email);
-        tvPasswordsUser.setText(passwords);
-    }
+//    @Override
+//    public void applyText(String email, String passwords) {
+//        tvEmailUser.setText(email);
+//        tvPasswordsUser.setText(passwords);
+//    }
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()){
             default:
                 return false;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==REQUEST_MAIL_PASS){
+            if (resultCode== Activity.RESULT_OK){
+                if (data!=null){
+                    tvEmailUser.setText(data.getStringExtra("email authen"));
+                    tvPasswordsUser.setText(data.getStringExtra("password authen"));
+                }
+            }
         }
     }
 }

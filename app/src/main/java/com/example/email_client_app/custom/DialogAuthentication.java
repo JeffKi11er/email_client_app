@@ -40,10 +40,10 @@ public class DialogAuthentication extends AppCompatDialogFragment {
         dialog.setView(view);
 
 
-        edtFieldName = view.findViewById(R.id.img_field_user);
-        edtFieldPass = view.findViewById(R.id.img_field_passwords);
+        edtFieldName = view.findViewById(R.id.img_field_Hlogin);
+        edtFieldPass = view.findViewById(R.id.img_field_Hpasswords);
 //        tvBack = view.findViewById(R.id.tv_back);
-        btnLogin = view.findViewById(R.id.btn_authentication);
+        btnLogin = view.findViewById(R.id.btn_Hauthentication);
 //        tvBack.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
