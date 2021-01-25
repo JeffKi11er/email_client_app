@@ -56,4 +56,15 @@
     <string name="description">Description</string>
     <string name="tags">Tags</string>
     <string name="to">To:</string>
+
+    <string name="app_name1">MaterialLoginPage</string>
+    <string name="top_icon">TOP ICON</string>
+    <string name="email1">Email</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="forgot_password">FORGOT PASSWORD?</string>
+    <string name="or">OR</string>
+    <string name="google_icon">google icon</string>
+    <string name="facebook_icon">facebook icon</string>
+    <string name="new_user_register_now">New User? Register Now</string>
 </resources>
