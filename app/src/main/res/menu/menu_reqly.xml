@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/menu_reply_schedule"
+        android:title="Schedule send"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/menu_reply_contacts"
+        android:title="Add from Contacts"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/menu_reply_confidentials"
+        android:title="Confidential mode"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/menu_reply_draft"
+        android:title="Save draft"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/menu_reply_discard"
+        android:title="Discard"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/menu_reply_setting"
+        android:title="Settings"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/menu_reply_help"
+        android:title="Help and feedback"
+        app:showAsAction="withText"/>
+</menu>

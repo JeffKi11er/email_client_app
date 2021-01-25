@@ -75,9 +75,9 @@ public class BrainResource {
         }
         return date;
     }
-    public static ArrayList<ItemSchedule>getScheduleEmails(){
+    public static ArrayList<ItemSchedule>getScheduleEmails(ArrayList<ItemEmail>emails){
         ArrayList<ItemSchedule>scheduleItems = new ArrayList<>();
-        for (ItemEmail email:getEmails()) {
+        for (ItemEmail email:emails) {
             scheduleItems.add(new ItemSchedule("TH "+email.getName(),
                     timeValueDate(getDate(email.getDate())),
                     R.drawable.avatar,
@@ -119,9 +119,9 @@ public class BrainResource {
                 "đã bảo là không có tiêu đề",3));
         return sentItems;
     }
-    public static ArrayList<ItemSocial>getSocialItems() {
+    public static ArrayList<ItemSocial>getSocialItems(ArrayList<ItemEmail>emails) {
         ArrayList<ItemSocial> socialItems = new ArrayList<>();
-        for (ItemEmail itemEmail:getEmails()) {
+        for (ItemEmail itemEmail:emails) {
             socialItems.add(new ItemSocial(itemEmail.getName(),
                     itemEmail.getDate(),
                     R.drawable.streamer,

@@ -50,7 +50,7 @@ public class FragmentSchedule extends Fragment implements ItemListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        schedule = BrainResource.getScheduleEmails();
+        schedule = BrainResource.getScheduleEmails(BrainResource.getEmails());
         rclSchedule = getActivity().findViewById(R.id.schedule_recycler);
 
         swipeRefreshSchedule = getActivity().findViewById(R.id.swipe_to_schedule);

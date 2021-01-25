@@ -238,12 +238,6 @@
                             android:src="@drawable/ic_reply"
                             android:layout_marginLeft="15dp"
                             android:id="@+id/img_return_loop"/>
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/ic_dot"
-                            android:layout_marginLeft="20dp"
-                            android:id="@+id/img_tool_pop_up"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

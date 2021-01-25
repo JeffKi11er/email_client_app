@@ -50,7 +50,7 @@ public class FragmentSocialPromotion extends Fragment implements ItemListener {
         if (getArguments()!=null){
             title = getArguments().getString("title_p");
         }
-        socials = BrainResource.getSocialItems();
+        socials = BrainResource.getSocialItems(BrainResource.getEmails());
         return view;
     }
 

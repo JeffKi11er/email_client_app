@@ -110,7 +110,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         tvTime = findViewById(R.id.tv_detail_time);
         imgDown = findViewById(R.id.img_arrow_down_detail);
         imgReturnLoop = findViewById(R.id.img_return_loop);
-        imgMoreChoose = findViewById(R.id.img_tool_pop_up);
         tvDescription = findViewById(R.id.tv_detail_description);
         tvAddOn = findViewById(R.id.tv_add_on);
         tvReply = findViewById(R.id.tv_reply);
@@ -118,7 +117,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         tvForward = findViewById(R.id.tv_forward);
         imgArrowdowndetail = findViewById(R.id.img_arrow_down_detail);
         imgReturnLoop = findViewById(R.id.img_return_loop);
-        imgToolpopup = findViewById(R.id.img_tool_pop_up);
         imgDetailstar = findViewById(R.id.img_detail_star);
         imgStoreddetail= findViewById(R.id.img_stored_detail);
         imgBindetail = findViewById(R.id.img_bin_detail);
@@ -161,19 +159,29 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.tv_reply:
-
+                Intent intent5 = new Intent(DetailActivity.this,ReplyForward.class);
+                intent5.putExtra("title","Reply");
+                startActivity(intent5);
                 break;
             case R.id.tv_reply_all:
+                Intent intent6 = new Intent(DetailActivity.this,ReplyForward.class);
+                intent6.putExtra("title","Reply all");
+                startActivity(intent6);
                 break;
             case R.id.tv_forward:
+                Intent intent7 = new Intent(DetailActivity.this,ReplyForward.class);
+                intent7.putExtra("title","Forward");
+                startActivity(intent7);
                 break;
             case R.id.img_arrow_down_detail:
                 break;
             case R.id.img_return_loop:
-                break;
-            case R.id.img_tool_pop_up:
+                Intent intent = new Intent(DetailActivity.this,ReplyForward.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.img_detail_star:
+                imgDetailstar.setImageResource(R.drawable.ic_starred);
                 break;
             case R.id.img_stored_detail:
                 Intent intent2 = new Intent(this,MainActivity.class);
@@ -181,8 +189,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.img_bin_detail:
-                Intent intent = new Intent(this, MainActivity.class);
-                setResult(RESULT_DELETE,intent);
+                Intent intent4 = new Intent(this, MainActivity.class);
+                setResult(RESULT_DELETE,intent4);
                 finish();
                 break;
             case R.id.img_inb_detail:

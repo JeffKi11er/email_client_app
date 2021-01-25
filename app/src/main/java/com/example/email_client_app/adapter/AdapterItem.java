@@ -34,7 +34,9 @@ import static android.graphics.Typeface.BOLD;
         this.context = context;
         this.emails = emails;
     }
-
+     public void setItems(ArrayList<ItemEmail> emails) {
+         this.emails = emails;
+     }
     public void setListener(ItemListener listener) {
         this.listener = listener;
     }
