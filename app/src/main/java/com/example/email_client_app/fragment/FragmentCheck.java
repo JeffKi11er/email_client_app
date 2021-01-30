@@ -23,13 +23,10 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.email_client_app.R;
 import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterItem;
-import com.example.email_client_app.helper.AppConstants;
-import com.example.email_client_app.helper.BrainResource;
 import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 import com.github.ybq.android.spinkit.sprite.Sprite;
@@ -46,17 +43,11 @@ import javax.mail.Store;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
-import static android.app.Activity.RESULT_OK;
-import static com.example.email_client_app.helper.AppConstants.REQUEST_CODE;
-import static com.example.email_client_app.helper.AppConstants.RESULT_DELETE;
-import static com.example.email_client_app.helper.AppConstants.RESULT_STORED;
-import static com.example.email_client_app.helper.AppConstants.RESULT_UNSEEN;
-
 public class FragmentCheck extends Fragment implements ItemListener{
     private RecyclerView rclEmails;
     private String userEmail;
     private String userPasswords;
-    private ArrayList<ItemEmail> emails = new ArrayList<>();
+    private ArrayList<ItemEmail> emails;
     private String title;
     private TextView tvTitle;
     private String address_to_string;
@@ -67,8 +58,6 @@ public class FragmentCheck extends Fragment implements ItemListener{
     private LinearLayout lnSocial;
     private ArrayList<String>messages = new ArrayList<>();
     private ProgressBar progressBar;
-    private SwipeRefreshLayout swipeRefresh;
-    private ItemEmail emailTransfer;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -87,13 +76,26 @@ public class FragmentCheck extends Fragment implements ItemListener{
         SharedPreferences sharedPreferencesPasswords = getActivity().getSharedPreferences("user_passwords", Context.MODE_PRIVATE);
         userEmail = sharedPreferencesEmail.getString("user_email", "");
         userPasswords = sharedPreferencesPasswords.getString("user_passwords", "");
-        emails = BrainResource.getEmails();
+        emails = new ArrayList<>();
+        emails.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
+                "đã bảo là không có tiêu đề"));
+        emails.add(new ItemEmail("Nguyen An Thiet", "16/12/2020", R.drawable.streamer, true, "Không tiêu đề",
+                "đã bảo là không có tiêu đề"));
+        emails.add(new ItemEmail("Vinh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
+                "đã bảo là không có tiêu đề"));
+        emails.add(new ItemEmail("Hieu", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
+                "đã bảo là không có tiêu đề"));
+        emails.add(new ItemEmail("Hieu", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
+                "đã bảo là không có tiêu đề"));
+        emails.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
+                "đã bảo là không có tiêu đề"));
+        emails.add(new ItemEmail("Nguyen Cong Thanh", "15/12/2020", R.drawable.streamer, true, "Không tiêu đề",
+                "đã bảo là không có tiêu đề"));
         rclEmails = getActivity().findViewById(R.id.rcl_emails);
         tvTitle = getActivity().findViewById(R.id.tv_status);
         lnPromotion = getActivity().findViewById(R.id.ln_promotions);
         lnSocial = getActivity().findViewById(R.id.ln_social);
         progressBar = (ProgressBar)getActivity().findViewById(R.id.spin_kit);
-        swipeRefresh = getActivity().findViewById(R.id.swipe_to_refresh);
         Sprite doubleBounce = new FoldingCube();
         progressBar.setIndeterminateDrawable(doubleBounce);
         progressBar.setVisibility(View.GONE);
@@ -107,13 +109,6 @@ public class FragmentCheck extends Fragment implements ItemListener{
             lnSocial.setVisibility(View.VISIBLE);
         }
         tvTitle.setText(title);
-        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                Toast.makeText(getContext(),"Nothing to show",Toast.LENGTH_LONG).show();
-                swipeRefresh.setRefreshing(false);
-            }
-        });
         AdapterItem adapterItem = new AdapterItem(getContext(), emails);
         rclEmails.setAdapter(adapterItem);
         adapterItem.setListener(this);
@@ -157,6 +152,7 @@ public class FragmentCheck extends Fragment implements ItemListener{
                     }.start();
                     alertDialog.show();
                     break;
+
             }
         }
 
@@ -173,15 +169,10 @@ public class FragmentCheck extends Fragment implements ItemListener{
     };
     @Override
     public void onClick(int position) {
+
         Intent intent = new Intent(getActivity(), DetailActivity.class);
-        emailTransfer = emails.get(position);
-        intent.putExtra("name",emailTransfer.getName());
-        intent.putExtra("date",emailTransfer.getDate());
-        intent.putExtra("imgProfile",emailTransfer.getImgProfile());
-        intent.putExtra("starred",emailTransfer.isStarred());
-        intent.putExtra("subject",emailTransfer.getSubject());
-        intent.putExtra("description",emailTransfer.getDescription());
-        startActivityForResult(intent, REQUEST_CODE);
+//        intent.putStringArrayListExtra("message",messages);
+        startActivity(intent);
     }
 
     @Override
@@ -223,32 +214,6 @@ public class FragmentCheck extends Fragment implements ItemListener{
                 mex.printStackTrace();
             }
             return null;
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==REQUEST_CODE){
-            if (resultCode == RESULT_DELETE){
-                emails.remove(emailTransfer);
-                AdapterItem adapter = new AdapterItem(getContext(),emails);
-                rclEmails.setAdapter(adapter);
-                adapter.setListener(this);
-            }
-            if (resultCode == RESULT_UNSEEN){
-                emailTransfer.setStarred(true);
-                AdapterItem adapter = new AdapterItem(getContext(),emails);
-                rclEmails.setAdapter(adapter);
-                adapter.setListener(this);
-            }
-            if (resultCode == RESULT_STORED){
-                emails.remove(emailTransfer);
-                AdapterItem adapter = new AdapterItem(getContext(),emails);
-                rclEmails.setAdapter(adapter);
-                adapter.setListener(this);
-                Toast.makeText(getContext(),"1 archived",Toast.LENGTH_LONG).show();
-            }
         }
     }
 }
