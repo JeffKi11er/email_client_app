@@ -4,20 +4,13 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.example.email_client_app.R;
 import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterItem;
@@ -27,7 +20,6 @@ import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 
 import java.util.ArrayList;
-
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 import static com.example.email_client_app.helper.AppConstants.REQUEST_CODE;
@@ -37,6 +29,9 @@ public class FragmentAllMail extends Fragment implements ItemListener {
     private RecyclerView rclAllMails;
     private SwipeRefreshLayout swipeRefreshAll;
     private ItemEmail emailTransfer;
+public class FragmentAllMail extends Fragment {
+    private ArrayList<ItemEmail>allMails;
+    private RecyclerView rclAllMails;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,7 +42,24 @@ public class FragmentAllMail extends Fragment implements ItemListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        allMails = BrainResource.getEmails();
+
+        allMails  = new ArrayList<>();
+
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+                "đã bảo là không có tiêu đề"));
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+                "đã bảo là không có tiêu đề"));
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+                "đã bảo là không có tiêu đề"));
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+                "đã bảo là không có tiêu đề"));
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+                "đã bảo là không có tiêu đề"));
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+                "đã bảo là không có tiêu đề"));
+        allMails.add(new ItemEmail("Nguyen Cong Thanh","15/12/2020",R.drawable.streamer,true,"Không tiêu đề",
+                "đã bảo là không có tiêu đề"));
+
         rclAllMails = getActivity().findViewById(R.id.all_mail_recycler_view);
         swipeRefreshAll = getActivity().findViewById(R.id.swipe_to_all);
         AllMailAdapter allMailAdapter = new AllMailAdapter(getContext(),allMails);
@@ -131,6 +143,6 @@ public class FragmentAllMail extends Fragment implements ItemListener {
 
     @Override
     public void onLongClick(int position) {
-
+        rclAllMails.setAdapter(new AllMailAdapter(getContext(),allMails));
     }
 }

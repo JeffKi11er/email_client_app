@@ -16,15 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/light_gray"/>
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/swipe_to_sent">
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/rcl_sent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        android:id="@+id/rcl_sent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 </LinearLayout>

@@ -14,14 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/light_gray"/>
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/swipe_to_draft">
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:id="@+id/rcl_draft"/>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:id="@+id/rcl_draft"/>
+
 </LinearLayout>

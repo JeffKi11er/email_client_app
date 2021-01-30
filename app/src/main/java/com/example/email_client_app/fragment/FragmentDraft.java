@@ -1,22 +1,16 @@
- package com.example.email_client_app.fragment;
-
+package com.example.email_client_app.fragment;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.email_client_app.R;
 import com.example.email_client_app.activity.DetailActivity;
@@ -27,7 +21,6 @@ import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 
 import java.util.ArrayList;
-
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 import static com.example.email_client_app.helper.AppConstants.REQUEST_CODE;

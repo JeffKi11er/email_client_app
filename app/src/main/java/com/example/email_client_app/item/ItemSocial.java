@@ -4,19 +4,10 @@ public class ItemSocial extends ItemEmail {
     private int imgMedia;
     private boolean errorSpam;
 
-    public ItemSocial(String name,
-                      String date,
-                      int imgProfile,
-                      boolean starred,
-                      String subject,
-                      String description,
-                      boolean important,
-                      String snoozed,
-                      String label,
-                      boolean ads,
+    public ItemSocial(String name, String date, int imgProfile, boolean starred, String subject, String description,
                       int imgMedia,
                       boolean errorSpam) {
-        super(name, date, imgProfile, starred, subject, description,important,snoozed,label,ads);
+        super(name, date, imgProfile, starred, subject, description);
         this.imgMedia = imgMedia;
         this.errorSpam = errorSpam;
     }
