@@ -13,10 +13,9 @@
         <activity android:name=".activity.DetailActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.ComposeActivity" />
+        <activity android:name=".activity.AdsActivity" />
         <activity android:name=".activity.AddacountActivity" />
         <activity android:name=".custom.LoginActivity" />
-        <activity android:name=".activity.AdsActivity"/>
-        <activity android:name=".activity.MeetingActivity"/>
         <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +23,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".MainActivity" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
