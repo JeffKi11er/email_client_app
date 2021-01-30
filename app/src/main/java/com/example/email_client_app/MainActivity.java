@@ -3,26 +3,39 @@ package com.example.email_client_app;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.email_client_app.activity.ComposeActivity;
 import com.example.email_client_app.activity.MeetingActivity;
 import com.example.email_client_app.activity.SettingActivity;
+import com.example.email_client_app.adapter.AdapterItem;
 import com.example.email_client_app.fragment.FragmentAllMail;
 import com.example.email_client_app.fragment.FragmentCheck;
 import com.example.email_client_app.fragment.FragmentDraft;
@@ -33,8 +46,14 @@ import com.example.email_client_app.fragment.FragmentSocialPromotion;
 import com.example.email_client_app.fragment.FragmentStarred;
 import com.example.email_client_app.fragment.FragmentSchedule;
 import com.example.email_client_app.fragment.FragmentTrash;
+import com.example.email_client_app.helper.BrainResource;
+import com.example.email_client_app.helper.QueryTextChange;
+import com.example.email_client_app.item.ItemEmail;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+
+import java.io.File;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private ImageView imageViewBar;
@@ -54,8 +73,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText edtFieldName;
     private EditText edtFieldPass;
     private TextView tvBack;
+    private ImageView imgStatus;
     private String userEmail;
+    private AdapterItem adapterItem;
+    private RecyclerView rclSearch;
     private String userPasswords;
+    private RelativeLayout rlvSearch;
+    private EditText edtSearch;
+    private ArrayList<ItemEmail>emailItems = new ArrayList<>();
     private FragmentCheck fragmentCheck = new FragmentCheck();
     private FragmentSnoozed fragmentSnoozed = new FragmentSnoozed();
     private FragmentSchedule fragmentSchedule = new FragmentSchedule();
@@ -105,9 +130,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         floatingCompose = findViewById(R.id.fab_compose);
         floatingActtachment = findViewById(R.id.fab_attachment);
         floatingCamera = findViewById(R.id.fab_camera);
+        edtSearch = findViewById(R.id.edt_search);
+        imgStatus = findViewById(R.id.img_status);
+        rclSearch = findViewById(R.id.rcl_search);
+        rlvSearch = findViewById(R.id.rlv_search_list);
+        adapterItem = new AdapterItem(this,emailItems);
+        rclSearch.setAdapter(adapterItem);
         View viewHeader = nav.getHeaderView(0);
         imgHeader = viewHeader.findViewById(R.id.profile_image);
         tvHeaderEmail = viewHeader.findViewById(R.id.tv_mail_header);
+        rlvSearch.setVisibility(View.GONE);
+        imgStatus.setImageResource(R.drawable.ic_search);
         SharedPreferences sharedPreferencesEmail = this.getSharedPreferences("user_email", Context.MODE_PRIVATE);
         SharedPreferences sharedPreferencesPasswords = this.getSharedPreferences("user_passwords", Context.MODE_PRIVATE);
         userEmail = sharedPreferencesEmail.getString("user_email", "");
@@ -138,6 +171,50 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+        edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                rlvSearch.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+                imgStatus.setImageResource(R.drawable.ic_close);
+                imgStatus.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        rlvSearch.setVisibility(View.GONE);
+                        imgStatus.setImageResource(R.drawable.ic_search);
+                    }
+                });
+            }
+        });
+    }
+    private void filter(String toString) {
+        ArrayList<ItemEmail>emails = new ArrayList<>();
+        for (ItemEmail email: BrainResource.getEmails()){
+            if (email.getName().toLowerCase().contains(toString.toLowerCase())){
+                emails.add(email);
+            }
+        }
+        adapterItem.filterList(emails);
+    }
+    private static final int TAKE_PICTURE = 1;
+    private Uri imageUri;
+
+    public void takePhoto(View view) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        File photo = new File(Environment.getExternalStorageDirectory(),  "Pic.jpg");
+        intent.putExtra(MediaStore.EXTRA_OUTPUT,
+                Uri.fromFile(photo));
+        imageUri = Uri.fromFile(photo);
+        startActivityForResult(intent, TAKE_PICTURE);
     }
     @Override
     public void onClick(View v) {
@@ -159,6 +236,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(MainActivity.this, ComposeActivity.class);
                 startActivity(intent);
                 finish();
+                break;
+            case R.id.fab_camera:
+                takePhoto(v);
                 break;
         }
     }
@@ -245,5 +325,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         argssnoozed.putString("title", "Snoozed");
         fragmentCheck.setArguments(argssnoozed);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_, fragmentSnoozed).commit();
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case TAKE_PICTURE:
+                if (resultCode == Activity.RESULT_OK) {
+                    Uri selectedImage = imageUri;
+                    getContentResolver().notifyChange(selectedImage, null);
+                    ContentResolver cr = getContentResolver();
+                    Bitmap bitmap;
+                    try {
+                        bitmap = android.provider.MediaStore.Images.Media
+                                .getBitmap(cr, selectedImage);
+                        Toast.makeText(this, selectedImage.toString(),
+                                Toast.LENGTH_LONG).show();
+                    } catch (Exception e) {
+                        Toast.makeText(this, "Failed to load", Toast.LENGTH_SHORT)
+                                .show();
+                        Log.e("Camera", e.toString());
+                    }
+                }
+        }
     }
 }
