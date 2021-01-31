@@ -138,6 +138,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         imgBindetail.setOnClickListener(this);
         imgInbdetail.setOnClickListener(this);
         imgMoredetail.setOnClickListener(this);
+        
         tvAddOn.setOnClickListener(this);
         tvUser.setText(user);
         tvReceived.setText("Postman Team <news@postman.com>");

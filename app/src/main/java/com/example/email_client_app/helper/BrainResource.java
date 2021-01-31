@@ -1,14 +1,21 @@
 package com.example.email_client_app.helper;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.email_client_app.R;
+import com.example.email_client_app.adapter.AdapterItem;
 import com.example.email_client_app.item.ItemEmail;
 import com.example.email_client_app.item.ItemSchedule;
 import com.example.email_client_app.item.ItemSentEmail;
 import com.example.email_client_app.item.ItemSocial;
+import com.sun.mail.pop3.POP3Store;
 
+import java.io.IOException;
+import java.security.NoSuchProviderException;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -17,6 +24,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
 
 public class BrainResource {
     public static ArrayList<ItemEmail>getEmails(){
@@ -91,6 +104,52 @@ public class BrainResource {
         }
         return scheduleItems;
     }
+    public static void readAllMail(AdapterItem adapterItem,ArrayList<ItemEmail>itemEmails,String username,String password){
+        new AsyncTask<String, Void, Void>() {
+            @Override
+            protected Void doInBackground(String... strings) {
+                try {
+                    //1) get the session object
+                    Properties properties = new Properties();
+                    properties.put("mail.pop3.host",  "mail.javatpoint.com");
+                    Session emailSession = Session.getDefaultInstance(properties);
+
+                    //2) create the POP3 store object and connect with the pop server
+                    POP3Store emailStore = (POP3Store) emailSession.getStore("pop3");
+                    emailStore.connect(username, password);
+
+                    //3) create the folder object and open it
+                    Folder emailFolder = emailStore.getFolder("INBOX");
+                    emailFolder.open(Folder.READ_ONLY);
+
+                    //4) retrieve the messages from the folder in an array and print it
+                    Message[] messages = emailFolder.getMessages();
+                    for (int i = 0; i < messages.length; i++) {
+                        Message message = messages[i];
+                        Log.e("BrainEmail","---------------------------------");
+                        Log.e("BrainEmail","Email Number " + (i + 1));
+                        Log.e("BrainEmail","Subject: " + message.getSubject());
+                        Log.e("BrainEmail","From: " + message.getFrom()[0]);
+                        Log.e("BrainEmail","Text: " + message.getContent().toString());
+                        itemEmails.add(new ItemEmail(message.getFrom()[i].toString(),message.getSentDate().toString(),R.drawable.streamer,false,
+                                message.getSubject(),message.getDescription(),false,"","inbox",false));
+                    }
+                    //5) close the store and folder objects
+                    emailFolder.close(false);
+                    emailStore.close();
+
+                }
+                catch (MessagingException e) {e.printStackTrace();}
+                catch (Exception e) {e.printStackTrace();}
+                return null;
+            }
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                adapterItem.setItems(itemEmails);
+                adapterItem.notifyDataSetChanged();
+            }
+        }.execute();
+    }
 //    public static ArrayList<ItemSchedule>getScheduleEmails(){
 //        ArrayList<ItemSchedule>scheduleItems = new ArrayList<>();
 //        scheduleItems.add(new ItemSchedule("TH", "21/12/2020", R.drawable.avatar, false, "Điều kỳ diệu", "Description", R.drawable.ic_pdf, "09:00AM", "[123 USTH]", R.drawable.ic_star));
@@ -160,4 +219,5 @@ public class BrainResource {
 //                "a message", "Get 1000+ messages from your scocial media", R.drawable.camera, false));
         return socialItems;
     }
+
 }
