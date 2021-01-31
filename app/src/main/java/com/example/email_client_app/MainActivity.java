@@ -8,7 +8,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +19,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -24,6 +27,7 @@ import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -54,6 +58,14 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Properties;
+
+import javax.mail.BodyPart;
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.Store;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private ImageView imageViewBar;
@@ -68,13 +80,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView imgHeader;
     private TextView tvHeaderEmail;
     private TextView tvHeaderUser;
-    private String emailAuthenticate;
-    private String passAuthenticate;
     private EditText edtFieldName;
     private EditText edtFieldPass;
     private TextView tvBack;
     private ImageView imgStatus;
     private String userEmail;
+    private String received_date="";
+    private String subject="";
+    private String content="";
     private AdapterItem adapterItem;
     private RecyclerView rclSearch;
     private String userPasswords;
@@ -87,7 +100,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragmentImportant fragmentImportant = new FragmentImportant();
     private FragmentAllMail fragmentAllMail = new FragmentAllMail();
     private FragmentSent fragmentSent = new FragmentSent();
-
+    String protocol = "imap";
+    String host = "imap.gmail.com";
+    String port = "993";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

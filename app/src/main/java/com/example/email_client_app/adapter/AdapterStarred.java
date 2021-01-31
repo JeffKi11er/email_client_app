@@ -29,6 +29,11 @@ public class AdapterStarred extends RecyclerView.Adapter<AdapterStarred.MyHolder
     public void setListener(ItemListener listener) {
         this.listener = listener;
     }
+
+    public void setEmails(ArrayList<ItemEmail> emails) {
+        this.emails = emails;
+    }
+
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

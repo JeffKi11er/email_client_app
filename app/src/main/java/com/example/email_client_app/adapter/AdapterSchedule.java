@@ -32,6 +32,11 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.MyHold
     public void setListener(ItemListener listener) {
         this.listener = listener;
     }
+
+    public void setSchedules(ArrayList<ItemSchedule> schedules) {
+        this.schedules = schedules;
+    }
+
     @NonNull
     @Override
     public AdapterSchedule.MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

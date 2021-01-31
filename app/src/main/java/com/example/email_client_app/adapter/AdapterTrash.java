@@ -28,6 +28,11 @@ public class AdapterTrash extends RecyclerView.Adapter<AdapterTrash.TrashHolder>
     public void setListener(ItemListener listener) {
         this.listener = listener;
     }
+
+    public void setEmails(ArrayList<ItemEmail> emails) {
+        this.emails = emails;
+    }
+
     @NonNull
     @Override
     public TrashHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

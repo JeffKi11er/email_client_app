@@ -86,9 +86,6 @@ public class FragmentCheck extends Fragment implements ItemListener{
     private SwipeRefreshLayout swipeRefresh;
     private ItemEmail emailTransfer;
     private AdapterItem adapterItem;
-    String protocol = "imap";
-    String host = "imap.gmail.com";
-    String port = "993";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -102,17 +99,6 @@ public class FragmentCheck extends Fragment implements ItemListener{
         dataFinish();
 //        dataReadAll();
         return view;
-    }
-    public Folder getAlternativeFolder(Folder[] folders, String folder_name) throws MessagingException {
-        for (Folder folder : folders) {
-            IMAPFolder imapFolder = (IMAPFolder) folder;
-            for(String attribute : imapFolder.getAttributes()) {
-                if (attribute.equals("\\"+folder_name)) {
-                    return folder;
-                }
-            }
-        }
-        return null;
     }
     private void dataFinish() {
         new AsyncTask<String, Void, Void>() {
@@ -134,13 +120,13 @@ public class FragmentCheck extends Fragment implements ItemListener{
             protected Void doInBackground(String... values) {
 //                Properties props = new Properties();
 //                props.setProperty("mail.store.protocol", "imaps");
-                Properties properties = getServerProperties(protocol, host, port);
+                Properties properties = getServerProperties(AppConstants.protocol, AppConstants.host, AppConstants.port);
                 Session session = Session.getDefaultInstance(properties,null);
                 try {
 //                    Session session = Session.getInstance(props, null);
 //                    Store store = session.getStore();
 //                    store.connect("imap.gmail.com", userEmail, userPasswords);
-                    Store store = session.getStore(protocol);
+                    Store store = session.getStore(AppConstants.protocol);
                     store.connect(userEmail, userPasswords);
 //                    Folder inbox = store.getFolder("INBOX");
                     Folder[] f = store.getDefaultFolder().list("*");
@@ -149,7 +135,7 @@ public class FragmentCheck extends Fragment implements ItemListener{
                     }
 //                    IMAPFolder inbox = (IMAPFolder) store.getFolder("INBOX");
 //                    Folder inbox = getAlternativeFolder(f,"INBOX");
-                    Folder inbox = f[7];
+                    Folder inbox = f[0];
                     inbox.open(Folder.READ_ONLY);
 //                    Message msg = inbox.getMessage(inbox.getMessageCount());
                     Message[] msg = inbox.getMessages();
@@ -250,7 +236,6 @@ public class FragmentCheck extends Fragment implements ItemListener{
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Toast.makeText(getContext(),"Nothing to show",Toast.LENGTH_LONG).show();
                 dataFinish();
                 swipeRefresh.setRefreshing(false);
             }

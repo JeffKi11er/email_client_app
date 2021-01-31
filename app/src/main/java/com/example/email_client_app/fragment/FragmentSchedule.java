@@ -2,12 +2,17 @@ package com.example.email_client_app.fragment;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,12 +27,15 @@ import com.example.email_client_app.R;
 import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterItem;
 import com.example.email_client_app.adapter.AdapterSchedule;
-import com.example.email_client_app.adapter.AdapterSchedule;
-import com.example.email_client_app.adapter.AdapterSchedule;
+import com.example.email_client_app.helper.AppConstants;
 import com.example.email_client_app.helper.BrainResource;
 import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
 import com.example.email_client_app.item.ItemSchedule;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.FoldingCube;
+import com.sun.mail.imap.IMAPFolder;
+import com.sun.mail.pop3.POP3Store;
 
 import java.util.ArrayList;
 

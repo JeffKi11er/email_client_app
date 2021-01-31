@@ -219,5 +219,4 @@ public class BrainResource {
 //                "a message", "Get 1000+ messages from your scocial media", R.drawable.camera, false));
         return socialItems;
     }
-
 }

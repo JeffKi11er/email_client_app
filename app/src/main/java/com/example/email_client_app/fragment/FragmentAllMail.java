@@ -1,8 +1,13 @@
 package com.example.email_client_app.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,11 +27,27 @@ import com.example.email_client_app.R;
 import com.example.email_client_app.activity.DetailActivity;
 import com.example.email_client_app.adapter.AdapterItem;
 import com.example.email_client_app.adapter.AllMailAdapter;
+import com.example.email_client_app.helper.AppConstants;
 import com.example.email_client_app.helper.BrainResource;
 import com.example.email_client_app.helper.ItemListener;
 import com.example.email_client_app.item.ItemEmail;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.FoldingCube;
+import com.sun.mail.imap.IMAPFolder;
+import com.sun.mail.pop3.POP3Store;
 
 import java.util.ArrayList;
+import java.util.Properties;
+
+import javax.mail.Address;
+import javax.mail.BodyPart;
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Store;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
@@ -37,32 +58,145 @@ public class FragmentAllMail extends Fragment implements ItemListener {
     private RecyclerView rclAllMails;
     private SwipeRefreshLayout swipeRefreshAll;
     private ItemEmail emailTransfer;
+    private String userEmail;
+    private String userPasswords;
+    private String received_date="";
+    private String subject="";
+    private String content="";
+    private AllMailAdapter allMailAdapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_all_mail,container,false);
+        dataFinish();
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        allMails = BrainResource.getEmails();
+        SharedPreferences sharedPreferencesEmail = getActivity().getSharedPreferences("user_email", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferencesPasswords = getActivity().getSharedPreferences("user_passwords", Context.MODE_PRIVATE);
+        userEmail = sharedPreferencesEmail.getString("user_email", "");
+        userPasswords = sharedPreferencesPasswords.getString("user_passwords", "");
         rclAllMails = getActivity().findViewById(R.id.all_mail_recycler_view);
         swipeRefreshAll = getActivity().findViewById(R.id.swipe_to_all);
-        AllMailAdapter allMailAdapter = new AllMailAdapter(getContext(),allMails);
+        allMailAdapter = new AllMailAdapter(getContext(),allMails);
         rclAllMails.setAdapter(allMailAdapter);
         allMailAdapter.setListener(this);
         swipeRefreshAll.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Toast.makeText(getContext(),"Nothing to show",Toast.LENGTH_LONG).show();
+                dataFinish();
                 swipeRefreshAll.setRefreshing(false);
             }
         });
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(rclAllMails);
+    }
+    private void dataFinish() {
+        new AsyncTask<String, Void, Void>() {
+            ///doInBackground
+            AlertDialog alertDialog;
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+                LayoutInflater inflater = getLayoutInflater();
+                View dialogView = inflater.inflate(R.layout.dialog_progress, null);
+                dialogBuilder.setView(dialogView);
+                alertDialog = dialogBuilder.create();
+                alertDialog.show();
+            }
+
+            @SuppressLint("StaticFieldLeak")
+            @Override
+            protected Void doInBackground(String... values) {
+//                Properties props = new Properties();
+//                props.setProperty("mail.store.protocol", "imaps");
+                Properties properties = getServerProperties(AppConstants.protocol, AppConstants.host, AppConstants.port);
+                Session session = Session.getDefaultInstance(properties,null);
+                try {
+//                    Session session = Session.getInstance(props, null);
+//                    Store store = session.getStore();
+//                    store.connect("imap.gmail.com", userEmail, userPasswords);
+                    Store store = session.getStore(AppConstants.protocol);
+                    store.connect(userEmail, userPasswords);
+//                    Folder inbox = store.getFolder("INBOX");
+                    Folder[] f = store.getDefaultFolder().list("*");
+                    for (Folder fd:f) {
+                        Log.i(getClass().getName(),fd.getName());
+                    }
+//                    IMAPFolder inbox = (IMAPFolder) store.getFolder("INBOX");
+//                    Folder inbox = getAlternativeFolder(f,"INBOX");
+                    Folder inbox = f[8];
+                    inbox.open(Folder.READ_ONLY);
+//                    Message msg = inbox.getMessage(inbox.getMessageCount());
+                    Message[] msg = inbox.getMessages();
+                    for (int i = 0; i < msg.length ; i++) {
+                        String from="";
+                        if (msg[i].getReplyTo().length >= 1) {
+                            from = msg[i].getReplyTo()[0].toString();
+                        }
+                        else if (msg[i].getFrom().length >= 1) {
+                            from = msg[i].getFrom()[0].toString();
+                        }
+                        Multipart mp = (Multipart) msg[i].getContent();
+                        BodyPart bp = mp.getBodyPart(i);
+//                        Address[]in = msg[i].getFrom();
+//                        javax.mail.Address address = in[0];
+                        Log.i(getClass().getName(),"SENT DATE:" + msg[i].getSentDate());
+                        received_date = msg[i].getSentDate().toString();
+                        Log.i(getClass().getName(),"SUBJECT:" + msg[i].getSubject());
+                        subject = msg[i].getSubject();
+                        Log.i(getClass().getName(),"CONTENT:" + bp.getContent());
+                        content = bp.getContent().toString();
+                        Log.i(getClass().getName(),"FROM:" + from);
+                        allMails.add(new ItemEmail(from,received_date,R.drawable.streamer,false,subject,content,false,
+                                "","inbox",false));
+                    }
+//                    Address[] in = msg.getFrom();
+//                    for (javax.mail.Address address : in) {
+//                        Log.i(getClass().getName(),"FROM:" + address.toString());
+//                        address_to_string =  address.toString();
+//                        messages.add(address_to_string);
+                    inbox.close(false);
+                    store.close();
+//                    }
+                } catch (Exception mex) {
+                    mex.printStackTrace();
+                }
+                return null;
+            }
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                allMailAdapter.setEmails(allMails);
+                allMailAdapter.notifyDataSetChanged();
+                alertDialog.dismiss();
+            }
+        }.execute();
+    }
+    private Properties getServerProperties(String protocol, String host,
+                                           String port) {
+        Properties properties = new Properties();
+
+        // server setting
+        properties.put(String.format("mail.%s.host", protocol), host);
+        properties.put(String.format("mail.%s.port", protocol), port);
+
+        // SSL setting
+        properties.setProperty(
+                String.format("mail.%s.socketFactory.class", protocol),
+                "javax.net.ssl.SSLSocketFactory");
+        properties.setProperty(
+                String.format("mail.%s.socketFactory.fallback", protocol),
+                "false");
+        properties.setProperty(
+                String.format("mail.%s.socketFactory.port", protocol),
+                String.valueOf(port));
+
+        return properties;
     }
     ItemEmail itemEmail = null;
     ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {

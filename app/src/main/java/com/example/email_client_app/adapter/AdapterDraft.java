@@ -33,6 +33,10 @@ public class AdapterDraft extends RecyclerView.Adapter<AdapterDraft.DraftHolder>
         this.listener = listener;
     }
 
+    public void setEmails(ArrayList<ItemEmail> emails) {
+        this.emails = emails;
+    }
+
     @NonNull
     @Override
     public AdapterDraft.DraftHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

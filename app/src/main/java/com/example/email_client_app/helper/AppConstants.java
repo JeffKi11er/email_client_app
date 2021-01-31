@@ -6,4 +6,7 @@ public interface AppConstants {
     int RESULT_UNSEEN = 202;
     int RESULT_STORED = 203;
     int REQUEST_MAIL_PASS = 204;
+    String protocol = "imap";
+    String host = "imap.gmail.com";
+    String port = "993";
 }

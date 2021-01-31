@@ -32,6 +32,11 @@ public class SentAdapter extends RecyclerView.Adapter<SentAdapter.MyHolder> {
     public void setListener(ItemListener listener) {
         this.listener = listener;
     }
+
+    public void setEmails(ArrayList<ItemSentEmail> emails) {
+        this.emails = emails;
+    }
+
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
