@@ -1,7 +1,6 @@
 package com.example.email_client_app.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
@@ -14,9 +13,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -51,7 +48,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private TextView tvDescription;
     private SharedPreferences preferencesEmail;
     private TextView tvAddOn;
-//    private ImageView imgArrowdowndetail;
+    private ImageView imgArrowdowndetail;
     private ImageView imgReturnloop;
     private ImageView imgToolpopup;
     private ImageView imgDetailstar;
@@ -118,7 +115,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         tvReply = findViewById(R.id.tv_reply);
         tvReplyall = findViewById(R.id.tv_reply_all);
         tvForward = findViewById(R.id.tv_forward);
-//        imgArrowdowndetail = findViewById(R.id.img_arrow_down_detail);
+        imgArrowdowndetail = findViewById(R.id.img_arrow_down_detail);
         imgReturnLoop = findViewById(R.id.img_return_loop);
         imgDetailstar = findViewById(R.id.img_detail_star);
         imgStoreddetail= findViewById(R.id.img_stored_detail);
@@ -126,11 +123,14 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         imgInbdetail = findViewById(R.id.img_inb_detail);
         imgMoredetail = findViewById(R.id.img_more_detail);
 
+
+
+
         imgArrowBack.setOnClickListener(this);
         tvReply.setOnClickListener(this);
         tvReplyall.setOnClickListener(this);
         tvForward.setOnClickListener(this);
-//        imgArrowdowndetail.setOnClickListener(this);
+        imgArrowdowndetail.setOnClickListener(this);
         imgReturnLoop.setOnClickListener(this);
         imgDetailstar.setOnClickListener(this);
         imgDetailstar.setOnClickListener(this);
@@ -214,119 +214,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         popupMenu.inflate(R.menu.popup_setting);
         popupMenu.show();
     }
-
-    @Override
-    public void onOpenAddOn(String text) {
-        Toast.makeText(this,text,Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.pop_add_tasks:
-                return true;
-            case R.id.pop_change_labels:
-                Dialog dialog2 = new Dialog(this);
-                dialog2.setContentView(R.layout.dialog_label_as);
-                TextView tvCancelLabel = dialog2.findViewById(R.id.tv_label_cancel);
-                TextView tvOKLabel = dialog2.findViewById(R.id.tv_label_ok);
-                tvCancelLabel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog2.dismiss();
-                    }
-                });
-                tvOKLabel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog2.dismiss();
-                    }
-                });
-                dialog2.show();
-                return true;
-            case R.id.pop_help:
-                return true;
-            case R.id.pop_mark_not_important:
-                return true;
-            case R.id.pop_move_to:
-                Dialog dialog = new Dialog(this);
-                dialog.setContentView(R.layout.dialog_move_to);
-                TextView tvCancel = dialog.findViewById(R.id.tv_cancel);
-                tvCancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
-                return true;
-            case R.id.pop_print:
-                return true;
-            case R.id.pop_mute:
-                return true;
-            case R.id.pop_snooze:
-                Dialog dialog1 = new Dialog(this);
-                dialog1.setContentView(R.layout.dialog_snoozed);
-                ImageView imgToday = dialog1.findViewById(R.id.img_today);
-                ImageView imgTomorrow = dialog1.findViewById(R.id.img_tomorrow);
-                ImageView imgWeek = dialog1.findViewById(R.id.img_next_week);
-                ImageView imgWeekend = dialog1.findViewById(R.id.img_weekend);
-                ImageView imgSelectDate = dialog1.findViewById(R.id.img_calendar_set);
-                imgToday.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog1.dismiss();
-                    }
-                });
-                imgTomorrow.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog1.dismiss();
-                    }
-                });
-                imgWeek.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog1.dismiss();
-                    }
-                });
-                imgWeekend.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog1.dismiss();
-                    }
-                });
-                imgSelectDate.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Calendar calendar = Calendar.getInstance();
-                        int date = calendar.get(Calendar.DATE);
-                        int month = calendar.get(Calendar.MONTH);
-                        int year = calendar.get(Calendar.YEAR);
-                        DatePickerDialog datePickerDialog = new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                                calendar.set(year,month,dayOfMonth);
-                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-                                tvTime.setText(simpleDateFormat.format(calendar.getTime()));
-                            }
-                        },year,month,date);
-                        datePickerDialog.show();
-                        dialog1.dismiss();
-                    }
-                });
-                dialog1.show();
-                return true;
-            case R.id.pop_report:
-                return true;
-            default:
-                return false;
-
-        }
-
-    }
-
-    private boolean isInfoShown = false;
 
     @Override
     public void onOpenAddOn(String text) {
