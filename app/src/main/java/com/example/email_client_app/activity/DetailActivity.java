@@ -333,7 +333,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
     public void buttonPressed (View view) {
         LinearLayout info_container = findViewById(R.id.info_container);
-        ImageButton button = (ImageButton) view;
+        ImageView button = (ImageView) view;
         int icon;
 
         if(!isInfoShown) {
