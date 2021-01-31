@@ -1,6 +1,7 @@
 package com.example.email_client_app.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
@@ -13,7 +14,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -48,7 +51,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private TextView tvDescription;
     private SharedPreferences preferencesEmail;
     private TextView tvAddOn;
-    private ImageView imgArrowdowndetail;
+//    private ImageView imgArrowdowndetail;
     private ImageView imgReturnloop;
     private ImageView imgToolpopup;
     private ImageView imgDetailstar;
@@ -115,7 +118,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         tvReply = findViewById(R.id.tv_reply);
         tvReplyall = findViewById(R.id.tv_reply_all);
         tvForward = findViewById(R.id.tv_forward);
-        imgArrowdowndetail = findViewById(R.id.img_arrow_down_detail);
+//        imgArrowdowndetail = findViewById(R.id.img_arrow_down_detail);
         imgReturnLoop = findViewById(R.id.img_return_loop);
         imgDetailstar = findViewById(R.id.img_detail_star);
         imgStoreddetail= findViewById(R.id.img_stored_detail);
@@ -130,7 +133,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         tvReply.setOnClickListener(this);
         tvReplyall.setOnClickListener(this);
         tvForward.setOnClickListener(this);
-        imgArrowdowndetail.setOnClickListener(this);
+//        imgArrowdowndetail.setOnClickListener(this);
         imgReturnLoop.setOnClickListener(this);
         imgDetailstar.setOnClickListener(this);
         imgDetailstar.setOnClickListener(this);
@@ -323,6 +326,28 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 return false;
 
         }
+    }
 
+    private boolean isInfoShown = false;
+
+    public void buttonPressed (View view) {
+        LinearLayout info_container = findViewById(R.id.info_container);
+        ImageButton button = (ImageButton) view;
+        int icon;
+
+        if(!isInfoShown) {
+            isInfoShown = true;
+            icon = R.drawable.ic_arrow_up;
+            info_container.setVisibility(View.VISIBLE);
+        }
+        else {
+            isInfoShown = false;
+            icon = R.drawable.ic_arrow_down;
+            info_container.setVisibility(View.GONE);
+        }
+
+        button.setImageDrawable(
+                ContextCompat.getDrawable(getApplicationContext(), icon)
+        );
     }
 }
